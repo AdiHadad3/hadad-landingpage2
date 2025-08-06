@@ -18,7 +18,7 @@ const HeroSection = () => {
           className="mb-16"
         >
           <img 
-            src="/lovable-uploads/47149b98-fa08-403b-8693-7282f8824538.png"
+            src="/lovable-uploads/62ed90a1-a14c-421f-b948-e34444d7d12f.png"
             alt="HADAD Logo"
             className="mx-auto max-w-sm md:max-w-md lg:max-w-lg h-auto animate-float"
           />
