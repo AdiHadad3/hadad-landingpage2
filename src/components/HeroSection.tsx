@@ -18,7 +18,7 @@ const HeroSection = () => {
           className="mb-16"
         >
           <img 
-            src="/lovable-uploads/26b1add4-8ffc-45d8-90e7-45336e3e3d7a.png"
+            src="/lovable-uploads/47149b98-fa08-403b-8693-7282f8824538.png"
             alt="HADAD Logo"
             className="mx-auto max-w-sm md:max-w-md lg:max-w-lg h-auto animate-float"
           />
@@ -31,11 +31,11 @@ const HeroSection = () => {
           transition={{ duration: 0.8, delay: 0.3 }}
           className="space-y-8"
         >
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold bg-gradient-primary bg-clip-text text-transparent">
+          <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold bg-gradient-primary bg-clip-text text-transparent">
             Artistry in Every Petal
           </h1>
           
-          <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
             30 years of a Family-Owned Business that Committed to Beauty, Quality, and Heartfelt Service
           </p>
         </motion.div>

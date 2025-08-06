@@ -19,11 +19,11 @@ const ContactSection = () => {
           viewport={{ once: true }}
           className="space-y-8"
         >
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold">
             Let's Bloom Together
           </h2>
           
-          <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg md:text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
             Ready to bring the beauty of HADAD's handcrafted gypsophila to your sales business? 
             We're here to help you create something extraordinary.
           </p>
@@ -36,7 +36,7 @@ const ContactSection = () => {
           viewport={{ once: true }}
           className="mt-12 space-y-8"
         >
-          <h3 className="text-2xl md:text-3xl font-semibold">Get in touch:</h3>
+          <h3 className="text-xl md:text-2xl font-semibold">Get in touch:</h3>
           
           <Button
             variant="secondary"
@@ -54,11 +54,10 @@ const ContactSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.6 }}
           viewport={{ once: true }}
-          className="mt-12 flex items-center justify-center space-x-4 text-white/80"
+          className="mt-12 text-center text-white/80"
         >
-          <Quote className="w-6 h-6 flex-shrink-0" />
           <p className="text-lg md:text-xl font-medium italic">
-            "Every inquiry is the beginning of a beautiful creation"
+            Every inquiry is the beginning of a beautiful creation
           </p>
         </motion.div>
       </div>
