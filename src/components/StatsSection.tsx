@@ -40,7 +40,7 @@ const StatsSection = () => {
             className="text-center space-y-6"
           >
             <div className="inline-block">
-              <Heart className="w-6 h-6 text-secondary" />
+              <Heart className="w-6 h-6 text-primary" />
             </div>
             
             <div className="space-y-2">

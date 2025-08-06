@@ -57,7 +57,7 @@ const ContactSection = () => {
           className="mt-12 text-center text-white/80"
         >
           <p className="text-lg md:text-xl font-medium italic">
-            Every inquiry is the beginning of a beautiful creation
+            "Every inquiry is the beginning of a beautiful creation"
           </p>
         </motion.div>
       </div>
