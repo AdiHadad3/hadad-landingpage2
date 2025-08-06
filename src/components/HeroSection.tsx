@@ -31,7 +31,7 @@ const HeroSection = () => {
           transition={{ duration: 0.8, delay: 0.3 }}
           className="space-y-8"
         >
-          <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold bg-gradient-primary bg-clip-text text-transparent">
+          <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold text-foreground">
             Artistry in Every Petal
           </h1>
           
