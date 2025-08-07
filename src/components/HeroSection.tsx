@@ -15,7 +15,7 @@ const HeroSection = () => {
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="mb-24"
+          className="mb-32"
         >
           <img 
             src="/lovable-uploads/62ed90a1-a14c-421f-b948-e34444d7d12f.png"
