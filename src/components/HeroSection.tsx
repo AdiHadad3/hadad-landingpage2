@@ -15,12 +15,12 @@ const HeroSection = () => {
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="mb-16"
+          className="mb-24"
         >
           <img 
             src="/lovable-uploads/62ed90a1-a14c-421f-b948-e34444d7d12f.png"
             alt="HADAD Logo"
-            className="mx-auto max-w-sm md:max-w-md lg:max-w-lg h-auto animate-float"
+            className="mx-auto max-w-xs md:max-w-sm lg:max-w-md h-auto animate-float"
           />
         </motion.div>
 
@@ -31,7 +31,7 @@ const HeroSection = () => {
           transition={{ duration: 0.8, delay: 0.3 }}
           className="space-y-8"
         >
-          <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold text-foreground">
+          <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold text-white">
             Artistry in Every Petal
           </h1>
           

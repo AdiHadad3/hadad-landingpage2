@@ -19,13 +19,13 @@ const ContactSection = () => {
           viewport={{ once: true }}
           className="space-y-8"
         >
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold">
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold">
             Let's Bloom Together
           </h2>
           
           <p className="text-lg md:text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
             Ready to bring the beauty of HADAD's handcrafted gypsophila to your sales business? 
-            We're here to help you create something extraordinary.
+            We're here to help you create something extraordinary!
           </p>
         </motion.div>
 
