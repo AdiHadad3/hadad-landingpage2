@@ -20,7 +20,7 @@ const HeroSection = () => {
           <img 
             src="/lovable-uploads/62ed90a1-a14c-421f-b948-e34444d7d12f.png"
             alt="HADAD Logo"
-            className="mx-auto max-w-xs md:max-w-sm lg:max-w-md h-auto animate-float"
+            className="mx-auto max-w-[200px] md:max-w-[280px] lg:max-w-[320px] h-auto animate-float"
           />
         </motion.div>
 
@@ -29,9 +29,9 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3 }}
-          className="space-y-12 px-4"
+          className="space-y-6 px-4"
         >
-          <h1 className="text-xl md:text-3xl lg:text-4xl font-bold bg-gradient-primary bg-clip-text text-transparent leading-tight">
+          <h1 className="text-xl md:text-3xl lg:text-4xl font-bold bg-gradient-primary bg-clip-text text-transparent leading-relaxed pb-2">
             Artistry in Every Petal
           </h1>
           
