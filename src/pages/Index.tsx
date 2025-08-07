@@ -20,7 +20,7 @@ const Index = () => {
             viewport={{ once: true }}
             className="text-center mb-16 space-y-6"
           >
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold bg-gradient-primary bg-clip-text text-transparent">
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold bg-gradient-primary bg-clip-text text-transparent">
               Our Blooms
             </h2>
             <p className="text-lg md:text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
@@ -49,12 +49,12 @@ const Index = () => {
             viewport={{ once: true }}
             className="text-center space-y-8"
           >
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold bg-gradient-primary bg-clip-text text-transparent">
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold bg-gradient-primary bg-clip-text text-transparent">
               From Our Farm to Your Hands
             </h2>
             
             <div className="space-y-6 max-w-4xl mx-auto">
-              <h3 className="text-xl md:text-2xl font-semibold text-foreground">
+              <h3 className="text-lg md:text-xl font-semibold text-foreground">
                 Nature's Finest, Hand-Grown with Precision
               </h3>
               
