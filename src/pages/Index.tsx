@@ -16,7 +16,7 @@ const Index = () => {
           <div
             className="text-center mb-16 space-y-6"
           >
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold bg-gradient-primary bg-clip-text text-transparent">
+            <h2 className="text-lg md:text-2xl lg:text-3xl font-bold bg-gradient-primary bg-clip-text text-transparent">
               Our Blooms
             </h2>
             <p className="text-lg md:text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
@@ -36,7 +36,7 @@ const Index = () => {
           <div
             className="text-center space-y-8"
           >
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold bg-gradient-primary bg-clip-text text-transparent">
+            <h2 className="text-lg md:text-2xl lg:text-3xl font-bold bg-gradient-primary bg-clip-text text-transparent">
               From Our Farm to Your Hands
             </h2>
             

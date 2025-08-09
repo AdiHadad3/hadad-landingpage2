@@ -22,7 +22,7 @@ const HeroSection = () => {
         {/* Main Content */}
         <div className="space-y-3 px-4">
           <h1 className="text-xl md:text-3xl lg:text-4xl font-bold bg-gradient-primary bg-clip-text text-transparent leading-relaxed pb-2">
-            Artistry in Every Petal
+            Our Story
           </h1>
           
           <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">

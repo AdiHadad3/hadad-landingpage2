@@ -14,7 +14,7 @@ const ContactSection = () => {
         <div
           className="space-y-8"
         >
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold">
+          <h2 className="text-lg md:text-2xl lg:text-3xl font-bold">
             Let's Bloom Together
           </h2>
           
