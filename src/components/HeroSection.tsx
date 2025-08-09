@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+
 
 const HeroSection = () => {
   return (
@@ -11,26 +11,16 @@ const HeroSection = () => {
       
       <div className="relative z-10 text-center max-w-5xl mx-auto">
         {/* Logo */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="mb-10"
-        >
+        <div className="mb-10">
           <img 
             src="/lovable-uploads/85e2e54b-fa06-490a-9f34-687a0f710bb0.png"
             alt="HADAD Logo"
-            className="mx-auto max-w-[180px] md:max-w-[240px] lg:max-w-[280px] h-auto animate-float"
+            className="mx-auto max-w-[180px] md:max-w-[240px] lg:max-w-[280px] h-auto"
           />
-        </motion.div>
+        </div>
 
         {/* Main Content */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-          className="space-y-3 px-4"
-        >
+        <div className="space-y-3 px-4">
           <h1 className="text-xl md:text-3xl lg:text-4xl font-bold bg-gradient-primary bg-clip-text text-transparent leading-relaxed pb-2">
             Artistry in Every Petal
           </h1>
@@ -38,7 +28,7 @@ const HeroSection = () => {
           <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
             30 years of a Family-Owned Business that Committed to Beauty, Quality, and Heartfelt Service
           </p>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

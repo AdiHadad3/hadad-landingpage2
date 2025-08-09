@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+
 import HeroSection from "@/components/HeroSection";
 import FlowerCarousel from "@/components/FlowerCarousel";
 import StatsSection from "@/components/StatsSection";
@@ -13,11 +13,7 @@ const Index = () => {
       {/* Our Blooms Section */}
       <section className="pt-20 pb-12 px-4">
         <div className="max-w-6xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
+          <div
             className="text-center mb-16 space-y-6"
           >
             <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold bg-gradient-primary bg-clip-text text-transparent">
@@ -26,27 +22,18 @@ const Index = () => {
             <p className="text-lg md:text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
               Discover the vibrant beauty of our hand-grown gypsophila, each petal carefully cultivated with love and precision
             </p>
-          </motion.div>
+          </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            viewport={{ once: true }}
-          >
+          <div>
             <FlowerCarousel />
-          </motion.div>
+          </div>
         </div>
       </section>
 
       {/* From Our Farm Section */}
       <section className="pt-14 pb-20 px-4 bg-gradient-soft">
         <div className="max-w-6xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
+          <div
             className="text-center space-y-8"
           >
             <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold bg-gradient-primary bg-clip-text text-transparent">
@@ -66,7 +53,7 @@ const Index = () => {
                 With custom colors and precise care, we deliver blooms that reflect your unique vision
               </p>
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
 
