@@ -15,12 +15,12 @@ const HeroSection = () => {
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="mb-8"
+          className="mb-10"
         >
           <img 
-            src="/lovable-uploads/62ed90a1-a14c-421f-b948-e34444d7d12f.png"
+            src="/lovable-uploads/85e2e54b-fa06-490a-9f34-687a0f710bb0.png"
             alt="HADAD Logo"
-            className="mx-auto max-w-[200px] md:max-w-[280px] lg:max-w-[320px] h-auto animate-float"
+            className="mx-auto max-w-[180px] md:max-w-[240px] lg:max-w-[280px] h-auto animate-float"
           />
         </motion.div>
 

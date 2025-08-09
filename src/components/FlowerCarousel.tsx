@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const flowerImages = [
@@ -15,14 +15,23 @@ const flowerImages = [
 
 const FlowerCarousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const intervalRef = useRef<number | null>(null);
+
+  const startAutoPlay = useCallback((delay = 4000) => {
+    if (intervalRef.current) {
+      window.clearInterval(intervalRef.current);
+    }
+    intervalRef.current = window.setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % flowerImages.length);
+    }, delay);
+  }, []);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % flowerImages.length);
-    }, 4000);
-
-    return () => clearInterval(interval);
-  }, []);
+    startAutoPlay();
+    return () => {
+      if (intervalRef.current) window.clearInterval(intervalRef.current);
+    };
+  }, [startAutoPlay]);
 
   return (
     <div className="relative w-full max-w-6xl mx-auto">
@@ -50,7 +59,7 @@ const FlowerCarousel = () => {
         {flowerImages.map((image, index) => (
           <button
             key={index}
-            onClick={() => setCurrentIndex(index)}
+            onClick={() => { setCurrentIndex(index); startAutoPlay(); }}
             className={`flex-shrink-0 w-16 h-16 md:w-20 md:h-20 rounded-lg overflow-hidden border-2 transition-all duration-300 ${
               currentIndex === index 
                 ? 'border-primary shadow-medium' 

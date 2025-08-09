@@ -11,7 +11,7 @@ const Index = () => {
       <HeroSection />
 
       {/* Our Blooms Section */}
-      <section className="py-20 px-4">
+      <section className="pt-20 pb-12 px-4">
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -40,7 +40,7 @@ const Index = () => {
       </section>
 
       {/* From Our Farm Section */}
-      <section className="py-20 px-4 bg-gradient-soft">
+      <section className="pt-14 pb-20 px-4 bg-gradient-soft">
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
