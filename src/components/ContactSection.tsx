@@ -42,10 +42,10 @@ const ContactSection = () => {
             variant="secondary"
             size="lg"
             className="bg-white text-primary hover:bg-white/90 text-lg px-8 py-6 rounded-full shadow-large transition-all duration-300 hover:scale-105"
-            onClick={() => window.location.href = 'mailto:hadadfarm5@gmail.com'}
+            onClick={() => window.location.href = 'mailto:hadadpetals@gmail.com'}
           >
             <Mail className="w-6 h-6 mr-3" />
-            hadadfarm5@gmail.com
+            hadadpetals@gmail.com
           </Button>
         </motion.div>
 
