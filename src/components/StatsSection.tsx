@@ -3,8 +3,9 @@ import { Trophy, Heart } from "lucide-react";
 
 const StatsSection = () => {
   return (
-    <section className="py-20 px-4 bg-gradient-soft">
+    <section className="py-20 px-4 bg-gradient-soft" aria-labelledby="stats-heading">
       <div className="max-w-6xl mx-auto">
+        <h2 id="stats-heading" className="sr-only">סטטיסטיקות החברה</h2>
         <div className="grid md:grid-cols-2 gap-12 md:gap-20">
           {/* 30+ Years */}
           <motion.div
@@ -13,13 +14,15 @@ const StatsSection = () => {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
             className="text-center space-y-6"
+            role="group"
+            aria-labelledby="years-heading"
           >
-            <div className="inline-block">
+            <div className="inline-block" aria-hidden="true">
               <Trophy className="w-6 h-6 text-primary" />
             </div>
             
             <div className="space-y-2">
-              <h3 className="text-5xl md:text-6xl font-bold bg-gradient-primary bg-clip-text text-transparent">
+              <h3 id="years-heading" className="text-5xl md:text-6xl font-bold bg-gradient-primary bg-clip-text text-transparent">
                 30+
               </h3>
               <h4 className="text-lg md:text-xl font-semibold text-foreground">
@@ -38,13 +41,15 @@ const StatsSection = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
             className="text-center space-y-6"
+            role="group"
+            aria-labelledby="founded-heading"
           >
-            <div className="inline-block">
+            <div className="inline-block" aria-hidden="true">
               <Heart className="w-6 h-6 text-primary" />
             </div>
             
             <div className="space-y-2">
-              <h3 className="text-5xl md:text-6xl font-bold bg-gradient-primary bg-clip-text text-transparent">
+              <h3 id="founded-heading" className="text-5xl md:text-6xl font-bold bg-gradient-primary bg-clip-text text-transparent">
                 1992
               </h3>
               <h4 className="text-lg md:text-xl font-semibold text-foreground">
