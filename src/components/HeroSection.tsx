@@ -13,8 +13,8 @@ const HeroSection = () => {
         {/* Logo */}
         <div className="mb-10">
           <img 
-            src="/lovable-uploads/85e2e54b-fa06-490a-9f34-687a0f710bb0.png"
-            alt="HADAD Logo"
+            src="/lovable-uploads/603e48ef-e970-4597-9317-32e0c8d17277.png"
+            alt="HADAD Logo - Petals in Perfect Bloom"
             className="mx-auto max-w-[180px] md:max-w-[240px] lg:max-w-[280px] h-auto"
           />
         </div>
