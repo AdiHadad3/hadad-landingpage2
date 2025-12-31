@@ -1,6 +1,5 @@
 import HeroSection from "@/components/HeroSection";
 import FlowerCarousel from "@/components/FlowerCarousel";
-import StatsSection from "@/components/StatsSection";
 import ContactSection from "@/components/ContactSection";
 import AccessibilityWidget from "@/components/AccessibilityWidget";
 import Navbar from "@/components/Navbar";
@@ -12,15 +11,18 @@ const Index = () => {
       <Navbar />
       <main id="main-content" className="min-h-screen">
         {/* Hero Section */}
-        <HeroSection />
+        <HeroSection 
+          title="HADAD"
+          subtitle="30 years of a Family-Owned Business Committed to Beauty, Quality, and Heartfelt Service"
+        />
 
-        {/* Our Story Section */}
-        <section className="py-16 px-4" aria-labelledby="story-heading">
+        {/* Our Blooms Section */}
+        <section className="py-16 px-4" aria-labelledby="blooms-heading">
           <div className="max-w-4xl mx-auto">
-            <h2 id="story-heading" className="font-sans text-xl md:text-2xl lg:text-3xl font-light text-foreground tracking-[0.2em] uppercase mb-8 text-center">
+            <h2 id="blooms-heading" className="font-sans text-xl md:text-2xl lg:text-3xl font-light text-foreground tracking-[0.2em] uppercase mb-8 text-center">
               Our Blooms
             </h2>
-            <div className="space-y-6 font-sans text-sm md:text-base text-muted-foreground leading-relaxed font-light">
+            <div className="space-y-6 font-sans text-sm md:text-base text-muted-foreground leading-relaxed font-light text-center">
               <p>
                 Discover the vibrant beauty of our hand-grown gypsophila, each petal carefully cultivated with love and precision.
               </p>
@@ -31,7 +33,7 @@ const Index = () => {
           </div>
         </section>
 
-        {/* Gallery Preview Section */}
+        {/* Gallery Section */}
         <section className="py-16 px-4 bg-muted" aria-labelledby="gallery-heading">
           <div className="max-w-6xl mx-auto">
             <h2 id="gallery-heading" className="font-sans text-xl md:text-2xl lg:text-3xl font-light text-foreground tracking-[0.2em] uppercase mb-12 text-center">
