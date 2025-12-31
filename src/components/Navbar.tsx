@@ -24,7 +24,7 @@ const Navbar = () => {
             <img 
               src="/lovable-uploads/hadad-logo-new.jpeg"
               alt="HADAD - Petals in Perfect Bloom"
-              className="h-20 md:h-24 w-auto"
+              className="h-12 md:h-14 w-auto"
             />
           </Link>
 
