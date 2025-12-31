@@ -17,9 +17,10 @@ export default {
 				'2xl': '1400px'
 			}
 		},
-		extend: {
+	extend: {
 		fontFamily: {
 			'sans': ['Lato', 'system-ui', 'sans-serif'],
+			'handwriting': ['Caveat', 'cursive'],
 		},
 			colors: {
 				border: 'hsl(var(--border))',
