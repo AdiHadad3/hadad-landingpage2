@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
-import { Accessibility, X, ZoomIn, ZoomOut, Moon, Eye, Link2, Pause, RotateCcw, Type, MousePointer, AlignJustify } from 'lucide-react';
+import { Accessibility, X, ZoomIn, ZoomOut, Moon, Eye, Link2, Pause, RotateCcw, Type, MousePointer, AlignJustify, Underline, Focus, Keyboard, Volume2, BookOpen, SkipForward } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 interface AccessibilitySettings {
@@ -11,6 +11,12 @@ interface AccessibilitySettings {
   bigCursor: boolean;
   readableFont: boolean;
   textSpacing: boolean;
+  underlineLinks: boolean;
+  focusHighlight: boolean;
+  keyboardNav: boolean;
+  screenReader: boolean;
+  dyslexiaFont: boolean;
+  hideImages: boolean;
 }
 
 const defaultSettings: AccessibilitySettings = {
@@ -22,6 +28,12 @@ const defaultSettings: AccessibilitySettings = {
   bigCursor: false,
   readableFont: false,
   textSpacing: false,
+  underlineLinks: false,
+  focusHighlight: false,
+  keyboardNav: false,
+  screenReader: false,
+  dyslexiaFont: false,
+  hideImages: false,
 };
 
 export const AccessibilityWidget = () => {
@@ -59,6 +71,24 @@ export const AccessibilityWidget = () => {
     // Text spacing
     body.classList.toggle('text-spacing', newSettings.textSpacing);
 
+    // Underline links
+    body.classList.toggle('underline-links', newSettings.underlineLinks);
+
+    // Focus highlight
+    body.classList.toggle('focus-highlight', newSettings.focusHighlight);
+
+    // Keyboard navigation
+    body.classList.toggle('keyboard-nav', newSettings.keyboardNav);
+
+    // Screen reader mode
+    body.classList.toggle('screen-reader-mode', newSettings.screenReader);
+
+    // Dyslexia-friendly font
+    body.classList.toggle('dyslexia-font', newSettings.dyslexiaFont);
+
+    // Hide images
+    body.classList.toggle('hide-images', newSettings.hideImages);
+
     localStorage.setItem('accessibility-settings', JSON.stringify(newSettings));
   }, []);
 
@@ -79,7 +109,7 @@ export const AccessibilityWidget = () => {
   };
 
   const increaseFontSize = () => {
-    if (settings.fontSize < 150) {
+    if (settings.fontSize < 200) {
       updateSetting('fontSize', settings.fontSize + 10);
     }
   };
@@ -98,6 +128,14 @@ export const AccessibilityWidget = () => {
 
   return (
     <>
+      {/* Skip to main content link */}
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[60] focus:bg-primary focus:text-primary-foreground focus:px-4 focus:py-2 focus:rounded-lg"
+      >
+        Skip to main content
+      </a>
+
       {/* Floating Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
@@ -126,7 +164,7 @@ export const AccessibilityWidget = () => {
             aria-modal="true"
             aria-label="Accessibility Settings"
             onKeyDown={handleKeyDown}
-            className="fixed bottom-24 left-6 z-50 w-80 max-h-[70vh] overflow-y-auto bg-background border border-border rounded-2xl shadow-2xl animate-scale-in"
+            className="fixed bottom-24 left-6 z-50 w-80 max-h-[80vh] overflow-y-auto bg-background border border-border rounded-2xl shadow-2xl animate-scale-in"
           >
             {/* Header */}
             <div className="sticky top-0 bg-primary text-primary-foreground p-4 rounded-t-2xl">
@@ -147,12 +185,12 @@ export const AccessibilityWidget = () => {
 
             {/* Content */}
             <div className="p-4 space-y-3">
-              {/* Font Size */}
+              {/* Font Size - WCAG 1.4.4 */}
               <div className="bg-muted/50 rounded-xl p-3">
                 <div className="flex items-center justify-between mb-2">
                   <span className="font-medium flex items-center gap-2">
                     <Type size={18} />
-                    Text Size
+                    Text Size (up to 200%)
                   </span>
                   <span className="text-sm text-muted-foreground">{settings.fontSize}%</span>
                 </div>
@@ -172,7 +210,7 @@ export const AccessibilityWidget = () => {
                     variant="outline"
                     size="sm"
                     onClick={increaseFontSize}
-                    disabled={settings.fontSize >= 150}
+                    disabled={settings.fontSize >= 200}
                     className="flex-1 cursor-pointer"
                     aria-label="Increase text size"
                   >
@@ -182,12 +220,14 @@ export const AccessibilityWidget = () => {
                 </div>
               </div>
 
-              {/* Toggle Options */}
+              {/* Visual Options */}
               <div className="space-y-2">
+                <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide px-1">Visual Adjustments</p>
+                
                 <ToggleOption
                   icon={<Moon size={18} />}
                   label="High Contrast"
-                  description="Increase color contrast"
+                  description="WCAG 1.4.3 - Increase color contrast"
                   checked={settings.highContrast}
                   onChange={(v) => updateSetting('highContrast', v)}
                 />
@@ -209,13 +249,34 @@ export const AccessibilityWidget = () => {
                 />
 
                 <ToggleOption
+                  icon={<Underline size={18} />}
+                  label="Underline Links"
+                  description="WCAG 1.4.1 - Underline all links"
+                  checked={settings.underlineLinks}
+                  onChange={(v) => updateSetting('underlineLinks', v)}
+                />
+
+                <ToggleOption
                   icon={<Pause size={18} />}
                   label="Stop Animations"
-                  description="Pause all moving content"
+                  description="WCAG 2.2.2 - Pause all motion"
                   checked={settings.stopAnimations}
                   onChange={(v) => updateSetting('stopAnimations', v)}
                 />
 
+                <ToggleOption
+                  icon={<SkipForward size={18} />}
+                  label="Hide Images"
+                  description="Hide decorative images"
+                  checked={settings.hideImages}
+                  onChange={(v) => updateSetting('hideImages', v)}
+                />
+              </div>
+
+              {/* Navigation Options */}
+              <div className="space-y-2 pt-2">
+                <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide px-1">Navigation & Focus</p>
+                
                 <ToggleOption
                   icon={<MousePointer size={18} />}
                   label="Large Cursor"
@@ -225,6 +286,27 @@ export const AccessibilityWidget = () => {
                 />
 
                 <ToggleOption
+                  icon={<Focus size={18} />}
+                  label="Focus Highlight"
+                  description="WCAG 2.4.7 - Enhanced focus indicators"
+                  checked={settings.focusHighlight}
+                  onChange={(v) => updateSetting('focusHighlight', v)}
+                />
+
+                <ToggleOption
+                  icon={<Keyboard size={18} />}
+                  label="Keyboard Navigation"
+                  description="WCAG 2.1.1 - Show keyboard shortcuts"
+                  checked={settings.keyboardNav}
+                  onChange={(v) => updateSetting('keyboardNav', v)}
+                />
+              </div>
+
+              {/* Reading Options */}
+              <div className="space-y-2 pt-2">
+                <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide px-1">Reading & Content</p>
+                
+                <ToggleOption
                   icon={<Type size={18} />}
                   label="Readable Font"
                   description="Use a more accessible font"
@@ -233,11 +315,27 @@ export const AccessibilityWidget = () => {
                 />
 
                 <ToggleOption
+                  icon={<BookOpen size={18} />}
+                  label="Dyslexia-Friendly"
+                  description="Use OpenDyslexic-style font"
+                  checked={settings.dyslexiaFont}
+                  onChange={(v) => updateSetting('dyslexiaFont', v)}
+                />
+
+                <ToggleOption
                   icon={<AlignJustify size={18} />}
                   label="Text Spacing"
-                  description="Increase line and word spacing"
+                  description="WCAG 1.4.12 - Increase spacing"
                   checked={settings.textSpacing}
                   onChange={(v) => updateSetting('textSpacing', v)}
+                />
+
+                <ToggleOption
+                  icon={<Volume2 size={18} />}
+                  label="Screen Reader Mode"
+                  description="Optimize for screen readers"
+                  checked={settings.screenReader}
+                  onChange={(v) => updateSetting('screenReader', v)}
                 />
               </div>
 
@@ -249,19 +347,22 @@ export const AccessibilityWidget = () => {
                 aria-label="Reset all accessibility settings"
               >
                 <RotateCcw size={16} className="mr-2" />
-                Reset Settings
+                Reset All Settings
               </Button>
 
-              {/* Accessibility Contact */}
-              <p className="text-xs text-center text-muted-foreground pt-2">
-                Accessibility inquiries:{' '}
-                <a 
-                  href="mailto:hadadpetals@gmail.com" 
-                  className="underline hover:text-primary"
-                >
-                  hadadpetals@gmail.com
-                </a>
-              </p>
+              {/* Accessibility Statement */}
+              <div className="text-xs text-center text-muted-foreground pt-2 space-y-1">
+                <p className="font-medium">WCAG 2.0 AA Compliant</p>
+                <p>
+                  Accessibility inquiries:{' '}
+                  <a 
+                    href="mailto:hadadpetals@gmail.com" 
+                    className="underline hover:text-primary"
+                  >
+                    hadadpetals@gmail.com
+                  </a>
+                </p>
+              </div>
             </div>
           </div>
         </>

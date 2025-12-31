@@ -1,0 +1,102 @@
+import Navbar from "@/components/Navbar";
+import AccessibilityWidget from "@/components/AccessibilityWidget";
+
+const About = () => {
+  return (
+    <>
+      <AccessibilityWidget />
+      <Navbar />
+      <main id="main-content" className="min-h-screen">
+        {/* Hero Section */}
+        <section className="bg-gradient-soft py-20 px-4">
+          <div className="max-w-4xl mx-auto text-center">
+            <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold bg-gradient-primary bg-clip-text text-transparent mb-6">
+              About Us
+            </h1>
+            <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
+              Discover the story behind HADAD - a family legacy of growing the finest gypsophila flowers
+            </p>
+          </div>
+        </section>
+
+        {/* Our Story Section */}
+        <section className="py-16 px-4" aria-labelledby="story-heading">
+          <div className="max-w-4xl mx-auto">
+            <h2 id="story-heading" className="text-xl md:text-2xl lg:text-3xl font-bold text-foreground mb-8 text-center">
+              Our Story
+            </h2>
+            <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
+              <p>
+                Founded in 1992, HADAD began as a small family farm with a simple dream: to grow the most beautiful gypsophila flowers in the region. What started as a passion project has blossomed into a legacy spanning over three decades.
+              </p>
+              <p>
+                Our family has dedicated generations to perfecting the art of gypsophila cultivation. Every petal, every stem, and every bouquet reflects our commitment to quality and our love for these delicate blooms.
+              </p>
+              <p>
+                Nestled in a lush village with ideal growing conditions, our farm combines traditional farming wisdom with modern sustainable practices. This unique approach allows us to produce vibrant, long-lasting flowers that bring joy to customers worldwide.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Values Section */}
+        <section className="py-16 px-4 bg-gradient-soft" aria-labelledby="values-heading">
+          <div className="max-w-5xl mx-auto">
+            <h2 id="values-heading" className="text-xl md:text-2xl lg:text-3xl font-bold text-foreground mb-12 text-center">
+              Our Values
+            </h2>
+            <div className="grid md:grid-cols-3 gap-8">
+              <div className="bg-background p-6 rounded-2xl shadow-medium text-center">
+                <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <span className="text-3xl">🌸</span>
+                </div>
+                <h3 className="text-lg font-semibold mb-3">Quality First</h3>
+                <p className="text-muted-foreground">
+                  Every flower is inspected and nurtured with care to ensure only the finest blooms reach our customers.
+                </p>
+              </div>
+              <div className="bg-background p-6 rounded-2xl shadow-medium text-center">
+                <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <span className="text-3xl">👨‍👩‍👧‍👦</span>
+                </div>
+                <h3 className="text-lg font-semibold mb-3">Family Heritage</h3>
+                <p className="text-muted-foreground">
+                  Three generations of expertise and passion are woven into every aspect of our farming practices.
+                </p>
+              </div>
+              <div className="bg-background p-6 rounded-2xl shadow-medium text-center">
+                <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <span className="text-3xl">🌱</span>
+                </div>
+                <h3 className="text-lg font-semibold mb-3">Sustainability</h3>
+                <p className="text-muted-foreground">
+                  We embrace eco-friendly practices to protect our land and ensure beauty for generations to come.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Team Section */}
+        <section className="py-16 px-4" aria-labelledby="team-heading">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 id="team-heading" className="text-xl md:text-2xl lg:text-3xl font-bold text-foreground mb-8">
+              The HADAD Family
+            </h2>
+            <p className="text-lg text-muted-foreground leading-relaxed mb-8">
+              Behind every bloom is a dedicated team of family members and skilled workers who share our passion for excellence. From seed to stem, we work together to bring you the finest gypsophila flowers.
+            </p>
+            <div className="bg-gradient-soft p-8 rounded-2xl">
+              <blockquote className="text-xl italic text-foreground">
+                "We don't just grow flowers; we grow moments of beauty that touch hearts and create lasting memories."
+              </blockquote>
+              <p className="mt-4 text-muted-foreground font-medium">— The HADAD Family</p>
+            </div>
+          </div>
+        </section>
+      </main>
+    </>
+  );
+};
+
+export default About;
