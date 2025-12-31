@@ -15,13 +15,13 @@ const Index = () => {
         <HeroSection />
 
         {/* Our Blooms Section */}
-        <section className="pt-20 pb-12 px-4" aria-labelledby="blooms-heading">
+        <section className="py-16 px-4" aria-labelledby="blooms-heading">
           <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-16 space-y-6">
-              <h2 id="blooms-heading" className="font-sans text-xl md:text-2xl lg:text-3xl font-light text-foreground tracking-[0.2em] uppercase">
-                Our Blooms
-              </h2>
-              <p className="font-sans text-sm md:text-base text-muted-foreground max-w-4xl mx-auto leading-relaxed font-light">
+            <h2 id="blooms-heading" className="font-sans text-xl md:text-2xl lg:text-3xl font-light text-foreground tracking-[0.2em] uppercase mb-8 text-center">
+              Our Blooms
+            </h2>
+            <div className="space-y-6 font-sans text-sm md:text-base text-muted-foreground leading-relaxed font-light text-center max-w-4xl mx-auto mb-12">
+              <p>
                 Discover the vibrant beauty of our hand-grown gypsophila, each petal carefully cultivated with love and precision
               </p>
             </div>
@@ -33,26 +33,18 @@ const Index = () => {
         </section>
 
         {/* From Our Farm Section */}
-        <section className="pt-14 pb-20 px-4 bg-muted" aria-labelledby="farm-heading">
-          <div className="max-w-6xl mx-auto">
-            <div className="text-center space-y-8">
-              <h2 id="farm-heading" className="font-sans text-xl md:text-2xl lg:text-3xl font-light text-foreground tracking-[0.2em] uppercase">
-                From Our Farm to Your Hands
-              </h2>
-              
-              <div className="space-y-6 max-w-4xl mx-auto">
-                <h3 className="font-sans text-lg md:text-xl font-normal text-foreground">
-                  Nature's Finest, Hand-Grown with Precision
-                </h3>
-                
-                <p className="font-sans text-sm md:text-base text-muted-foreground leading-relaxed font-light">
-                  Nestled in a lush village, we grow premium gypsophila with vibrant hues and full petals
-                </p>
-                
-                <p className="font-sans text-sm md:text-base text-muted-foreground leading-relaxed font-light">
-                  With custom colors and precise care, we deliver blooms that reflect your unique vision
-                </p>
-              </div>
+        <section className="py-16 px-4 bg-muted" aria-labelledby="farm-heading">
+          <div className="max-w-4xl mx-auto">
+            <h2 id="farm-heading" className="font-sans text-xl md:text-2xl lg:text-3xl font-light text-foreground tracking-[0.2em] uppercase mb-8 text-center">
+              From Our Farm to Your Hands
+            </h2>
+            <div className="space-y-6 font-sans text-sm md:text-base text-muted-foreground leading-relaxed font-light">
+              <p>
+                Nestled in a lush village, we grow premium gypsophila with vibrant hues and full petals. Nature's finest, hand-grown with precision.
+              </p>
+              <p>
+                With custom colors and precise care, we deliver blooms that reflect your unique vision. Every flower is inspected and nurtured to ensure only the finest quality reaches our customers.
+              </p>
             </div>
           </div>
         </section>
