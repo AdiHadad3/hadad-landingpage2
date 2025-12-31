@@ -1,4 +1,4 @@
-import { Mail, Phone, MapPin, Clock } from "lucide-react";
+import { Mail } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import AccessibilityWidget from "@/components/AccessibilityWidget";
 import HeroSection from "@/components/HeroSection";
@@ -23,8 +23,8 @@ const Contact = () => {
               Get In Touch
             </h2>
             
-            <div className="grid md:grid-cols-2 gap-8">
-              <div className="bg-muted p-8 text-center">
+            <div className="flex justify-center">
+              <div className="bg-muted p-8 text-center max-w-md w-full">
                 <div className="w-16 h-16 bg-background flex items-center justify-center mx-auto mb-6">
                   <Mail className="w-8 h-8 text-foreground" />
                 </div>
@@ -35,39 +35,6 @@ const Contact = () => {
                 >
                   hadadpetals@gmail.com
                 </a>
-              </div>
-              
-              <div className="bg-muted p-8 text-center">
-                <div className="w-16 h-16 bg-background flex items-center justify-center mx-auto mb-6">
-                  <Phone className="w-8 h-8 text-foreground" />
-                </div>
-                <h3 className="font-sans text-base font-medium mb-3 text-foreground uppercase tracking-wider">Phone</h3>
-                <a 
-                  href="tel:+972123456789" 
-                  className="font-sans text-sm text-muted-foreground font-light hover:text-foreground transition-colors"
-                >
-                  +972 12 345 6789
-                </a>
-              </div>
-              
-              <div className="bg-muted p-8 text-center">
-                <div className="w-16 h-16 bg-background flex items-center justify-center mx-auto mb-6">
-                  <MapPin className="w-8 h-8 text-foreground" />
-                </div>
-                <h3 className="font-sans text-base font-medium mb-3 text-foreground uppercase tracking-wider">Location</h3>
-                <p className="font-sans text-sm text-muted-foreground font-light">
-                  HADAD Farm, Israel
-                </p>
-              </div>
-              
-              <div className="bg-muted p-8 text-center">
-                <div className="w-16 h-16 bg-background flex items-center justify-center mx-auto mb-6">
-                  <Clock className="w-8 h-8 text-foreground" />
-                </div>
-                <h3 className="font-sans text-base font-medium mb-3 text-foreground uppercase tracking-wider">Business Hours</h3>
-                <p className="font-sans text-sm text-muted-foreground font-light">
-                  Sunday - Thursday: 8:00 AM - 5:00 PM
-                </p>
               </div>
             </div>
           </div>
