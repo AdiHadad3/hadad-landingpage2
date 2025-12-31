@@ -14,6 +14,7 @@ const Index = () => {
         <HeroSection 
           title="HADAD"
           subtitle="30 years of a Family-Owned Business Committed to Beauty, Quality, and Heartfelt Service"
+          useHandwriting={true}
         />
 
         {/* Our Blooms Section */}

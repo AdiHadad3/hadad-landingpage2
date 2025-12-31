@@ -1,13 +1,18 @@
 interface HeroSectionProps {
   title: string;
   subtitle?: string;
+  useHandwriting?: boolean;
 }
 
-const HeroSection = ({ title, subtitle }: HeroSectionProps) => {
+const HeroSection = ({ title, subtitle, useHandwriting = false }: HeroSectionProps) => {
   return (
     <section className="bg-muted py-20 px-4">
       <div className="max-w-4xl mx-auto text-center">
-        <h1 className="font-sans text-2xl md:text-4xl lg:text-5xl font-light text-foreground tracking-[0.3em] uppercase mb-6">
+        <h1 className={`text-3xl md:text-5xl lg:text-6xl text-foreground mb-6 ${
+          useHandwriting 
+            ? 'font-handwriting font-medium tracking-wide' 
+            : 'font-sans font-light tracking-[0.3em] uppercase'
+        }`}>
           {title}
         </h1>
         {subtitle && (

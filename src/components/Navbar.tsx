@@ -34,17 +34,10 @@ const Navbar = () => {
               <Link
                 key={item.path}
                 to={item.path}
-                className={`font-sans text-xs tracking-[0.2em] transition-all duration-200 py-2 ${
-                  isActive(item.path)
-                    ? 'text-foreground'
-                    : 'text-muted-foreground hover:text-foreground'
-                }`}
+                className="font-sans text-xs tracking-[0.2em] transition-all duration-200 py-2 text-foreground border-b border-foreground hover:opacity-70"
                 aria-current={isActive(item.path) ? 'page' : undefined}
               >
                 {item.label}
-                {isActive(item.path) && (
-                  <span className="block w-full h-px bg-foreground mt-1" />
-                )}
               </Link>
             ))}
           </div>
