@@ -16,25 +16,25 @@ const ContactSection = () => {
       
       <div className="max-w-4xl mx-auto text-center relative z-10">
         <div className="space-y-8">
-          <h2 id="contact-heading" className="text-lg md:text-2xl lg:text-3xl font-bold">
+          <h2 id="contact-heading" className="font-serif text-2xl md:text-3xl lg:text-4xl font-light tracking-wide">
             Let's Bloom Together
           </h2>
           
-          <p className="text-lg md:text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
+          <p className="font-sans text-lg md:text-xl text-white/90 max-w-3xl mx-auto leading-relaxed font-light">
             Ready to bring the beauty of HADAD's handcrafted gypsophila to your sales business? 
             We're here to help you create something extraordinary!
           </p>
         </div>
 
         <address className="mt-12 space-y-8 not-italic">
-          <h3 className="text-xl md:text-2xl font-semibold">Get in touch:</h3>
+          <h3 className="font-serif text-xl md:text-2xl font-normal">Get in touch:</h3>
           
           <Button
             variant="secondary"
             size="lg"
-            className="bg-white text-primary text-lg px-8 py-6 rounded-full shadow-large focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-primary"
+            className="bg-white text-primary text-lg px-8 py-6 rounded-full shadow-large focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-primary font-sans"
             onClick={() => window.location.href = 'mailto:hadadpetals@gmail.com'}
-            aria-label="שלח אימייל לחברת HADAD לכתובת hadadpetals@gmail.com"
+            aria-label="Send email to HADAD at hadadpetals@gmail.com"
           >
             <Mail className="w-6 h-6 mr-3" aria-hidden="true" />
             <span>hadadpetals@gmail.com</span>
@@ -42,7 +42,7 @@ const ContactSection = () => {
         </address>
 
         <figure className="mt-12 text-center text-white/80">
-          <blockquote className="text-lg md:text-xl font-medium italic" cite="https://hadadpetals.com">
+          <blockquote className="font-serif text-lg md:text-xl font-light italic" cite="https://hadadpetals.com">
             <p>"Every inquiry is the beginning of a beautiful creation"</p>
           </blockquote>
         </figure>
