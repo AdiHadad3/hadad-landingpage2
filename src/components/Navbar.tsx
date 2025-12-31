@@ -22,7 +22,7 @@ const Navbar = () => {
           {/* Logo */}
           <Link to="/" className="flex-shrink-0" aria-label="HADAD - Home">
             <img 
-              src="/lovable-uploads/hadad-logo.png"
+              src="/lovable-uploads/hadad-logo-new.jpeg"
               alt="HADAD - Petals in Perfect Bloom"
               className="h-20 md:h-24 w-auto"
             />
