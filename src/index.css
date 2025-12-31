@@ -113,39 +113,49 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    /* Ensure proper text rendering */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
   }
 
-  /* Accessibility improvements */
+  /* ========================================
+     ACCESSIBILITY IMPROVEMENTS (WCAG 2.0 AA)
+     ======================================== */
   
-  /* Screen reader only class */
+  /* Screen reader only class - hides content visually but keeps it accessible */
   .sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border: 0;
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
   }
 
-  /* Focus visible state - shows when element is accessible via keyboard */
-  .sr-only:focus {
+  /* Skip link for keyboard navigation - דלג לתוכן הראשי */
+  .skip-link {
     position: absolute;
-    width: auto;
-    height: auto;
-    padding: 0.5rem 1rem;
-    margin: 0;
-    overflow: visible;
-    clip: auto;
-    white-space: normal;
-    border: 2px solid hsl(var(--primary));
+    top: -100%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 1rem 2rem;
     background: hsl(var(--primary));
     color: hsl(var(--primary-foreground));
     text-decoration: none;
-    border-radius: 0.25rem;
-    z-index: 9999;
+    font-weight: 600;
+    border-radius: 0 0 0.5rem 0.5rem;
+    z-index: 10000;
+    transition: top 0.3s ease;
+  }
+
+  .skip-link:focus {
+    top: 0;
+    outline: 3px solid hsl(var(--ring));
+    outline-offset: 2px;
   }
 
   /* Enhanced focus styles for better keyboard navigation */
@@ -154,27 +164,97 @@ All colors MUST be HSL.
     outline-offset: 2px;
   }
 
-  /* Ensure text is scalable and responsive */
-  html {
-    font-size: 100%;
-    line-height: 1.5;
+  /* Remove default focus outline for mouse users */
+  *:focus:not(:focus-visible) {
+    outline: none;
   }
 
-  /* Ensure interactive elements have minimum size for touch accessibility */
+  /* Ensure text is scalable and responsive - up to 200% per WCAG */
+  html {
+    font-size: 100%; /* 16px base */
+    line-height: 1.5;
+    scroll-behavior: smooth;
+  }
+
+  /* Respect user preference for reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
+  /* Minimum touch target size (44x44px) per WCAG 2.1 */
   button, 
   [role="button"], 
   input[type="submit"], 
   input[type="button"], 
-  input[type="reset"] {
+  input[type="reset"],
+  a,
+  [role="link"],
+  [role="tab"],
+  input[type="checkbox"],
+  input[type="radio"],
+  select {
     min-height: 44px;
     min-width: 44px;
   }
 
-  /* High contrast focus indicators */
+  /* Ensure links are distinguishable */
+  a:not([class]) {
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  a:not([class]):hover {
+    text-decoration-thickness: 2px;
+  }
+
+  /* Form labels */
+  label {
+    cursor: pointer;
+  }
+
+  /* Required field indicator */
+  [aria-required="true"]::after,
+  .required::after {
+    content: " *";
+    color: hsl(var(--destructive));
+  }
+
+  /* Error states for form fields */
+  [aria-invalid="true"],
+  .input-error {
+    border-color: hsl(var(--destructive)) !important;
+    box-shadow: 0 0 0 1px hsl(var(--destructive));
+  }
+
+  /* High contrast mode support */
   @media (prefers-contrast: high) {
     *:focus-visible {
-      outline: 3px solid;
-      outline-offset: 2px;
+      outline: 3px solid !important;
+      outline-offset: 2px !important;
+    }
+
+    a:not([class]) {
+      text-decoration-thickness: 2px;
+    }
+
+    button,
+    [role="button"] {
+      border: 2px solid currentColor !important;
+    }
+  }
+
+  /* Forced colors mode (Windows High Contrast) */
+  @media (forced-colors: active) {
+    *:focus-visible {
+      outline: 3px solid CanvasText !important;
+    }
+
+    button,
+    [role="button"],
+    a {
+      forced-color-adjust: none;
     }
   }
 
@@ -186,6 +266,7 @@ All colors MUST be HSL.
       animation-duration: 0.01ms !important;
       animation-iteration-count: 1 !important;
       transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
     }
   }
 
@@ -194,5 +275,101 @@ All colors MUST be HSL.
     body {
       color-scheme: dark;
     }
+  }
+
+  /* Ensure images don't overflow their containers */
+  img,
+  picture,
+  video,
+  canvas,
+  svg {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* Prevent text overflow */
+  p,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+
+  /* Selection colors for better visibility */
+  ::selection {
+    background: hsl(var(--primary) / 0.3);
+    color: hsl(var(--foreground));
+  }
+
+  /* Scrollbar styling for better visibility */
+  ::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--muted));
+    border-radius: 6px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--muted-foreground) / 0.5);
+    border-radius: 6px;
+    border: 2px solid hsl(var(--muted));
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--muted-foreground) / 0.7);
+  }
+
+  /* Ensure disabled elements are clearly indicated */
+  [disabled],
+  [aria-disabled="true"] {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  /* Loading state indicator */
+  [aria-busy="true"] {
+    cursor: wait;
+  }
+
+  /* Hidden but accessible for screen readers when expanded */
+  [aria-expanded="false"] + [aria-hidden="true"] {
+    display: none;
+  }
+
+  /* Table accessibility */
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  th {
+    text-align: start;
+    font-weight: 600;
+  }
+
+  /* List accessibility - remove default styles only when role is specified */
+  [role="list"] {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  /* Current page indicator for navigation */
+  [aria-current="page"] {
+    font-weight: 600;
+  }
+
+  /* Live region styling */
+  [aria-live] {
+    contain: layout;
   }
 }

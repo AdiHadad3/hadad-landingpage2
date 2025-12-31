@@ -2,9 +2,12 @@
 
 const HeroSection = () => {
   return (
-    <section className="bg-gradient-soft flex flex-col items-center justify-center px-4 py-12 relative overflow-hidden">
+    <header 
+      className="bg-gradient-soft flex flex-col items-center justify-center px-4 py-12 relative overflow-hidden"
+      role="banner"
+    >
       {/* Background decorative elements */}
-      <div className="absolute inset-0 overflow-hidden">
+      <div className="absolute inset-0 overflow-hidden" aria-hidden="true">
         <div className="absolute -top-10 -right-10 w-72 h-72 bg-primary/5 rounded-full blur-3xl"></div>
         <div className="absolute -bottom-10 -left-10 w-96 h-96 bg-secondary/5 rounded-full blur-3xl"></div>
       </div>
@@ -14,7 +17,7 @@ const HeroSection = () => {
         <div className="mb-10">
           <img 
             src="/lovable-uploads/603e48ef-e970-4597-9317-32e0c8d17277.png"
-            alt="HADAD Logo - Petals in Perfect Bloom"
+            alt="לוגו HADAD - פרחי גיפסופילה איכותיים מעסק משפחתי בן 30 שנה"
             className="mx-auto max-w-[180px] md:max-w-[240px] lg:max-w-[280px] h-auto"
           />
         </div>
@@ -30,7 +33,7 @@ const HeroSection = () => {
           </p>
         </div>
       </div>
-    </section>
+    </header>
   );
 };
 
