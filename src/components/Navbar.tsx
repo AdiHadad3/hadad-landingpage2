@@ -24,17 +24,17 @@ const Navbar = () => {
             <img 
               src="/lovable-uploads/hadad-logo.png"
               alt="HADAD - Petals in Perfect Bloom"
-              className="h-12 w-auto"
+              className="h-14 md:h-16 w-auto"
             />
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-12">
+          <div className="hidden md:flex items-center gap-14">
             {navItems.map((item) => (
               <Link
                 key={item.path}
                 to={item.path}
-                className="font-sans text-xs tracking-[0.2em] transition-all duration-200 py-2 text-foreground border-b border-foreground hover:opacity-70"
+                className="font-sans text-[11px] tracking-[0.25em] transition-all duration-200 py-2 text-foreground border-b border-foreground/80 hover:border-foreground hover:opacity-80"
                 aria-current={isActive(item.path) ? 'page' : undefined}
               >
                 {item.label}
