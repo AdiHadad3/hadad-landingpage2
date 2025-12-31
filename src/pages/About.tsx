@@ -1,5 +1,6 @@
 import Navbar from "@/components/Navbar";
 import AccessibilityWidget from "@/components/AccessibilityWidget";
+import HeroSection from "@/components/HeroSection";
 
 const About = () => {
   return (
@@ -8,16 +9,10 @@ const About = () => {
       <Navbar />
       <main id="main-content" className="min-h-screen">
         {/* Hero Section */}
-        <section className="bg-muted py-20 px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <h1 className="font-sans text-2xl md:text-4xl lg:text-5xl font-light text-foreground tracking-[0.3em] uppercase mb-6">
-              About Us
-            </h1>
-            <p className="font-sans text-sm md:text-base text-muted-foreground leading-relaxed font-light">
-              Discover the story behind HADAD - a family legacy of growing the finest gypsophila flowers
-            </p>
-          </div>
-        </section>
+        <HeroSection 
+          title="About Us"
+          subtitle="Discover the story behind HADAD - a family legacy of growing the finest gypsophila flowers"
+        />
 
         {/* Our Story Section */}
         <section className="py-16 px-4" aria-labelledby="story-heading">
@@ -25,7 +20,7 @@ const About = () => {
             <h2 id="story-heading" className="font-sans text-xl md:text-2xl lg:text-3xl font-light text-foreground tracking-[0.2em] uppercase mb-8 text-center">
               Our Story
             </h2>
-            <div className="space-y-6 font-sans text-sm md:text-base text-muted-foreground leading-relaxed font-light">
+            <div className="space-y-6 font-sans text-sm md:text-base text-muted-foreground leading-relaxed font-light text-center">
               <p>
                 Founded in 1992, HADAD began as a small family farm with a simple dream: to grow the most beautiful gypsophila flowers in the region. What started as a passion project has blossomed into a legacy spanning over three decades.
               </p>
