@@ -20,7 +20,7 @@ const About = () => {
             <h2 id="story-heading" className="font-sans text-xl md:text-2xl lg:text-3xl font-light text-foreground tracking-[0.2em] uppercase mb-8 text-center">
               Our Story
             </h2>
-            <div className="space-y-6 font-sans text-sm md:text-base text-muted-foreground leading-relaxed font-light text-center">
+            <div className="space-y-6 font-sans text-base md:text-sm text-muted-foreground leading-relaxed font-light text-center">
               <p>
                 Founded in 1992, HADAD began as a small family farm with a simple dream: to grow the most beautiful gypsophila flowers in the region. What started as a passion project has blossomed into a legacy spanning over three decades.
               </p>
@@ -46,7 +46,7 @@ const About = () => {
                   <span className="text-3xl">🌸</span>
                 </div>
                 <h3 className="font-sans text-base font-medium mb-3 text-foreground uppercase tracking-wider">Quality First</h3>
-                <p className="font-sans text-sm text-muted-foreground font-light">
+                <p className="font-sans text-base md:text-sm text-muted-foreground font-light">
                   Every flower is inspected and nurtured with care to ensure only the finest blooms reach our customers.
                 </p>
               </div>
@@ -55,7 +55,7 @@ const About = () => {
                   <span className="text-3xl">👨‍👩‍👧‍👦</span>
                 </div>
                 <h3 className="font-sans text-base font-medium mb-3 text-foreground uppercase tracking-wider">Family Heritage</h3>
-                <p className="font-sans text-sm text-muted-foreground font-light">
+                <p className="font-sans text-base md:text-sm text-muted-foreground font-light">
                   Three generations of expertise and passion are woven into every aspect of our farming practices.
                 </p>
               </div>
@@ -64,7 +64,7 @@ const About = () => {
                   <span className="text-3xl">🌱</span>
                 </div>
                 <h3 className="font-sans text-base font-medium mb-3 text-foreground uppercase tracking-wider">Sustainability</h3>
-                <p className="font-sans text-sm text-muted-foreground font-light">
+                <p className="font-sans text-base md:text-sm text-muted-foreground font-light">
                   We embrace eco-friendly practices to protect our land and ensure beauty for generations to come.
                 </p>
               </div>
@@ -78,7 +78,7 @@ const About = () => {
             <h2 id="team-heading" className="font-sans text-xl md:text-2xl lg:text-3xl font-light text-foreground tracking-[0.2em] uppercase mb-8">
               The HADAD Family
             </h2>
-            <p className="font-sans text-sm md:text-base text-muted-foreground leading-relaxed mb-8 font-light">
+            <p className="font-sans text-base md:text-sm text-muted-foreground leading-relaxed mb-8 font-light">
               Behind every bloom is a dedicated team of family members and skilled workers who share our passion for excellence. From seed to stem, we work together to bring you the finest gypsophila flowers.
             </p>
             <div className="bg-muted p-8">
