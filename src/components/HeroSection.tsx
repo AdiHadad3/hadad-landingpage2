@@ -1,9 +1,7 @@
-
-
 const HeroSection = () => {
   return (
     <header 
-      className="bg-gradient-soft flex flex-col items-center justify-center px-4 py-12 relative overflow-hidden"
+      className="bg-gradient-soft flex flex-col items-center justify-center px-4 py-16 md:py-24 relative overflow-hidden"
       role="banner"
     >
       {/* Background decorative elements */}
@@ -12,24 +10,15 @@ const HeroSection = () => {
         <div className="absolute -bottom-10 -left-10 w-96 h-96 bg-secondary/5 rounded-full blur-3xl"></div>
       </div>
       
-      <div className="relative z-10 text-center max-w-5xl mx-auto">
-        {/* Logo */}
-        <div className="mb-10">
-          <img 
-            src="/lovable-uploads/603e48ef-e970-4597-9317-32e0c8d17277.png"
-            alt="לוגו HADAD - פרחי גיפסופילה איכותיים מעסק משפחתי בן 30 שנה"
-            className="mx-auto max-w-[180px] md:max-w-[240px] lg:max-w-[280px] h-auto"
-          />
-        </div>
-
+      <div className="relative z-10 text-center max-w-4xl mx-auto">
         {/* Main Content */}
-        <div className="space-y-3 px-4">
-          <h1 className="text-xl md:text-3xl lg:text-4xl font-bold bg-gradient-primary bg-clip-text text-transparent leading-relaxed pb-2">
+        <div className="space-y-6 px-4">
+          <h1 className="font-serif text-3xl md:text-5xl lg:text-6xl font-light text-secondary tracking-wide leading-relaxed">
             Our Story
           </h1>
           
-          <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            30 years of a Family-Owned Business that Committed to Beauty, Quality, and Heartfelt Service
+          <p className="font-sans text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed font-light">
+            30 years of a Family-Owned Business Committed to Beauty, Quality, and Heartfelt Service
           </p>
         </div>
       </div>

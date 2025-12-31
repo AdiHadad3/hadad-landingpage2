@@ -83,10 +83,10 @@ const Gallery = () => {
         {/* Hero Section */}
         <section className="bg-gradient-soft py-20 px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold bg-gradient-primary bg-clip-text text-transparent mb-6">
+            <h1 className="font-serif text-3xl md:text-5xl lg:text-6xl font-light text-secondary tracking-wide mb-6">
               Our Gallery
             </h1>
-            <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
+            <p className="font-sans text-lg md:text-xl text-muted-foreground leading-relaxed font-light">
               Explore our collection of handcrafted gypsophila flowers in stunning colors
             </p>
           </div>
@@ -100,7 +100,7 @@ const Gallery = () => {
                 <motion.button
                   key={index}
                   onClick={() => openLightbox(index)}
-                  className="group relative aspect-square overflow-hidden rounded-2xl shadow-medium cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+                  className="group relative aspect-square overflow-hidden rounded-2xl shadow-soft cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   aria-label={`View ${image.title}`}
@@ -112,7 +112,7 @@ const Gallery = () => {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     <div className="absolute bottom-4 left-4 right-4">
-                      <h3 className="text-white font-semibold text-lg">{image.title}</h3>
+                      <h3 className="font-serif text-white text-lg">{image.title}</h3>
                     </div>
                   </div>
                 </motion.button>
@@ -166,8 +166,8 @@ const Gallery = () => {
                   className="max-w-full max-h-[80vh] object-contain rounded-lg"
                 />
                 <div className="text-center mt-4">
-                  <h3 className="text-white text-xl font-semibold">{galleryImages[selectedImage].title}</h3>
-                  <p className="text-white/70 mt-1">{selectedImage + 1} / {galleryImages.length}</p>
+                  <h3 className="font-serif text-white text-xl">{galleryImages[selectedImage].title}</h3>
+                  <p className="font-sans text-white/70 mt-1">{selectedImage + 1} / {galleryImages.length}</p>
                 </div>
               </motion.div>
 
