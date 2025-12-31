@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
-import { Accessibility, X, ZoomIn, ZoomOut, Moon, Eye, Link2, Pause, RotateCcw, Type, MousePointer, Volume2 } from 'lucide-react';
+import { Accessibility, X, ZoomIn, ZoomOut, Moon, Eye, Link2, Pause, RotateCcw, Type, MousePointer, AlignJustify } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 interface AccessibilitySettings {
@@ -39,53 +39,25 @@ export const AccessibilityWidget = () => {
     html.style.fontSize = `${newSettings.fontSize}%`;
 
     // High contrast
-    if (newSettings.highContrast) {
-      body.classList.add('high-contrast');
-    } else {
-      body.classList.remove('high-contrast');
-    }
+    body.classList.toggle('high-contrast', newSettings.highContrast);
 
     // Grayscale
-    if (newSettings.grayscale) {
-      body.classList.add('grayscale-mode');
-    } else {
-      body.classList.remove('grayscale-mode');
-    }
+    body.classList.toggle('grayscale-mode', newSettings.grayscale);
 
     // Highlight links
-    if (newSettings.highlightLinks) {
-      body.classList.add('highlight-links');
-    } else {
-      body.classList.remove('highlight-links');
-    }
+    body.classList.toggle('highlight-links', newSettings.highlightLinks);
 
     // Stop animations
-    if (newSettings.stopAnimations) {
-      body.classList.add('stop-animations');
-    } else {
-      body.classList.remove('stop-animations');
-    }
+    body.classList.toggle('stop-animations', newSettings.stopAnimations);
 
     // Big cursor
-    if (newSettings.bigCursor) {
-      body.classList.add('big-cursor');
-    } else {
-      body.classList.remove('big-cursor');
-    }
+    body.classList.toggle('big-cursor', newSettings.bigCursor);
 
     // Readable font
-    if (newSettings.readableFont) {
-      body.classList.add('readable-font');
-    } else {
-      body.classList.remove('readable-font');
-    }
+    body.classList.toggle('readable-font', newSettings.readableFont);
 
     // Text spacing
-    if (newSettings.textSpacing) {
-      body.classList.add('text-spacing');
-    } else {
-      body.classList.remove('text-spacing');
-    }
+    body.classList.toggle('text-spacing', newSettings.textSpacing);
 
     localStorage.setItem('accessibility-settings', JSON.stringify(newSettings));
   }, []);
@@ -129,8 +101,8 @@ export const AccessibilityWidget = () => {
       {/* Floating Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-6 left-6 z-50 w-14 h-14 rounded-full bg-primary text-primary-foreground shadow-lg hover:bg-primary/90 transition-all duration-300 flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
-        aria-label={isOpen ? 'סגור תפריט נגישות' : 'פתח תפריט נגישות'}
+        className="fixed bottom-6 left-6 z-50 w-14 h-14 rounded-full bg-primary text-primary-foreground shadow-lg hover:bg-primary/90 transition-all duration-300 flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 cursor-pointer"
+        aria-label={isOpen ? 'Close accessibility menu' : 'Open accessibility menu'}
         aria-expanded={isOpen}
         aria-controls="accessibility-menu"
       >
@@ -142,7 +114,7 @@ export const AccessibilityWidget = () => {
         <>
           {/* Backdrop */}
           <div
-            className="fixed inset-0 bg-black/30 z-40"
+            className="fixed inset-0 bg-black/30 z-40 cursor-pointer"
             onClick={() => setIsOpen(false)}
             aria-hidden="true"
           />
@@ -152,7 +124,7 @@ export const AccessibilityWidget = () => {
             id="accessibility-menu"
             role="dialog"
             aria-modal="true"
-            aria-label="תפריט נגישות"
+            aria-label="Accessibility Settings"
             onKeyDown={handleKeyDown}
             className="fixed bottom-24 left-6 z-50 w-80 max-h-[70vh] overflow-y-auto bg-background border border-border rounded-2xl shadow-2xl animate-scale-in"
           >
@@ -161,12 +133,12 @@ export const AccessibilityWidget = () => {
               <div className="flex items-center justify-between">
                 <h2 className="text-lg font-bold flex items-center gap-2">
                   <Accessibility size={20} />
-                  הגדרות נגישות
+                  Accessibility
                 </h2>
                 <button
                   onClick={() => setIsOpen(false)}
-                  className="p-1 hover:bg-primary-foreground/20 rounded-full transition-colors"
-                  aria-label="סגור תפריט נגישות"
+                  className="p-2 hover:bg-primary-foreground/20 rounded-full transition-colors cursor-pointer"
+                  aria-label="Close accessibility menu"
                 >
                   <X size={20} />
                 </button>
@@ -180,7 +152,7 @@ export const AccessibilityWidget = () => {
                 <div className="flex items-center justify-between mb-2">
                   <span className="font-medium flex items-center gap-2">
                     <Type size={18} />
-                    גודל טקסט
+                    Text Size
                   </span>
                   <span className="text-sm text-muted-foreground">{settings.fontSize}%</span>
                 </div>
@@ -190,22 +162,22 @@ export const AccessibilityWidget = () => {
                     size="sm"
                     onClick={decreaseFontSize}
                     disabled={settings.fontSize <= 80}
-                    className="flex-1"
-                    aria-label="הקטן גודל טקסט"
+                    className="flex-1 cursor-pointer"
+                    aria-label="Decrease text size"
                   >
-                    <ZoomOut size={16} className="ml-1" />
-                    הקטן
+                    <ZoomOut size={16} className="mr-1" />
+                    Smaller
                   </Button>
                   <Button
                     variant="outline"
                     size="sm"
                     onClick={increaseFontSize}
                     disabled={settings.fontSize >= 150}
-                    className="flex-1"
-                    aria-label="הגדל גודל טקסט"
+                    className="flex-1 cursor-pointer"
+                    aria-label="Increase text size"
                   >
-                    <ZoomIn size={16} className="ml-1" />
-                    הגדל
+                    <ZoomIn size={16} className="mr-1" />
+                    Larger
                   </Button>
                 </div>
               </div>
@@ -214,56 +186,56 @@ export const AccessibilityWidget = () => {
               <div className="space-y-2">
                 <ToggleOption
                   icon={<Moon size={18} />}
-                  label="ניגודיות גבוהה"
-                  description="הגברת הניגודיות בין צבעים"
+                  label="High Contrast"
+                  description="Increase color contrast"
                   checked={settings.highContrast}
                   onChange={(v) => updateSetting('highContrast', v)}
                 />
 
                 <ToggleOption
                   icon={<Eye size={18} />}
-                  label="גווני אפור"
-                  description="הצגת האתר בשחור-לבן"
+                  label="Grayscale"
+                  description="Display in black and white"
                   checked={settings.grayscale}
                   onChange={(v) => updateSetting('grayscale', v)}
                 />
 
                 <ToggleOption
                   icon={<Link2 size={18} />}
-                  label="הדגשת קישורים"
-                  description="הדגשת כל הקישורים באתר"
+                  label="Highlight Links"
+                  description="Make all links more visible"
                   checked={settings.highlightLinks}
                   onChange={(v) => updateSetting('highlightLinks', v)}
                 />
 
                 <ToggleOption
                   icon={<Pause size={18} />}
-                  label="עצירת אנימציות"
-                  description="עצירת כל האנימציות והתנועה"
+                  label="Stop Animations"
+                  description="Pause all moving content"
                   checked={settings.stopAnimations}
                   onChange={(v) => updateSetting('stopAnimations', v)}
                 />
 
                 <ToggleOption
                   icon={<MousePointer size={18} />}
-                  label="סמן גדול"
-                  description="הגדלת סמן העכבר"
+                  label="Large Cursor"
+                  description="Enlarge the mouse pointer"
                   checked={settings.bigCursor}
                   onChange={(v) => updateSetting('bigCursor', v)}
                 />
 
                 <ToggleOption
                   icon={<Type size={18} />}
-                  label="גופן קריא"
-                  description="שימוש בגופן נגיש וקריא יותר"
+                  label="Readable Font"
+                  description="Use a more accessible font"
                   checked={settings.readableFont}
                   onChange={(v) => updateSetting('readableFont', v)}
                 />
 
                 <ToggleOption
-                  icon={<Volume2 size={18} />}
-                  label="ריווח טקסט"
-                  description="הגדלת הריווח בין שורות ומילים"
+                  icon={<AlignJustify size={18} />}
+                  label="Text Spacing"
+                  description="Increase line and word spacing"
                   checked={settings.textSpacing}
                   onChange={(v) => updateSetting('textSpacing', v)}
                 />
@@ -272,17 +244,17 @@ export const AccessibilityWidget = () => {
               {/* Reset Button */}
               <Button
                 variant="outline"
-                className="w-full mt-4"
+                className="w-full mt-4 cursor-pointer"
                 onClick={resetSettings}
-                aria-label="איפוס כל הגדרות הנגישות"
+                aria-label="Reset all accessibility settings"
               >
-                <RotateCcw size={16} className="ml-2" />
-                איפוס הגדרות
+                <RotateCcw size={16} className="mr-2" />
+                Reset Settings
               </Button>
 
-              {/* Accessibility Statement Link */}
+              {/* Accessibility Contact */}
               <p className="text-xs text-center text-muted-foreground pt-2">
-                לבירורים בנושא נגישות:{' '}
+                Accessibility inquiries:{' '}
                 <a 
                   href="mailto:hadadpetals@gmail.com" 
                   className="underline hover:text-primary"
@@ -312,7 +284,7 @@ const ToggleOption = ({ icon, label, description, checked, onChange }: ToggleOpt
       role="switch"
       aria-checked={checked}
       onClick={() => onChange(!checked)}
-      className={`w-full flex items-center gap-3 p-3 rounded-xl transition-all duration-200 text-right ${
+      className={`w-full flex items-center gap-3 p-3 rounded-xl transition-all duration-200 text-left cursor-pointer ${
         checked 
           ? 'bg-primary/10 border-2 border-primary' 
           : 'bg-muted/50 border-2 border-transparent hover:bg-muted'
