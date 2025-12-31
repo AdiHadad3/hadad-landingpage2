@@ -14,15 +14,15 @@ const flowerImages = [
 ];
 
 const flowerDescriptions = [
-  "פרחי גיפסופילה לבנים טהורים",
-  "גיפסופילה בגוון ורוד עדין",
-  "פרחים בגוון סגול מלכותי",
-  "גיפסופילה בצבעי פסטל",
-  "פרחים לבנים עם עלים ירוקים",
-  "גיפסופילה בגוון כחול שמימי",
-  "זר גיפסופילה צבעוני",
-  "פרחים בגוון אדום רומנטי",
-  "גיפסופילה בגוון צהוב שמשי"
+  "White gypsophila flowers",
+  "Pink gypsophila flowers",
+  "Purple gypsophila flowers",
+  "Pastel gypsophila flowers",
+  "White gypsophila with green leaves",
+  "Sky blue gypsophila flowers",
+  "Colorful gypsophila bouquet",
+  "Red romantic gypsophila flowers",
+  "Sunny yellow gypsophila flowers"
 ];
 
 const FlowerCarousel = () => {
@@ -57,7 +57,6 @@ const FlowerCarousel = () => {
     startAutoPlay();
   }, [startAutoPlay]);
 
-  // Handle keyboard navigation
   const handleKeyDown = useCallback((e: React.KeyboardEvent) => {
     switch (e.key) {
       case 'ArrowLeft':
@@ -95,20 +94,18 @@ const FlowerCarousel = () => {
     };
   }, [startAutoPlay, isPaused]);
 
-  // Announce slide changes to screen readers
-  const liveRegionText = `תמונה ${currentIndex + 1} מתוך ${flowerImages.length}: ${flowerDescriptions[currentIndex]}`;
+  const liveRegionText = `Image ${currentIndex + 1} of ${flowerImages.length}: ${flowerDescriptions[currentIndex]}`;
 
   return (
     <div 
       ref={carouselRef}
       className="relative w-full max-w-6xl mx-auto" 
       role="region" 
-      aria-roledescription="קרוסלה"
-      aria-label="גלריית פרחי גיפסופילה"
+      aria-roledescription="carousel"
+      aria-label="Gypsophila flower gallery"
       onKeyDown={handleKeyDown}
       tabIndex={0}
     >
-      {/* Live region for screen reader announcements */}
       <div 
         aria-live="polite" 
         aria-atomic="true" 
@@ -120,8 +117,8 @@ const FlowerCarousel = () => {
       {/* Pause/Play control */}
       <button
         onClick={() => setIsPaused(prev => !prev)}
-        aria-label={isPaused ? "הפעל מצגת אוטומטית" : "עצור מצגת אוטומטית"}
-        className="absolute top-4 right-4 z-20 bg-background/80 hover:bg-background text-foreground p-2 rounded-full shadow-medium focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 transition-colors"
+        aria-label={isPaused ? "Play automatic slideshow" : "Pause automatic slideshow"}
+        className="absolute top-4 right-4 z-20 bg-background/80 hover:bg-background text-foreground p-2 transition-colors cursor-pointer"
       >
         {isPaused ? (
           <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
@@ -137,8 +134,8 @@ const FlowerCarousel = () => {
       {/* Navigation arrows */}
       <button
         onClick={goToPrevious}
-        aria-label="תמונה קודמת"
-        className="absolute left-4 top-1/2 -translate-y-1/2 z-20 bg-background/80 hover:bg-background text-foreground p-3 rounded-full shadow-medium focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 transition-colors"
+        aria-label="Previous image"
+        className="absolute left-4 top-1/2 -translate-y-1/2 z-20 bg-background/80 hover:bg-background text-foreground p-3 transition-colors cursor-pointer"
       >
         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -147,8 +144,8 @@ const FlowerCarousel = () => {
       
       <button
         onClick={goToNext}
-        aria-label="תמונה הבאה"
-        className="absolute right-4 top-1/2 -translate-y-1/2 z-20 bg-background/80 hover:bg-background text-foreground p-3 rounded-full shadow-medium focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 transition-colors"
+        aria-label="Next image"
+        className="absolute right-4 top-1/2 -translate-y-1/2 z-20 bg-background/80 hover:bg-background text-foreground p-3 transition-colors cursor-pointer"
       >
         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -157,16 +154,16 @@ const FlowerCarousel = () => {
 
       {/* Main carousel */}
       <div 
-        className="relative h-96 md:h-[500px] lg:h-[600px] overflow-hidden rounded-2xl shadow-large"
+        className="relative h-96 md:h-[500px] lg:h-[600px] overflow-hidden"
         role="group"
-        aria-roledescription="שקופית"
-        aria-label={`${currentIndex + 1} מתוך ${flowerImages.length}`}
+        aria-roledescription="slide"
+        aria-label={`${currentIndex + 1} of ${flowerImages.length}`}
       >
         <AnimatePresence mode="wait">
           <motion.img
             key={currentIndex}
             src={flowerImages[currentIndex]}
-            alt={`${flowerDescriptions[currentIndex]} - תמונה ${currentIndex + 1} מתוך ${flowerImages.length}`}
+            alt={`${flowerDescriptions[currentIndex]} - Image ${currentIndex + 1} of ${flowerImages.length}`}
             className="w-full h-full object-cover"
             initial={{ opacity: 0, scale: 1.1 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -174,16 +171,13 @@ const FlowerCarousel = () => {
             transition={{ duration: 0.8, ease: "easeInOut" }}
           />
         </AnimatePresence>
-        
-        {/* Overlay gradient */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" aria-hidden="true"></div>
       </div>
 
       {/* Thumbnail navigation */}
       <nav 
         className="flex justify-center mt-6 gap-2 overflow-x-auto pb-2" 
         role="tablist" 
-        aria-label="בחירת תמונת פרחים"
+        aria-label="Select flower image"
       >
         {flowerImages.map((image, index) => (
           <button
@@ -192,13 +186,13 @@ const FlowerCarousel = () => {
             id={`flower-tab-${index}`}
             aria-selected={currentIndex === index}
             aria-controls={`flower-panel-${index}`}
-            aria-label={`${flowerDescriptions[index]} - תמונה ${index + 1}`}
+            aria-label={`${flowerDescriptions[index]} - Image ${index + 1}`}
             tabIndex={currentIndex === index ? 0 : -1}
             onClick={() => goToSlide(index)}
-            className={`flex-shrink-0 w-16 h-16 md:w-20 md:h-20 rounded-lg overflow-hidden border-2 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 ${
+            className={`flex-shrink-0 w-16 h-16 md:w-20 md:h-20 overflow-hidden transition-all duration-300 cursor-pointer ${
               currentIndex === index 
-                ? 'border-primary shadow-medium' 
-                : 'border-transparent hover:border-primary/50'
+                ? 'opacity-100' 
+                : 'opacity-50 hover:opacity-75'
             }`}
           >
             <img
@@ -215,24 +209,23 @@ const FlowerCarousel = () => {
       <div 
         className="flex justify-center mt-4 gap-2" 
         role="group" 
-        aria-label={`תמונה ${currentIndex + 1} מתוך ${flowerImages.length}`}
+        aria-label={`Image ${currentIndex + 1} of ${flowerImages.length}`}
       >
         {flowerImages.map((_, index) => (
           <span
             key={index}
             aria-hidden="true"
-            className={`h-1 rounded-full transition-all duration-300 ${
+            className={`h-px transition-all duration-300 ${
               currentIndex === index 
-                ? 'w-8 bg-primary' 
-                : 'w-2 bg-primary/30'
+                ? 'w-8 bg-foreground' 
+                : 'w-2 bg-foreground/30'
             }`}
           />
         ))}
       </div>
 
-      {/* Screen reader instructions */}
       <p className="sr-only">
-        השתמש בחצים ימינה ושמאלה לניווט בין התמונות. לחץ רווח או Enter להשהיית המצגת האוטומטית.
+        Use left and right arrows to navigate between images. Press space or Enter to pause the automatic slideshow.
       </p>
     </div>
   );
