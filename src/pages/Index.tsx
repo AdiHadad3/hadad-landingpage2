@@ -3,10 +3,13 @@ import HeroSection from "@/components/HeroSection";
 import FlowerCarousel from "@/components/FlowerCarousel";
 import StatsSection from "@/components/StatsSection";
 import ContactSection from "@/components/ContactSection";
+import AccessibilityWidget from "@/components/AccessibilityWidget";
 
 const Index = () => {
   return (
-    <main id="main-content" className="min-h-screen">
+    <>
+      <AccessibilityWidget />
+      <main id="main-content" className="min-h-screen">
       {/* Hero Section */}
       <HeroSection />
 
@@ -59,6 +62,7 @@ const Index = () => {
       {/* Contact Section */}
       <ContactSection />
     </main>
+    </>
   );
 };
 
