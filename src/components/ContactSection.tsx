@@ -1,9 +1,13 @@
-import { Mail, Quote } from "lucide-react";
+import { Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const ContactSection = () => {
   return (
-    <section className="py-20 px-4 bg-gradient-primary text-white relative overflow-hidden" aria-labelledby="contact-heading">
+    <footer 
+      className="py-20 px-4 bg-gradient-primary text-white relative overflow-hidden" 
+      aria-labelledby="contact-heading"
+      role="contentinfo"
+    >
       {/* Background decorative elements */}
       <div className="absolute inset-0 overflow-hidden" aria-hidden="true">
         <div className="absolute top-20 right-20 w-64 h-64 bg-white/5 rounded-full blur-3xl"></div>
@@ -22,7 +26,7 @@ const ContactSection = () => {
           </p>
         </div>
 
-        <div className="mt-12 space-y-8">
+        <address className="mt-12 space-y-8 not-italic">
           <h3 className="text-xl md:text-2xl font-semibold">Get in touch:</h3>
           
           <Button
@@ -33,17 +37,17 @@ const ContactSection = () => {
             aria-label="שלח אימייל לחברת HADAD לכתובת hadadpetals@gmail.com"
           >
             <Mail className="w-6 h-6 mr-3" aria-hidden="true" />
-            hadadpetals@gmail.com
+            <span>hadadpetals@gmail.com</span>
           </Button>
-        </div>
+        </address>
 
-        <div className="mt-12 text-center text-white/80">
-          <blockquote className="text-lg md:text-xl font-medium italic">
-            "Every inquiry is the beginning of a beautiful creation"
+        <figure className="mt-12 text-center text-white/80">
+          <blockquote className="text-lg md:text-xl font-medium italic" cite="https://hadadpetals.com">
+            <p>"Every inquiry is the beginning of a beautiful creation"</p>
           </blockquote>
-        </div>
+        </figure>
       </div>
-    </section>
+    </footer>
   );
 };
 
