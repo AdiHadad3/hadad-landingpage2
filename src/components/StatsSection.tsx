@@ -3,7 +3,7 @@ import { Trophy, Heart } from "lucide-react";
 
 const StatsSection = () => {
   return (
-    <section className="py-20 px-4 bg-gradient-soft" aria-labelledby="stats-heading">
+    <section className="py-20 px-4 bg-muted" aria-labelledby="stats-heading">
       <div className="max-w-6xl mx-auto">
         <h2 id="stats-heading" className="sr-only">Company Statistics</h2>
         <div className="grid md:grid-cols-2 gap-12 md:gap-20">
@@ -18,17 +18,17 @@ const StatsSection = () => {
             aria-labelledby="years-heading"
           >
             <div className="inline-block" aria-hidden="true">
-              <Trophy className="w-6 h-6 text-primary" />
+              <Trophy className="w-5 h-5 text-foreground" />
             </div>
             
             <div className="space-y-2">
-              <h3 id="years-heading" className="font-serif text-5xl md:text-6xl font-light text-secondary">
+              <h3 id="years-heading" className="font-sans text-4xl md:text-5xl font-light text-foreground tracking-wider">
                 30+
               </h3>
-              <h4 className="font-serif text-lg md:text-xl font-medium text-foreground">
+              <h4 className="font-sans text-sm md:text-base font-medium text-foreground uppercase tracking-wider">
                 Years of Excellence
               </h4>
-              <p className="font-sans text-muted-foreground max-w-sm mx-auto leading-relaxed font-light">
+              <p className="font-sans text-sm text-muted-foreground max-w-sm mx-auto leading-relaxed font-light">
                 Three decades of perfecting our craft and serving customers with passion
               </p>
             </div>
@@ -45,17 +45,17 @@ const StatsSection = () => {
             aria-labelledby="founded-heading"
           >
             <div className="inline-block" aria-hidden="true">
-              <Heart className="w-6 h-6 text-primary" />
+              <Heart className="w-5 h-5 text-foreground" />
             </div>
             
             <div className="space-y-2">
-              <h3 id="founded-heading" className="font-serif text-5xl md:text-6xl font-light text-secondary">
+              <h3 id="founded-heading" className="font-sans text-4xl md:text-5xl font-light text-foreground tracking-wider">
                 1992
               </h3>
-              <h4 className="font-serif text-lg md:text-xl font-medium text-foreground">
+              <h4 className="font-sans text-sm md:text-base font-medium text-foreground uppercase tracking-wider">
                 Family Legacy
               </h4>
-              <p className="font-sans text-muted-foreground max-w-sm mx-auto leading-relaxed font-light">
+              <p className="font-sans text-sm text-muted-foreground max-w-sm mx-auto leading-relaxed font-light">
                 Since our founding, we've remained a trusted family business
               </p>
             </div>

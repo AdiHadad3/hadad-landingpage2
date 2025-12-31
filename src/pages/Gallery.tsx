@@ -81,12 +81,12 @@ const Gallery = () => {
       <Navbar />
       <main id="main-content" className="min-h-screen">
         {/* Hero Section */}
-        <section className="bg-gradient-soft py-20 px-4">
+        <section className="bg-muted py-20 px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <h1 className="font-serif text-3xl md:text-5xl lg:text-6xl font-light text-secondary tracking-wide mb-6">
+            <h1 className="font-sans text-2xl md:text-4xl lg:text-5xl font-light text-foreground tracking-[0.3em] uppercase mb-6">
               Our Gallery
             </h1>
-            <p className="font-sans text-lg md:text-xl text-muted-foreground leading-relaxed font-light">
+            <p className="font-sans text-sm md:text-base text-muted-foreground leading-relaxed font-light">
               Explore our collection of handcrafted gypsophila flowers in stunning colors
             </p>
           </div>
@@ -100,7 +100,7 @@ const Gallery = () => {
                 <motion.button
                   key={index}
                   onClick={() => openLightbox(index)}
-                  className="group relative aspect-square overflow-hidden rounded-2xl shadow-soft cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+                  className="group relative aspect-square overflow-hidden cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   aria-label={`View ${image.title}`}
@@ -112,7 +112,7 @@ const Gallery = () => {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     <div className="absolute bottom-4 left-4 right-4">
-                      <h3 className="font-serif text-white text-lg">{image.title}</h3>
+                      <h3 className="font-sans text-white text-sm uppercase tracking-wider">{image.title}</h3>
                     </div>
                   </div>
                 </motion.button>
@@ -136,7 +136,7 @@ const Gallery = () => {
             >
               <button
                 onClick={closeLightbox}
-                className="absolute top-4 right-4 text-white p-2 hover:bg-white/20 rounded-full transition-colors"
+                className="absolute top-4 right-4 text-white p-2 hover:bg-white/20 transition-colors cursor-pointer"
                 aria-label="Close lightbox"
               >
                 <X size={32} />
@@ -144,7 +144,7 @@ const Gallery = () => {
 
               <button
                 onClick={(e) => { e.stopPropagation(); goToPrevious(); }}
-                className="absolute left-4 text-white p-3 hover:bg-white/20 rounded-full transition-colors"
+                className="absolute left-4 text-white p-3 hover:bg-white/20 transition-colors cursor-pointer"
                 aria-label="Previous image"
               >
                 <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -163,17 +163,17 @@ const Gallery = () => {
                 <img
                   src={galleryImages[selectedImage].src}
                   alt={galleryImages[selectedImage].alt}
-                  className="max-w-full max-h-[80vh] object-contain rounded-lg"
+                  className="max-w-full max-h-[80vh] object-contain"
                 />
                 <div className="text-center mt-4">
-                  <h3 className="font-serif text-white text-xl">{galleryImages[selectedImage].title}</h3>
-                  <p className="font-sans text-white/70 mt-1">{selectedImage + 1} / {galleryImages.length}</p>
+                  <h3 className="font-sans text-white text-base uppercase tracking-wider">{galleryImages[selectedImage].title}</h3>
+                  <p className="font-sans text-white/70 text-sm mt-1">{selectedImage + 1} / {galleryImages.length}</p>
                 </div>
               </motion.div>
 
               <button
                 onClick={(e) => { e.stopPropagation(); goToNext(); }}
-                className="absolute right-4 text-white p-3 hover:bg-white/20 rounded-full transition-colors"
+                className="absolute right-4 text-white p-3 hover:bg-white/20 transition-colors cursor-pointer"
                 aria-label="Next image"
               >
                 <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
