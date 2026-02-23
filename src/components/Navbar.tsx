@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import logoImg from '@/assets/hadad-logo-transparent.png';
-import { Menu, X } from 'lucide-react';
 
 const navItems = [
   { label: 'Home', path: '/' },
