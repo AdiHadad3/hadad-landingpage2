@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { useRef } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import heroBouquet from '@/assets/hero-bouquet.png';
+import heroBg from '@/assets/hero-bg.jpg';
 
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
@@ -24,45 +24,45 @@ const flowerImages = [
   { src: '/lovable-uploads/c75d0a1d-acd4-441c-b8ef-b2862c33824e.png', alt: 'Yellow gypsophila', title: 'Sunny Yellow' },
 ];
 
-const WaveDivider = ({ from = 'hsl(145 20% 36%)', to = 'hsl(40 33% 97%)' }) => (
-  <div className="relative w-full h-24 md:h-36" aria-hidden="true">
-    <svg viewBox="0 0 1440 120" preserveAspectRatio="none" className="absolute inset-0 w-full h-full">
-      <path
-        d="M0,0 L0,60 Q360,120 720,60 Q1080,0 1440,60 L1440,0 Z"
-        fill={from}
-      />
-      <path
-        d="M0,60 Q360,120 720,60 Q1080,0 1440,60 L1440,120 L0,120 Z"
-        fill={to}
-      />
-    </svg>
-  </div>
-);
-
 const Index = () => {
   const heroRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: heroRef,
     offset: ['start start', 'end start'],
   });
-  const bouquetY = useTransform(scrollYProgress, [0, 1], [0, 120]);
-  const bouquetScale = useTransform(scrollYProgress, [0, 1], [1, 1.08]);
+  const textY = useTransform(scrollYProgress, [0, 1], [0, 60]);
+  const overlayOpacity = useTransform(scrollYProgress, [0, 1], [0.3, 0.6]);
 
   return (
     <>
       <Navbar />
       <main id="main-content">
-        {/* Hero — solid primary bg with bouquet */}
+        {/* Hero — full bleed photo */}
         <section
           ref={heroRef}
-          className="relative min-h-screen flex items-center overflow-hidden bg-primary"
+          className="relative min-h-screen flex items-center justify-center overflow-hidden"
         >
-          <div className="relative z-10 px-6 md:px-16 max-w-2xl pt-20">
+          <img
+            src={heroBg}
+            alt=""
+            aria-hidden="true"
+            className="absolute inset-0 w-full h-full object-cover scale-105"
+            style={{ maxWidth: 'none' }}
+          />
+          <motion.div
+            className="absolute inset-0 bg-foreground"
+            style={{ opacity: overlayOpacity }}
+          />
+
+          <motion.div
+            style={{ y: textY }}
+            className="relative z-10 text-center px-6 max-w-3xl"
+          >
             <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 1 }}
-              className="font-sans text-xs md:text-sm uppercase tracking-[0.3em] text-primary-foreground/60 mb-6"
+              className="font-sans text-xs md:text-sm uppercase tracking-[0.3em] text-white/70 mb-6"
             >
               Since 1992
             </motion.p>
@@ -70,7 +70,7 @@ const Index = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.2 }}
-              className="font-serif text-6xl md:text-8xl lg:text-9xl text-primary-foreground font-medium tracking-tight mb-6"
+              className="font-serif text-5xl md:text-7xl lg:text-8xl text-white font-medium tracking-tight mb-6"
             >
               HADAD
             </motion.h1>
@@ -78,7 +78,7 @@ const Index = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.5 }}
-              className="font-serif text-xl md:text-2xl text-primary-foreground/80 italic font-light mb-10"
+              className="font-serif text-lg md:text-xl text-white/85 italic font-light"
             >
               Petals in Perfect Bloom
             </motion.p>
@@ -86,37 +86,31 @@ const Index = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.8 }}
+              className="mt-10"
             >
               <Link
                 to="/gallery"
-                className="inline-flex items-center gap-2 font-sans text-sm text-primary-foreground border border-primary-foreground/40 px-8 py-3 hover:bg-primary-foreground hover:text-primary transition-all duration-300"
+                className="inline-flex items-center gap-2 font-sans text-sm text-white border border-white/40 px-8 py-3 rounded-full hover:bg-white hover:text-foreground transition-all duration-300"
               >
                 Explore Our Blooms
                 <ArrowRight size={16} />
               </Link>
             </motion.div>
-          </div>
-
-          {/* Bouquet — overflows into next section */}
-          <motion.div
-            style={{ y: bouquetY, scale: bouquetScale }}
-            className="absolute right-[-10%] md:right-[-5%] bottom-[-15%] w-[70%] md:w-[55%] lg:w-[50%] z-[5] pointer-events-none"
-          >
-            <img
-              src={heroBouquet}
-              alt=""
-              aria-hidden="true"
-              className="w-full h-auto drop-shadow-2xl"
-              style={{ maxWidth: 'none' }}
-            />
           </motion.div>
+
+          {/* Curved bottom edge for flow into next section */}
+          <div className="absolute bottom-0 left-0 right-0 z-20" aria-hidden="true">
+            <svg viewBox="0 0 1440 80" preserveAspectRatio="none" className="w-full h-16 md:h-20">
+              <path
+                d="M0,80 Q720,0 1440,80 L1440,80 L0,80 Z"
+                fill="hsl(40 33% 97%)"
+              />
+            </svg>
+          </div>
         </section>
 
-        {/* Wave: primary → background */}
-        <WaveDivider from="hsl(145 20% 36%)" to="hsl(40 33% 97%)" />
-
-        {/* Intro */}
-        <section className="py-16 md:py-24 px-6 bg-background" aria-labelledby="intro-heading">
+        {/* Intro — flows seamlessly from hero curve */}
+        <section className="pt-8 pb-20 md:pb-28 px-6 bg-background" aria-labelledby="intro-heading">
           <div className="max-w-3xl mx-auto text-center">
             <motion.h2
               id="intro-heading"
@@ -144,8 +138,8 @@ const Index = () => {
           </div>
         </section>
 
-        {/* Gradient transition into collection */}
-        <div className="h-24 bg-gradient-to-b from-background to-card" aria-hidden="true" />
+        {/* Smooth gradient into collection */}
+        <div className="h-20 bg-gradient-to-b from-background to-card" aria-hidden="true" />
 
         {/* Collection */}
         <section className="pb-24 px-6 bg-card" aria-labelledby="blooms-heading">
@@ -211,8 +205,8 @@ const Index = () => {
           </div>
         </section>
 
-        {/* Gradient transition into values */}
-        <div className="h-24 bg-gradient-to-b from-card to-background" aria-hidden="true" />
+        {/* Smooth gradient into values */}
+        <div className="h-20 bg-gradient-to-b from-card to-background" aria-hidden="true" />
 
         {/* Values */}
         <section className="pb-24 px-6 bg-background" aria-labelledby="values-heading">
@@ -228,7 +222,7 @@ const Index = () => {
               Why HADAD
             </motion.h2>
 
-            <div className="grid md:grid-cols-3 gap-12">
+            <div className="grid md:grid-cols-3 gap-8">
               {[
                 { emoji: '🌿', title: '30+ Years', desc: 'Three decades of perfecting our craft, from seed to stem.' },
                 { emoji: '👨‍👩‍👧‍👦', title: 'Family Legacy', desc: 'Three generations of knowledge, passion, and dedication.' },
@@ -252,8 +246,15 @@ const Index = () => {
           </div>
         </section>
 
-        {/* Wave: background → primary for CTA */}
-        <WaveDivider from="hsl(40 33% 97%)" to="hsl(145 20% 36%)" />
+        {/* Curved top into CTA */}
+        <div className="relative" aria-hidden="true">
+          <svg viewBox="0 0 1440 80" preserveAspectRatio="none" className="w-full h-16 md:h-20 bg-background">
+            <path
+              d="M0,0 Q720,80 1440,0 L1440,80 L0,80 Z"
+              fill="hsl(145 20% 36%)"
+            />
+          </svg>
+        </div>
 
         {/* CTA */}
         <section className="py-24 px-6 bg-primary text-primary-foreground">
