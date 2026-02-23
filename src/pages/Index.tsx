@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { useRef } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import heroBg from '@/assets/hero-bg.jpg';
+import heroBouquet from '@/assets/hero-bouquet.png';
 
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
@@ -45,34 +45,24 @@ const Index = () => {
     target: heroRef,
     offset: ['start start', 'end start'],
   });
-  const textY = useTransform(scrollYProgress, [0, 1], [0, 80]);
+  const bouquetY = useTransform(scrollYProgress, [0, 1], [0, 120]);
+  const bouquetScale = useTransform(scrollYProgress, [0, 1], [1, 1.08]);
 
   return (
     <>
       <Navbar />
       <main id="main-content">
-        {/* Hero — full bleed image */}
+        {/* Hero — solid primary bg with bouquet */}
         <section
           ref={heroRef}
-          className="relative min-h-screen flex items-center justify-center overflow-hidden"
+          className="relative min-h-screen flex items-center overflow-hidden bg-primary"
         >
-          <img
-            src={heroBg}
-            alt=""
-            aria-hidden="true"
-            className="absolute inset-0 w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-foreground/30" />
-
-          <motion.div
-            style={{ y: textY }}
-            className="relative z-10 text-center px-6 max-w-3xl"
-          >
+          <div className="relative z-10 px-6 md:px-16 max-w-2xl pt-20">
             <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 1 }}
-              className="font-sans text-xs md:text-sm uppercase tracking-[0.3em] text-white/70 mb-6"
+              className="font-sans text-xs md:text-sm uppercase tracking-[0.3em] text-primary-foreground/60 mb-6"
             >
               Since 1992
             </motion.p>
@@ -80,7 +70,7 @@ const Index = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.2 }}
-              className="font-serif text-5xl md:text-7xl lg:text-8xl text-white font-medium tracking-tight mb-6"
+              className="font-serif text-6xl md:text-8xl lg:text-9xl text-primary-foreground font-medium tracking-tight mb-6"
             >
               HADAD
             </motion.h1>
@@ -88,7 +78,7 @@ const Index = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.5 }}
-              className="font-serif text-lg md:text-xl text-white/85 italic font-light"
+              className="font-serif text-xl md:text-2xl text-primary-foreground/80 italic font-light mb-10"
             >
               Petals in Perfect Bloom
             </motion.p>
@@ -96,21 +86,34 @@ const Index = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.8 }}
-              className="mt-10"
             >
               <Link
                 to="/gallery"
-                className="inline-flex items-center gap-2 font-sans text-sm text-white border border-white/40 px-8 py-3 hover:bg-white hover:text-foreground transition-all duration-300"
+                className="inline-flex items-center gap-2 font-sans text-sm text-primary-foreground border border-primary-foreground/40 px-8 py-3 hover:bg-primary-foreground hover:text-primary transition-all duration-300"
               >
                 Explore Our Blooms
                 <ArrowRight size={16} />
               </Link>
             </motion.div>
+          </div>
+
+          {/* Bouquet — overflows into next section */}
+          <motion.div
+            style={{ y: bouquetY, scale: bouquetScale }}
+            className="absolute right-[-10%] md:right-[-5%] bottom-[-15%] w-[70%] md:w-[55%] lg:w-[50%] z-[5] pointer-events-none"
+          >
+            <img
+              src={heroBouquet}
+              alt=""
+              aria-hidden="true"
+              className="w-full h-auto drop-shadow-2xl"
+              style={{ maxWidth: 'none' }}
+            />
           </motion.div>
         </section>
 
-        {/* Seamless gradient from dark overlay into background */}
-        <div className="h-24 bg-gradient-to-b from-foreground/20 to-background" aria-hidden="true" />
+        {/* Wave: primary → background */}
+        <WaveDivider from="hsl(145 20% 36%)" to="hsl(40 33% 97%)" />
 
         {/* Intro */}
         <section className="py-16 md:py-24 px-6 bg-background" aria-labelledby="intro-heading">
