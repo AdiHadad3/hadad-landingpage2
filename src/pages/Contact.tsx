@@ -1,97 +1,107 @@
-import { Mail } from "lucide-react";
-import Navbar from "@/components/Navbar";
-import AccessibilityWidget from "@/components/AccessibilityWidget";
-import HeroSection from "@/components/HeroSection";
-import { Button } from "@/components/ui/button";
+import { motion } from 'framer-motion';
+import { Mail } from 'lucide-react';
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 40 },
+  visible: (i: number = 0) => ({
+    opacity: 1, y: 0,
+    transition: { duration: 0.7, delay: i * 0.15 },
+  }),
+};
 
 const Contact = () => {
   return (
     <>
-      <AccessibilityWidget />
       <Navbar />
-      <main id="main-content" className="min-h-screen">
-        {/* Hero Section */}
-        <HeroSection 
-          title="Contact Us"
-          subtitle="We'd love to hear from you. Get in touch with our team."
-        />
-
-        {/* Contact Information */}
-        <section className="py-16 px-4" aria-labelledby="contact-info-heading">
-          <div className="max-w-4xl mx-auto">
-            <h2 id="contact-info-heading" className="font-sans text-xl md:text-2xl lg:text-3xl font-light text-foreground tracking-[0.2em] uppercase mb-12 text-center">
-              Get In Touch
-            </h2>
-            
-            <div className="flex justify-center">
-              <div className="bg-muted p-8 text-center max-w-md w-full">
-                <div className="w-16 h-16 bg-background flex items-center justify-center mx-auto mb-6">
-                  <Mail className="w-8 h-8 text-foreground" />
-                </div>
-                <h3 className="font-sans text-base font-medium mb-3 text-foreground uppercase tracking-wider">Email</h3>
-                <a 
-                  href="mailto:hadadpetals@gmail.com" 
-                  className="font-sans text-sm text-muted-foreground font-light hover:text-foreground transition-colors"
-                >
-                  hadadpetals@gmail.com
-                </a>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* CTA Section */}
-        <section className="py-16 px-4 bg-muted" aria-labelledby="cta-heading">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 id="cta-heading" className="font-sans text-xl md:text-2xl lg:text-3xl font-light text-foreground tracking-[0.2em] uppercase mb-6">
-              Ready to Order?
-            </h2>
-            <p className="font-sans text-sm md:text-base text-muted-foreground leading-relaxed mb-8 font-light">
-              Contact us today to discuss your flower needs. We're here to help you create something beautiful.
-            </p>
-            <Button
-              size="lg"
-              className="bg-foreground text-background hover:bg-foreground/90 font-sans text-sm uppercase tracking-wider px-8 py-6 cursor-pointer"
-              onClick={() => window.location.href = 'mailto:hadadpetals@gmail.com'}
+      <main id="main-content" className="pt-16 md:pt-20">
+        <section className="py-24 md:py-32 px-6">
+          <div className="max-w-3xl mx-auto text-center">
+            <motion.h1
+              variants={fadeUp}
+              initial="hidden"
+              animate="visible"
+              className="font-serif text-4xl md:text-5xl text-foreground mb-6"
             >
-              <Mail className="w-5 h-5 mr-3" />
-              Send Us an Email
-            </Button>
+              Get in Touch
+            </motion.h1>
+            <motion.p
+              variants={fadeUp}
+              custom={1}
+              initial="hidden"
+              animate="visible"
+              className="font-sans text-base text-muted-foreground font-light mb-12"
+            >
+              We'd love to hear from you. Whether you have a question about our flowers,
+              pricing, or anything else — our team is ready to help.
+            </motion.p>
+
+            <motion.a
+              variants={fadeUp}
+              custom={2}
+              initial="hidden"
+              animate="visible"
+              href="mailto:hadadpetals@gmail.com"
+              className="inline-flex items-center gap-3 font-sans text-sm bg-primary text-primary-foreground px-8 py-4 hover:opacity-90 transition-opacity duration-300"
+            >
+              <Mail size={18} />
+              hadadpetals@gmail.com
+            </motion.a>
           </div>
         </section>
 
-        {/* FAQ Section */}
-        <section className="py-16 px-4" aria-labelledby="faq-heading">
-          <div className="max-w-4xl mx-auto">
-            <h2 id="faq-heading" className="font-sans text-xl md:text-2xl lg:text-3xl font-light text-foreground tracking-[0.2em] uppercase mb-12 text-center">
+        <section className="py-24 px-6 bg-card" aria-labelledby="faq-heading">
+          <div className="max-w-3xl mx-auto">
+            <motion.h2
+              id="faq-heading"
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              className="font-serif text-3xl md:text-4xl text-foreground text-center mb-12"
+            >
               Frequently Asked Questions
-            </h2>
-            
+            </motion.h2>
+
             <div className="space-y-6">
-              <div className="bg-muted p-6">
-                <h3 className="font-sans text-base font-medium mb-3 text-foreground">What types of gypsophila do you grow?</h3>
-                <p className="font-sans text-sm text-muted-foreground font-light">
-                  We specialize in various colors of gypsophila including white, pink, purple, blue, red, and yellow. We also offer custom color options.
-                </p>
-              </div>
-              
-              <div className="bg-muted p-6">
-                <h3 className="font-sans text-base font-medium mb-3 text-foreground">Do you ship internationally?</h3>
-                <p className="font-sans text-sm text-muted-foreground font-light">
-                  Yes, we export our flowers worldwide. Contact us for shipping details and availability.
-                </p>
-              </div>
-              
-              <div className="bg-muted p-6">
-                <h3 className="font-sans text-base font-medium mb-3 text-foreground">What is the minimum order quantity?</h3>
-                <p className="font-sans text-sm text-muted-foreground font-light">
-                  Minimum orders vary depending on the product. Please contact us for specific requirements.
-                </p>
-              </div>
+              {[
+                { q: 'What types of gypsophila do you grow?', a: 'We specialize in various colors including white, pink, purple, blue, red, and yellow. We also offer custom color options.' },
+                { q: 'Do you ship internationally?', a: 'Yes, we export our flowers worldwide. Contact us for shipping details and availability.' },
+                { q: 'What is the minimum order quantity?', a: 'Minimum orders vary depending on the product. Please contact us for specific requirements.' },
+              ].map((item, i) => (
+                <motion.div
+                  key={i}
+                  variants={fadeUp}
+                  custom={i}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
+                  className="border-b border-border pb-6"
+                >
+                  <h3 className="font-serif text-lg text-foreground mb-2">{item.q}</h3>
+                  <p className="font-sans text-sm text-muted-foreground font-light">{item.a}</p>
+                </motion.div>
+              ))}
             </div>
+          </div>
+        </section>
+
+        <section className="py-24 px-6">
+          <div className="max-w-3xl mx-auto text-center">
+            <motion.blockquote
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              className="font-serif text-xl md:text-2xl italic text-foreground"
+            >
+              "Every inquiry is the beginning of a beautiful creation"
+            </motion.blockquote>
           </div>
         </section>
       </main>
+      <Footer />
     </>
   );
 };

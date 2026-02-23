@@ -1,90 +1,220 @@
-import HeroSection from "@/components/HeroSection";
-import FlowerCarousel from "@/components/FlowerCarousel";
-import ContactSection from "@/components/ContactSection";
-import AccessibilityWidget from "@/components/AccessibilityWidget";
-import Navbar from "@/components/Navbar";
+import { motion } from 'framer-motion';
+import { ArrowRight, Mail } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
+import heroBg from '@/assets/hero-bg.jpg';
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 40 },
+  visible: (i: number = 0) => ({
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.7, delay: i * 0.15 },
+  }),
+};
+
+const flowerImages = [
+  { src: '/lovable-uploads/8b04be8a-b641-4609-b90e-5ce4e4565d69.png', alt: 'White gypsophila', title: 'Pure White' },
+  { src: '/lovable-uploads/5d2bb7e0-ece2-409e-b31d-b042dd011c01.png', alt: 'Pink gypsophila', title: 'Soft Pink' },
+  { src: '/lovable-uploads/cea78f67-81e4-4fca-b863-e0a046fc8424.png', alt: 'Purple gypsophila', title: 'Royal Purple' },
+  { src: '/lovable-uploads/07d26288-276b-4347-b70b-af9edeeca909.png', alt: 'Sky blue gypsophila', title: 'Sky Blue' },
+  { src: '/lovable-uploads/5c6a08fd-6412-45c7-8183-c95700dbcdc2.png', alt: 'Red gypsophila', title: 'Romantic Red' },
+  { src: '/lovable-uploads/c75d0a1d-acd4-441c-b8ef-b2862c33824e.png', alt: 'Yellow gypsophila', title: 'Sunny Yellow' },
+];
 
 const Index = () => {
   return (
     <>
-      <AccessibilityWidget />
       <Navbar />
-      <main id="main-content" className="min-h-screen">
-        {/* Hero Section */}
-        <HeroSection 
-          title="HADAD"
-          subtitle="30 years of a Family-Owned Business Committed to Beauty, Quality, and Heartfelt Service"
-          useHandwriting={true}
-        />
+      <main id="main-content">
+        {/* Hero */}
+        <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+          <img src={heroBg} alt="" className="absolute inset-0 w-full h-full object-cover" aria-hidden="true" />
+          <div className="absolute inset-0 bg-foreground/30" />
 
-        {/* Our Blooms Section */}
-        <section className="py-16 px-4" aria-labelledby="blooms-heading">
-          <div className="max-w-4xl mx-auto">
-            <h2 id="blooms-heading" className="font-sans text-xl md:text-2xl lg:text-3xl font-light text-foreground tracking-[0.2em] uppercase mb-8 text-center">
-              Our Blooms
-            </h2>
-            <div className="space-y-6 font-sans text-sm md:text-base text-muted-foreground leading-relaxed font-light text-center">
-              <p>
-                Discover the vibrant beauty of our hand-grown gypsophila, each petal carefully cultivated with love and precision.
-              </p>
-              <p>
-                Nestled in a lush village, we grow premium gypsophila with vibrant hues and full petals. With custom colors and precise care, we deliver blooms that reflect your unique vision.
-              </p>
-            </div>
+          <div className="relative z-10 text-center px-6 max-w-3xl">
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1 }}
+              className="font-sans text-xs md:text-sm uppercase tracking-[0.3em] text-white/70 mb-6"
+            >
+              Since 1992
+            </motion.p>
+            <motion.h1
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 0.2 }}
+              className="font-serif text-5xl md:text-7xl lg:text-8xl text-white font-medium tracking-tight mb-6"
+            >
+              HADAD
+            </motion.h1>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.5 }}
+              className="font-serif text-lg md:text-xl text-white/85 italic font-light"
+            >
+              Petals in Perfect Bloom
+            </motion.p>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.8 }}
+              className="mt-10"
+            >
+              <Link
+                to="/gallery"
+                className="inline-flex items-center gap-2 font-sans text-sm text-white border border-white/40 px-8 py-3 hover:bg-white hover:text-foreground transition-all duration-300"
+              >
+                Explore Our Blooms
+                <ArrowRight size={16} />
+              </Link>
+            </motion.div>
           </div>
         </section>
 
-        {/* Gallery Section */}
-        <section className="py-16 px-4 bg-muted" aria-labelledby="gallery-heading">
+        {/* Intro */}
+        <section className="py-24 md:py-32 px-6" aria-labelledby="intro-heading">
+          <div className="max-w-3xl mx-auto text-center">
+            <motion.h2
+              id="intro-heading"
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              className="font-serif text-3xl md:text-4xl text-foreground mb-8"
+            >
+              Grown with Love,{' '}
+              <span className="italic text-primary">Delivered with Care</span>
+            </motion.h2>
+            <motion.p
+              variants={fadeUp}
+              custom={1}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              className="font-sans text-base text-muted-foreground leading-relaxed font-light"
+            >
+              For over three decades, the HADAD family has cultivated premium gypsophila
+              in our village farm. Every bloom is nurtured with precision and passion —
+              vibrant hues, full petals, and custom colors crafted to match your vision.
+            </motion.p>
+          </div>
+        </section>
+
+        {/* Featured Blooms */}
+        <section className="py-24 px-6 bg-card" aria-labelledby="blooms-heading">
           <div className="max-w-6xl mx-auto">
-            <h2 id="gallery-heading" className="font-sans text-xl md:text-2xl lg:text-3xl font-light text-foreground tracking-[0.2em] uppercase mb-12 text-center">
-              Our Collection
-            </h2>
-            <FlowerCarousel />
-          </div>
-        </section>
+            <motion.div
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              className="text-center mb-16"
+            >
+              <h2 id="blooms-heading" className="font-serif text-3xl md:text-4xl text-foreground mb-4">
+                Our Collection
+              </h2>
+              <p className="font-sans text-sm text-muted-foreground">
+                A spectrum of colors, each grown to perfection
+              </p>
+            </motion.div>
 
-        {/* Values Section */}
-        <section className="py-16 px-4" aria-labelledby="values-heading">
-          <div className="max-w-5xl mx-auto">
-            <h2 id="values-heading" className="font-sans text-xl md:text-2xl lg:text-3xl font-light text-foreground tracking-[0.2em] uppercase mb-12 text-center">
-              Our Values
-            </h2>
-            <div className="grid md:grid-cols-3 gap-8">
-              <div className="bg-muted p-8 text-center">
-                <div className="w-16 h-16 bg-background flex items-center justify-center mx-auto mb-6">
-                  <span className="text-3xl">🏆</span>
-                </div>
-                <h3 className="font-sans text-base font-medium mb-3 text-foreground uppercase tracking-wider">30+ Years</h3>
-                <p className="font-sans text-sm text-muted-foreground font-light">
-                  Three decades of perfecting our craft and serving customers with passion
-                </p>
-              </div>
-              <div className="bg-muted p-8 text-center">
-                <div className="w-16 h-16 bg-background flex items-center justify-center mx-auto mb-6">
-                  <span className="text-3xl">👨‍👩‍👧‍👦</span>
-                </div>
-                <h3 className="font-sans text-base font-medium mb-3 text-foreground uppercase tracking-wider">Family Legacy</h3>
-                <p className="font-sans text-sm text-muted-foreground font-light">
-                  Three generations of expertise and passion are woven into every aspect
-                </p>
-              </div>
-              <div className="bg-muted p-8 text-center">
-                <div className="w-16 h-16 bg-background flex items-center justify-center mx-auto mb-6">
-                  <span className="text-3xl">🌱</span>
-                </div>
-                <h3 className="font-sans text-base font-medium mb-3 text-foreground uppercase tracking-wider">Quality First</h3>
-                <p className="font-sans text-sm text-muted-foreground font-light">
-                  Every flower is inspected and nurtured with care to ensure the finest quality
-                </p>
-              </div>
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
+              {flowerImages.map((img, i) => (
+                <motion.div
+                  key={i}
+                  variants={fadeUp}
+                  custom={i}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
+                  className="group relative aspect-[4/5] overflow-hidden cursor-pointer"
+                >
+                  <img
+                    src={img.src}
+                    alt={img.alt}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-foreground/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <p className="absolute bottom-4 left-4 font-sans text-sm text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500 tracking-wide">
+                    {img.title}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
+
+            <div className="text-center mt-12">
+              <Link
+                to="/gallery"
+                className="inline-flex items-center gap-2 font-sans text-sm text-primary border border-primary px-8 py-3 hover:bg-primary hover:text-primary-foreground transition-all duration-300"
+              >
+                View Full Gallery
+                <ArrowRight size={16} />
+              </Link>
             </div>
           </div>
         </section>
 
-        {/* Contact Section */}
-        <ContactSection />
+        {/* Values */}
+        <section className="py-24 md:py-32 px-6" aria-labelledby="values-heading">
+          <div className="max-w-5xl mx-auto">
+            <motion.h2
+              id="values-heading"
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              className="font-serif text-3xl md:text-4xl text-foreground text-center mb-16"
+            >
+              Why HADAD
+            </motion.h2>
+
+            <div className="grid md:grid-cols-3 gap-12">
+              {[
+                { emoji: '🌿', title: '30+ Years', desc: 'Three decades of perfecting our craft, from seed to stem.' },
+                { emoji: '👨‍👩‍👧‍👦', title: 'Family Legacy', desc: 'Three generations of knowledge, passion, and dedication.' },
+                { emoji: '✨', title: 'Premium Quality', desc: 'Every bloom inspected and nurtured to ensure perfection.' },
+              ].map((item, i) => (
+                <motion.div
+                  key={i}
+                  variants={fadeUp}
+                  custom={i}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
+                  className="text-center"
+                >
+                  <span className="text-4xl block mb-4">{item.emoji}</span>
+                  <h3 className="font-serif text-xl mb-3 text-foreground">{item.title}</h3>
+                  <p className="font-sans text-sm text-muted-foreground font-light leading-relaxed">{item.desc}</p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* CTA */}
+        <section className="py-24 px-6 bg-primary text-primary-foreground">
+          <div className="max-w-3xl mx-auto text-center">
+            <h2 className="font-serif text-3xl md:text-4xl mb-6">Let's Bloom Together</h2>
+            <p className="font-sans text-base font-light mb-10 opacity-85">
+              Ready to bring HADAD's handcrafted gypsophila to your business?
+              We'd love to hear from you.
+            </p>
+            <a
+              href="mailto:hadadpetals@gmail.com"
+              className="inline-flex items-center gap-2 font-sans text-sm bg-primary-foreground text-primary px-8 py-3 hover:opacity-90 transition-opacity duration-300"
+            >
+              <Mail size={16} />
+              hadadpetals@gmail.com
+            </a>
+          </div>
+        </section>
       </main>
+      <Footer />
     </>
   );
 };
