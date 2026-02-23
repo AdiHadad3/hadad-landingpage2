@@ -1,9 +1,10 @@
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowRight, Mail } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useRef } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import heroBg from '@/assets/hero-bg.jpg';
+import heroBouquet from '@/assets/hero-bouquet.png';
 
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
@@ -23,22 +24,52 @@ const flowerImages = [
   { src: '/lovable-uploads/c75d0a1d-acd4-441c-b8ef-b2862c33824e.png', alt: 'Yellow gypsophila', title: 'Sunny Yellow' },
 ];
 
+const WaveDivider = ({ flip = false, from = 'hsl(145 20% 36%)', to = 'hsl(40 33% 97%)' }) => (
+  <div className={`relative w-full h-24 md:h-36 ${flip ? 'rotate-180' : ''}`} aria-hidden="true">
+    <svg viewBox="0 0 1440 120" preserveAspectRatio="none" className="absolute inset-0 w-full h-full">
+      <defs>
+        <linearGradient id={`wave-grad-${flip ? 'f' : 'n'}`} x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor={from} />
+          <stop offset="100%" stopColor={to} />
+        </linearGradient>
+      </defs>
+      <path
+        d="M0,0 L0,60 Q360,120 720,60 Q1080,0 1440,60 L1440,0 Z"
+        fill={from}
+      />
+      <path
+        d="M0,60 Q360,120 720,60 Q1080,0 1440,60 L1440,120 L0,120 Z"
+        fill={to}
+      />
+    </svg>
+  </div>
+);
+
 const Index = () => {
+  const heroRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ['start start', 'end start'],
+  });
+  const bouquetY = useTransform(scrollYProgress, [0, 1], [0, 120]);
+  const bouquetScale = useTransform(scrollYProgress, [0, 1], [1, 1.08]);
+
   return (
     <>
       <Navbar />
       <main id="main-content">
-        {/* Hero */}
-        <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-          <img src={heroBg} alt="" className="absolute inset-0 w-full h-full object-cover" aria-hidden="true" />
-          <div className="absolute inset-0 bg-foreground/30" />
-
-          <div className="relative z-10 text-center px-6 max-w-3xl">
+        {/* Hero — solid primary bg with bouquet */}
+        <section
+          ref={heroRef}
+          className="relative min-h-screen flex items-center overflow-hidden bg-primary"
+        >
+          {/* Text */}
+          <div className="relative z-10 px-6 md:px-16 max-w-2xl pt-20">
             <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 1 }}
-              className="font-sans text-xs md:text-sm uppercase tracking-[0.3em] text-white/70 mb-6"
+              className="font-sans text-xs md:text-sm uppercase tracking-[0.3em] text-primary-foreground/60 mb-6"
             >
               Since 1992
             </motion.p>
@@ -46,7 +77,7 @@ const Index = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.2 }}
-              className="font-serif text-5xl md:text-7xl lg:text-8xl text-white font-medium tracking-tight mb-6"
+              className="font-serif text-6xl md:text-8xl lg:text-9xl text-primary-foreground font-medium tracking-tight mb-6"
             >
               HADAD
             </motion.h1>
@@ -54,7 +85,7 @@ const Index = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.5 }}
-              className="font-serif text-lg md:text-xl text-white/85 italic font-light"
+              className="font-serif text-xl md:text-2xl text-primary-foreground/80 italic font-light mb-10"
             >
               Petals in Perfect Bloom
             </motion.p>
@@ -62,21 +93,37 @@ const Index = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.8 }}
-              className="mt-10"
             >
               <Link
                 to="/gallery"
-                className="inline-flex items-center gap-2 font-sans text-sm text-white border border-white/40 px-8 py-3 hover:bg-white hover:text-foreground transition-all duration-300"
+                className="inline-flex items-center gap-2 font-sans text-sm text-primary-foreground border border-primary-foreground/40 px-8 py-3 hover:bg-primary-foreground hover:text-primary transition-all duration-300"
               >
                 Explore Our Blooms
                 <ArrowRight size={16} />
               </Link>
             </motion.div>
           </div>
+
+          {/* Bouquet — overflows into next section */}
+          <motion.div
+            style={{ y: bouquetY, scale: bouquetScale }}
+            className="absolute right-[-10%] md:right-[-5%] bottom-[-15%] w-[70%] md:w-[55%] lg:w-[50%] z-[5] pointer-events-none"
+          >
+            <img
+              src={heroBouquet}
+              alt=""
+              aria-hidden="true"
+              className="w-full h-auto drop-shadow-2xl"
+              style={{ maxWidth: 'none' }}
+            />
+          </motion.div>
         </section>
 
-        {/* Intro */}
-        <section className="py-24 md:py-32 px-6" aria-labelledby="intro-heading">
+        {/* Wave: primary → background */}
+        <WaveDivider from="hsl(145 20% 36%)" to="hsl(40 33% 97%)" />
+
+        {/* Intro — flows from wave */}
+        <section className="py-16 md:py-24 px-6 bg-background" aria-labelledby="intro-heading">
           <div className="max-w-3xl mx-auto text-center">
             <motion.h2
               id="intro-heading"
@@ -84,7 +131,7 @@ const Index = () => {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
-              className="font-serif text-3xl md:text-4xl text-foreground mb-8"
+              className="font-serif text-3xl md:text-5xl text-foreground mb-8"
             >
               Grown with Love,{' '}
               <span className="italic text-primary">Delivered with Care</span>
@@ -95,7 +142,7 @@ const Index = () => {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
-              className="font-sans text-base text-muted-foreground leading-relaxed font-light"
+              className="font-sans text-base md:text-lg text-muted-foreground leading-relaxed font-light"
             >
               For over three decades, the HADAD family has cultivated premium gypsophila
               in our village farm. Every bloom is nurtured with precision and passion —
@@ -104,8 +151,11 @@ const Index = () => {
           </div>
         </section>
 
-        {/* Featured Blooms */}
-        <section className="py-24 px-6 bg-card" aria-labelledby="blooms-heading">
+        {/* Gradient transition into collection */}
+        <div className="h-24 bg-gradient-to-b from-background to-card" aria-hidden="true" />
+
+        {/* Collection — organic layout */}
+        <section className="pb-24 px-6 bg-card" aria-labelledby="blooms-heading">
           <div className="max-w-6xl mx-auto">
             <motion.div
               variants={fadeUp}
@@ -114,7 +164,7 @@ const Index = () => {
               viewport={{ once: true }}
               className="text-center mb-16"
             >
-              <h2 id="blooms-heading" className="font-serif text-3xl md:text-4xl text-foreground mb-4">
+              <h2 id="blooms-heading" className="font-serif text-3xl md:text-5xl text-foreground mb-4">
                 Our Collection
               </h2>
               <p className="font-sans text-sm text-muted-foreground">
@@ -122,34 +172,45 @@ const Index = () => {
               </p>
             </motion.div>
 
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
-              {flowerImages.map((img, i) => (
-                <motion.div
-                  key={i}
-                  variants={fadeUp}
-                  custom={i}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true }}
-                  className="group relative aspect-[4/5] overflow-hidden cursor-pointer"
-                >
-                  <img
-                    src={img.src}
-                    alt={img.alt}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-foreground/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                  <p className="absolute bottom-4 left-4 font-sans text-sm text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500 tracking-wide">
-                    {img.title}
-                  </p>
-                </motion.div>
-              ))}
+            {/* Organic masonry-ish grid */}
+            <div className="grid grid-cols-2 md:grid-cols-12 gap-4 md:gap-5 auto-rows-[240px] md:auto-rows-[280px]">
+              {flowerImages.map((img, i) => {
+                const spans = [
+                  'md:col-span-5 md:row-span-2',
+                  'md:col-span-4',
+                  'md:col-span-3',
+                  'md:col-span-3',
+                  'md:col-span-4',
+                  'md:col-span-5 md:row-span-2',
+                ];
+                return (
+                  <motion.div
+                    key={i}
+                    variants={fadeUp}
+                    custom={i}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
+                    className={`group relative overflow-hidden rounded-2xl cursor-pointer ${spans[i]}`}
+                  >
+                    <img
+                      src={img.src}
+                      alt={img.alt}
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-foreground/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl" />
+                    <p className="absolute bottom-4 left-4 font-sans text-sm text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500 tracking-wide">
+                      {img.title}
+                    </p>
+                  </motion.div>
+                );
+              })}
             </div>
 
             <div className="text-center mt-12">
               <Link
                 to="/gallery"
-                className="inline-flex items-center gap-2 font-sans text-sm text-primary border border-primary px-8 py-3 hover:bg-primary hover:text-primary-foreground transition-all duration-300"
+                className="inline-flex items-center gap-2 font-sans text-sm text-primary border border-primary px-8 py-3 rounded-full hover:bg-primary hover:text-primary-foreground transition-all duration-300"
               >
                 View Full Gallery
                 <ArrowRight size={16} />
@@ -158,8 +219,11 @@ const Index = () => {
           </div>
         </section>
 
+        {/* Gradient transition into values */}
+        <div className="h-24 bg-gradient-to-b from-card to-background" aria-hidden="true" />
+
         {/* Values */}
-        <section className="py-24 md:py-32 px-6" aria-labelledby="values-heading">
+        <section className="pb-24 px-6 bg-background" aria-labelledby="values-heading">
           <div className="max-w-5xl mx-auto">
             <motion.h2
               id="values-heading"
@@ -167,7 +231,7 @@ const Index = () => {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
-              className="font-serif text-3xl md:text-4xl text-foreground text-center mb-16"
+              className="font-serif text-3xl md:text-5xl text-foreground text-center mb-16"
             >
               Why HADAD
             </motion.h2>
@@ -185,7 +249,7 @@ const Index = () => {
                   initial="hidden"
                   whileInView="visible"
                   viewport={{ once: true }}
-                  className="text-center"
+                  className="text-center p-8 rounded-3xl bg-card"
                 >
                   <span className="text-4xl block mb-4">{item.emoji}</span>
                   <h3 className="font-serif text-xl mb-3 text-foreground">{item.title}</h3>
@@ -196,17 +260,20 @@ const Index = () => {
           </div>
         </section>
 
+        {/* Wave: background → primary for CTA */}
+        <WaveDivider from="hsl(40 33% 97%)" to="hsl(145 20% 36%)" />
+
         {/* CTA */}
         <section className="py-24 px-6 bg-primary text-primary-foreground">
           <div className="max-w-3xl mx-auto text-center">
-            <h2 className="font-serif text-3xl md:text-4xl mb-6">Let's Bloom Together</h2>
+            <h2 className="font-serif text-3xl md:text-5xl mb-6">Let's Bloom Together</h2>
             <p className="font-sans text-base font-light mb-10 opacity-85">
               Ready to bring HADAD's handcrafted gypsophila to your business?
               We'd love to hear from you.
             </p>
             <a
               href="mailto:hadadpetals@gmail.com"
-              className="inline-flex items-center gap-2 font-sans text-sm bg-primary-foreground text-primary px-8 py-3 hover:opacity-90 transition-opacity duration-300"
+              className="inline-flex items-center gap-2 font-sans text-sm bg-primary-foreground text-primary px-8 py-3 rounded-full hover:opacity-90 transition-opacity duration-300"
             >
               <Mail size={16} />
               hadadpetals@gmail.com

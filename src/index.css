@@ -138,13 +138,16 @@
   }
 
   button,
-  [role="button"],
-  a {
+  [role="button"] {
     min-height: 44px;
     min-width: 44px;
   }
 
-  img, picture, video, canvas, svg {
+  a {
+    min-height: 44px;
+  }
+
+  img, picture, video, canvas {
     max-width: 100%;
     height: auto;
     display: block;
