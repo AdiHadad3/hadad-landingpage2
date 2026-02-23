@@ -1,24 +1,53 @@
+import { motion } from 'framer-motion';
+
 interface HeroSectionProps {
   title: string;
   subtitle?: string;
-  useHandwriting?: boolean;
+  image?: string;
+  fullHeight?: boolean;
 }
 
-const HeroSection = ({ title, subtitle, useHandwriting = false }: HeroSectionProps) => {
+const HeroSection = ({ title, subtitle, image, fullHeight = false }: HeroSectionProps) => {
   return (
-    <section className="bg-muted py-20 px-4">
-      <div className="max-w-4xl mx-auto text-center">
-        <h1 className={`text-3xl md:text-5xl lg:text-6xl text-foreground mb-6 ${
-          useHandwriting 
-            ? 'font-handwriting font-medium tracking-wide' 
-            : 'font-sans font-light tracking-[0.3em] uppercase'
-        }`}>
+    <section
+      className={`relative flex items-center justify-center overflow-hidden ${
+        fullHeight ? 'min-h-screen' : 'min-h-[60vh]'
+      }`}
+    >
+      {image && (
+        <div className="absolute inset-0">
+          <img
+            src={image}
+            alt=""
+            className="w-full h-full object-cover"
+            aria-hidden="true"
+          />
+          <div className="absolute inset-0 bg-foreground/40" />
+        </div>
+      )}
+
+      <div className="relative z-10 text-center px-6 max-w-3xl mx-auto">
+        <motion.h1
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className={`font-serif text-4xl md:text-6xl lg:text-7xl font-medium tracking-tight mb-6 ${
+            image ? 'text-white' : 'text-foreground'
+          }`}
+        >
           {title}
-        </h1>
+        </motion.h1>
         {subtitle && (
-          <p className="font-sans text-sm md:text-base text-muted-foreground leading-relaxed font-light">
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className={`font-sans text-base md:text-lg font-light leading-relaxed max-w-xl mx-auto ${
+              image ? 'text-white/85' : 'text-muted-foreground'
+            }`}
+          >
             {subtitle}
-          </p>
+          </motion.p>
         )}
       </div>
     </section>
