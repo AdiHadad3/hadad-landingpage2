@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
+import logoImg from '@/assets/hadad-logo-transparent.png';
+import { Menu, X } from 'lucide-react';
 
 const navItems = [
   { label: 'Home', path: '/' },
@@ -38,9 +40,9 @@ const Navbar = () => {
       <div className="max-w-6xl mx-auto px-6 flex items-center justify-between h-16 md:h-20">
         <Link to="/" className="flex items-center gap-3" aria-label="HADAD Home">
           <img
-            src="/lovable-uploads/hadad-logo-new.jpeg"
+            src={logoImg}
             alt="HADAD"
-            className="h-10 md:h-12 w-auto rounded"
+            className="h-10 md:h-12 w-auto"
           />
         </Link>
 
