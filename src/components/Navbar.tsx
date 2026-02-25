@@ -1,30 +1,37 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
-import logoImg from '@/assets/hadad-logo-transparent.png';
+import logoImg from '@/assets/hadad-logo-new.png';
 
 const navItems = [
   { label: 'Home', path: '/' },
   { label: 'About', path: '/about' },
-  { label: 'Gallery', path: '/gallery' },
+  { label: 'Our Products', path: '/gallery' },
   { label: 'Contact', path: '/contact' },
 ];
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
   const isHome = location.pathname === '/';
 
+  const [pastHero, setPastHero] = useState(false);
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 80);
+    const checkHero = () => {
+      const hero = document.getElementById('hero-section');
+      if (hero) {
+        const heroBottom = hero.getBoundingClientRect().bottom;
+        setPastHero(heroBottom <= 64);
+      } else {
+        setPastHero(window.scrollY > 80);
+      }
     };
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', checkHero, { passive: true });
+    checkHero();
+    return () => window.removeEventListener('scroll', checkHero);
   }, []);
 
-  const transparent = isHome && !scrolled && !isOpen;
+  const transparent = isHome && !pastHero && !isOpen;
 
   return (
     <nav
@@ -37,11 +44,11 @@ const Navbar = () => {
       aria-label="Main navigation"
     >
       <div className="max-w-6xl mx-auto px-6 flex items-center justify-between h-16 md:h-20">
-        <Link to="/" className="flex items-center gap-3" aria-label="HADAD Home">
+        <Link to="/" className="flex items-center gap-3 shrink-0" aria-label="HADAD Home">
           <img
             src={logoImg}
             alt="HADAD"
-            className="h-10 md:h-12 w-auto"
+            className="h-12 md:h-14 lg:h-16 w-auto"
           />
         </Link>
 
