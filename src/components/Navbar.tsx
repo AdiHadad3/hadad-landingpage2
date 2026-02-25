@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Mail, Instagram } from 'lucide-react';
 import logoImg from '@/assets/hadad-logo-new.png';
 
 const navItems = [
@@ -67,6 +67,25 @@ const Navbar = () => {
               {item.label}
             </Link>
           ))}
+
+          <div className="flex items-center gap-4 ml-4">
+            <a
+              href="mailto:hadadpetals@gmail.com"
+              aria-label="Email"
+              className={`transition-colors duration-200 ${transparent ? 'text-white/70 hover:text-white' : 'text-muted-foreground hover:text-foreground'}`}
+            >
+              <Mail size={16} />
+            </a>
+            <a
+              href="https://instagram.com/hadadpetals"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram"
+              className={`transition-colors duration-200 ${transparent ? 'text-white/70 hover:text-white' : 'text-muted-foreground hover:text-foreground'}`}
+            >
+              <Instagram size={16} />
+            </a>
+          </div>
         </div>
 
         <button

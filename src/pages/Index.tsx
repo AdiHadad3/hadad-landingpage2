@@ -244,39 +244,32 @@ const Index = () => {
           </div>
         </section>
 
-        <div className="relative" aria-hidden="true">
-          <svg viewBox="0 0 1440 80" preserveAspectRatio="none" className="w-full h-16 md:h-20 bg-background">
-            <path d="M0,0 Q720,80 1440,0 L1440,80 L0,80 Z" fill="hsl(145 20% 36%)" />
-          </svg>
-        </div>
-
-        {/* CTA */}
-        <section className="py-24 px-6 bg-primary text-primary-foreground">
-          <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="max-w-3xl mx-auto text-center"
-          >
-            <motion.h2 variants={fadeUp} className="font-serif text-3xl md:text-5xl mb-6">
-              Let's Bloom Together
-            </motion.h2>
-            <motion.p variants={fadeUp} custom={1} className="font-sans text-base font-light mb-10 opacity-85">
-              Ready to bring HADAD's handcrafted gypsophila to your business? We'd love to hear from you.
-            </motion.p>
-            <motion.a
-              variants={fadeUp}
-              custom={2}
-              href="mailto:hadadpetals@gmail.com"
-              className="group inline-flex items-center gap-2 font-sans text-sm bg-primary-foreground text-primary px-8 py-3 rounded-full hover:opacity-90 transition-opacity duration-300"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.98 }}
+        {/* KPI Stats */}
+        <section className="py-20 px-6 bg-card" aria-labelledby="kpi-heading">
+          <div className="max-w-5xl mx-auto">
+            <motion.div
+              variants={staggerContainer}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              className="grid md:grid-cols-3 gap-8 text-center"
             >
-              <Mail size={16} />
-              hadadpetals@gmail.com
-            </motion.a>
-          </motion.div>
+              {[
+                { value: '160', label: 'Dunams of Land' },
+                { value: '60,000', label: 'Stems per Dunam' },
+                { value: '9M', label: 'Stems Export Capacity / Year' },
+              ].map((stat, i) => (
+                <motion.div key={i} variants={fadeUp} custom={i} className="p-8">
+                  <span className="font-serif text-5xl md:text-6xl text-primary font-medium block mb-3">
+                    {stat.value}
+                  </span>
+                  <span className="font-sans text-sm text-muted-foreground uppercase tracking-widest">
+                    {stat.label}
+                  </span>
+                </motion.div>
+              ))}
+            </motion.div>
+          </div>
         </section>
       </main>
       <Footer />
