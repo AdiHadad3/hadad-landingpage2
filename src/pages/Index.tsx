@@ -16,9 +16,28 @@ const fadeUp = {
   }),
 };
 
+const fadeScale = {
+  hidden: { opacity: 0, scale: 0.85, y: 30 },
+  visible: (i: number = 0) => ({
+    opacity: 1,
+    scale: 1,
+    y: 0,
+    transition: { duration: 0.8, delay: i * 0.12 },
+  }),
+};
+
+const slideIn = {
+  hidden: { opacity: 0, x: -60 },
+  visible: (i: number = 0) => ({
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.7, delay: i * 0.15 },
+  }),
+};
+
 const staggerContainer = {
   hidden: {},
-  visible: { transition: { staggerChildren: 0.12 } },
+  visible: { transition: { staggerChildren: 0.15 } },
 };
 
 const Index = () => {
@@ -133,13 +152,13 @@ const Index = () => {
         {/* Intro */}
         <section className="pt-8 pb-20 md:pb-28 px-6 bg-background" aria-labelledby="intro-heading">
           <div className="max-w-3xl mx-auto text-center">
-            <motion.div variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true }}>
+            <motion.div variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-50px' }}>
               <motion.h2 id="intro-heading" variants={fadeUp} className="font-serif text-3xl md:text-5xl text-foreground mb-8">
                 Grown with Love,{' '}
                 <motion.span
                   className="italic text-primary inline-block"
-                  whileInView={{ rotate: [0, -2, 2, 0] }}
-                  transition={{ duration: 0.6, delay: 0.8 }}
+                  whileInView={{ rotate: [0, -2, 2, 0], scale: [1, 1.05, 1] }}
+                  transition={{ duration: 0.8, delay: 0.8 }}
                   viewport={{ once: true }}
                 >
                   Delivered with Care
@@ -154,7 +173,14 @@ const Index = () => {
           </div>
         </section>
 
-        <div className="h-20 bg-gradient-to-b from-background to-card" aria-hidden="true" />
+        <motion.div
+          className="h-20 bg-gradient-to-b from-background to-card"
+          aria-hidden="true"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+        />
 
         {/* Collection — Flower Grid */}
         <section className="pb-24 px-6 bg-card" aria-labelledby="blooms-heading">
@@ -193,14 +219,21 @@ const Index = () => {
           </div>
         </section>
 
-        <div className="h-20 bg-gradient-to-b from-card to-background" aria-hidden="true" />
+        <motion.div
+          className="h-20 bg-gradient-to-b from-card to-background"
+          aria-hidden="true"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+        />
 
         {/* Values */}
         <section className="pb-24 px-6 bg-background" aria-labelledby="values-heading">
           <div className="max-w-5xl mx-auto">
             <motion.h2
               id="values-heading"
-              variants={fadeUp}
+              variants={fadeScale}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
@@ -213,7 +246,7 @@ const Index = () => {
               variants={staggerContainer}
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: '-80px' }}
               className="grid md:grid-cols-3 gap-8"
             >
               {[
@@ -223,9 +256,9 @@ const Index = () => {
               ].map((item, i) => (
                 <motion.div
                   key={i}
-                  variants={fadeUp}
+                  variants={slideIn}
                   custom={i}
-                  whileHover={{ y: -8, boxShadow: '0 20px 40px -15px hsl(var(--primary) / 0.15)' }}
+                  whileHover={{ y: -8, scale: 1.03, boxShadow: '0 20px 40px -15px hsl(var(--primary) / 0.15)' }}
                   transition={{ duration: 0.3 }}
                   className="text-center p-8 rounded-3xl bg-card cursor-default"
                 >
@@ -251,7 +284,7 @@ const Index = () => {
               variants={staggerContainer}
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: '-60px' }}
               className="grid md:grid-cols-3 gap-8 text-center"
             >
               {[
@@ -259,10 +292,23 @@ const Index = () => {
                 { value: '60,000', label: 'Stems per Dunam' },
                 { value: '9M', label: 'Stems Export Capacity / Year' },
               ].map((stat, i) => (
-                <motion.div key={i} variants={fadeUp} custom={i} className="p-8">
-                  <span className="font-serif text-5xl md:text-6xl text-primary font-medium block mb-3">
+                <motion.div
+                  key={i}
+                  variants={fadeScale}
+                  custom={i}
+                  whileHover={{ scale: 1.08 }}
+                  transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+                  className="p-8"
+                >
+                  <motion.span
+                    className="font-serif text-5xl md:text-6xl text-primary font-medium block mb-3"
+                    initial={{ opacity: 0, scale: 0.5 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.6, delay: i * 0.2, type: 'spring', stiffness: 200 }}
+                    viewport={{ once: true }}
+                  >
                     {stat.value}
-                  </span>
+                  </motion.span>
                   <span className="font-sans text-sm text-muted-foreground uppercase tracking-widest">
                     {stat.label}
                   </span>
