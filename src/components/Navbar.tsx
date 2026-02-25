@@ -43,7 +43,7 @@ const Navbar = () => {
       role="navigation"
       aria-label="Main navigation"
     >
-      <div className="max-w-6xl mx-auto px-6 flex items-center justify-between h-20 md:h-24 relative">
+      <div className="max-w-6xl mx-auto px-6 flex items-center justify-between h-20 md:h-24">
         <Link to="/" className="flex items-center gap-3 shrink-0" aria-label="HADAD Home">
           <img
             src={logoImg}
@@ -52,7 +52,7 @@ const Navbar = () => {
           />
         </Link>
 
-        <div className="hidden md:flex items-center gap-10 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+        <div className="hidden md:flex items-center gap-10 h-full">
           {navItems.map((item) => (
             <Link
               key={item.path}
