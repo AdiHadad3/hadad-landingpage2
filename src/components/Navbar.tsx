@@ -52,7 +52,7 @@ const Navbar = () => {
           />
         </Link>
 
-        <div className="hidden md:flex items-center gap-10">
+        <div className="hidden md:flex items-center gap-10 h-full">
           {navItems.map((item) => (
             <Link
               key={item.path}
