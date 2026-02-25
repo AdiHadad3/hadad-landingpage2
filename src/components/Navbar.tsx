@@ -43,16 +43,18 @@ const Navbar = () => {
       role="navigation"
       aria-label="Main navigation"
     >
-      <div className="max-w-6xl mx-auto px-6 flex items-center justify-between h-16 md:h-20">
-        <Link to="/" className="flex items-center gap-3 shrink-0" aria-label="HADAD Home">
+      <div className="max-w-6xl mx-auto px-6 flex items-center h-16 md:h-20">
+        {/* Logo — left */}
+        <Link to="/" className="flex items-center shrink-0 mr-auto" aria-label="HADAD Home">
           <img
             src={logoImg}
             alt="HADAD"
-            className="h-12 md:h-14 lg:h-16 w-auto"
+            className="h-10 md:h-12 w-auto"
           />
         </Link>
 
-        <div className="hidden md:flex items-center gap-10">
+        {/* Nav links — centered */}
+        <div className="hidden md:flex items-center gap-10 absolute left-1/2 -translate-x-1/2">
           {navItems.map((item) => (
             <Link
               key={item.path}
@@ -69,8 +71,9 @@ const Navbar = () => {
           ))}
         </div>
 
+        {/* Mobile menu button — right */}
         <button
-          className={`md:hidden p-2 cursor-pointer ${transparent ? 'text-white' : 'text-foreground'}`}
+          className={`md:hidden p-2 cursor-pointer ml-auto ${transparent ? 'text-white' : 'text-foreground'}`}
           onClick={() => setIsOpen(!isOpen)}
           aria-expanded={isOpen}
           aria-label={isOpen ? 'Close menu' : 'Open menu'}
