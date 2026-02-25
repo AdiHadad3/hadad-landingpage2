@@ -219,64 +219,6 @@ const Index = () => {
           </div>
         </section>
 
-        <motion.div
-          className="h-20 bg-gradient-to-b from-card to-background"
-          aria-hidden="true"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-        />
-
-        {/* Values */}
-        <section className="pb-24 px-6 bg-background" aria-labelledby="values-heading">
-          <div className="max-w-5xl mx-auto">
-            <motion.h2
-              id="values-heading"
-              variants={fadeScale}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              className="font-serif text-3xl md:text-5xl text-foreground text-center mb-16"
-            >
-              Why HADAD
-            </motion.h2>
-
-            <motion.div
-              variants={staggerContainer}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: '-80px' }}
-              className="grid md:grid-cols-3 gap-8"
-            >
-              {[
-                { emoji: '🌿', title: '30+ Years', desc: 'Three decades of perfecting our craft, from seed to stem.' },
-                { emoji: '👨‍👩‍👧‍👦', title: 'Family Legacy', desc: 'Three generations of knowledge, passion, and dedication.' },
-                { emoji: '✨', title: 'Premium Quality', desc: 'Every bloom inspected and nurtured to ensure perfection.' },
-              ].map((item, i) => (
-                <motion.div
-                  key={i}
-                  variants={slideIn}
-                  custom={i}
-                  whileHover={{ y: -8, scale: 1.03, boxShadow: '0 20px 40px -15px hsl(var(--primary) / 0.15)' }}
-                  transition={{ duration: 0.3 }}
-                  className="text-center p-8 rounded-3xl bg-card cursor-default"
-                >
-                  <motion.span
-                    className="text-4xl block mb-4"
-                    whileHover={{ scale: 1.3, rotate: 10 }}
-                    transition={{ type: 'spring', stiffness: 300 }}
-                  >
-                    {item.emoji}
-                  </motion.span>
-                  <h3 className="font-serif text-xl mb-3 text-foreground">{item.title}</h3>
-                  <p className="font-sans text-sm text-muted-foreground font-light leading-relaxed">{item.desc}</p>
-                </motion.div>
-              ))}
-            </motion.div>
-          </div>
-        </section>
-
         {/* KPI Stats */}
         <section className="py-20 px-6 bg-card" aria-labelledby="kpi-heading">
           <div className="max-w-5xl mx-auto">
