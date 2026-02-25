@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { useRef } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import FlowerGrid from '@/components/FlowerGrid';
 import heroBg from '@/assets/hero-bg.jpg';
 
 const fadeUp = {
@@ -15,38 +16,10 @@ const fadeUp = {
   }),
 };
 
-const scaleIn = {
-  hidden: { opacity: 0, scale: 0.8 },
-  visible: (i: number = 0) => ({
-    opacity: 1,
-    scale: 1,
-    transition: { duration: 0.6, delay: i * 0.1 },
-  }),
-};
-
-const slideInLeft = {
-  hidden: { opacity: 0, x: -60 },
-  visible: { opacity: 1, x: 0, transition: { duration: 0.8 } },
-};
-
-const slideInRight = {
-  hidden: { opacity: 0, x: 60 },
-  visible: { opacity: 1, x: 0, transition: { duration: 0.8 } },
-};
-
 const staggerContainer = {
   hidden: {},
   visible: { transition: { staggerChildren: 0.12 } },
 };
-
-const flowerImages = [
-  { src: '/lovable-uploads/8b04be8a-b641-4609-b90e-5ce4e4565d69.png', alt: 'White gypsophila', title: 'Pure White' },
-  { src: '/lovable-uploads/5d2bb7e0-ece2-409e-b31d-b042dd011c01.png', alt: 'Pink gypsophila', title: 'Soft Pink' },
-  { src: '/lovable-uploads/cea78f67-81e4-4fca-b863-e0a046fc8424.png', alt: 'Purple gypsophila', title: 'Royal Purple' },
-  { src: '/lovable-uploads/07d26288-276b-4347-b70b-af9edeeca909.png', alt: 'Sky blue gypsophila', title: 'Sky Blue' },
-  { src: '/lovable-uploads/5c6a08fd-6412-45c7-8183-c95700dbcdc2.png', alt: 'Red gypsophila', title: 'Romantic Red' },
-  { src: '/lovable-uploads/c75d0a1d-acd4-441c-b8ef-b2862c33824e.png', alt: 'Yellow gypsophila', title: 'Sunny Yellow' },
-];
 
 const Index = () => {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -62,7 +35,7 @@ const Index = () => {
     <>
       <Navbar />
       <main id="main-content">
-        {/* Hero — full bleed photo */}
+        {/* Hero */}
         <section
           id="hero-section"
           ref={heroRef}
@@ -80,31 +53,17 @@ const Index = () => {
             style={{ opacity: overlayOpacity }}
           />
 
-          {/* Floating particles */}
           {[...Array(6)].map((_, i) => (
             <motion.div
               key={i}
               className="absolute w-1 h-1 bg-white/30 rounded-full"
-              style={{
-                left: `${15 + i * 15}%`,
-                top: `${20 + (i % 3) * 25}%`,
-              }}
-              animate={{
-                y: [0, -30, 0],
-                opacity: [0.2, 0.6, 0.2],
-              }}
-              transition={{
-                duration: 3 + i * 0.5,
-                repeat: Infinity,
-                delay: i * 0.4,
-              }}
+              style={{ left: `${15 + i * 15}%`, top: `${20 + (i % 3) * 25}%` }}
+              animate={{ y: [0, -30, 0], opacity: [0.2, 0.6, 0.2] }}
+              transition={{ duration: 3 + i * 0.5, repeat: Infinity, delay: i * 0.4 }}
             />
           ))}
 
-          <motion.div
-            style={{ y: textY }}
-            className="relative z-10 text-center px-6 max-w-3xl"
-          >
+          <motion.div style={{ y: textY }} className="relative z-10 text-center px-6 max-w-3xl">
             <motion.p
               initial={{ opacity: 0, letterSpacing: '0.1em' }}
               animate={{ opacity: 1, letterSpacing: '0.3em' }}
@@ -145,7 +104,6 @@ const Index = () => {
             </motion.div>
           </motion.div>
 
-          {/* Scroll indicator */}
           <motion.div
             className="absolute bottom-28 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2"
             initial={{ opacity: 0 }}
@@ -165,7 +123,6 @@ const Index = () => {
             </motion.div>
           </motion.div>
 
-          {/* Curved bottom edge */}
           <div className="absolute bottom-0 left-0 right-0 z-20" aria-hidden="true">
             <svg viewBox="0 0 1440 80" preserveAspectRatio="none" className="w-full h-16 md:h-20">
               <path d="M0,80 Q720,0 1440,80 L1440,80 L0,80 Z" fill="hsl(40 33% 97%)" />
@@ -176,17 +133,8 @@ const Index = () => {
         {/* Intro */}
         <section className="pt-8 pb-20 md:pb-28 px-6 bg-background" aria-labelledby="intro-heading">
           <div className="max-w-3xl mx-auto text-center">
-            <motion.div
-              variants={staggerContainer}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-            >
-              <motion.h2
-                id="intro-heading"
-                variants={fadeUp}
-                className="font-serif text-3xl md:text-5xl text-foreground mb-8"
-              >
+            <motion.div variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true }}>
+              <motion.h2 id="intro-heading" variants={fadeUp} className="font-serif text-3xl md:text-5xl text-foreground mb-8">
                 Grown with Love,{' '}
                 <motion.span
                   className="italic text-primary inline-block"
@@ -197,11 +145,7 @@ const Index = () => {
                   Delivered with Care
                 </motion.span>
               </motion.h2>
-              <motion.p
-                variants={fadeUp}
-                custom={1}
-                className="font-sans text-base md:text-lg text-muted-foreground leading-relaxed font-light"
-              >
+              <motion.p variants={fadeUp} custom={1} className="font-sans text-base md:text-lg text-muted-foreground leading-relaxed font-light">
                 For over three decades, the HADAD family has cultivated premium gypsophila
                 in our village farm. Every bloom is nurtured with precision and passion —
                 vibrant hues, full petals, and custom colors crafted to match your vision.
@@ -210,12 +154,11 @@ const Index = () => {
           </div>
         </section>
 
-        {/* Smooth gradient into collection */}
         <div className="h-20 bg-gradient-to-b from-background to-card" aria-hidden="true" />
 
-        {/* Collection */}
+        {/* Collection — Flower Grid */}
         <section className="pb-24 px-6 bg-card" aria-labelledby="blooms-heading">
-          <div className="max-w-6xl mx-auto">
+          <div className="max-w-5xl mx-auto">
             <motion.div
               variants={staggerContainer}
               initial="hidden"
@@ -232,70 +175,24 @@ const Index = () => {
                 <span className="h-px w-8 bg-primary/40" />
               </motion.div>
               <motion.p variants={fadeUp} custom={2} className="font-sans text-sm text-muted-foreground mt-4">
-                A spectrum of colors, each grown to perfection
+                Click on a flower to see the full bouquet
               </motion.p>
             </motion.div>
 
-            <motion.div
-              variants={staggerContainer}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              className="grid grid-cols-2 md:grid-cols-12 gap-4 md:gap-5 auto-rows-[240px] md:auto-rows-[280px]"
-            >
-              {flowerImages.map((img, i) => {
-                const spans = [
-                  'md:col-span-5 md:row-span-2',
-                  'md:col-span-4',
-                  'md:col-span-3',
-                  'md:col-span-3',
-                  'md:col-span-4',
-                  'md:col-span-5 md:row-span-2',
-                ];
-                return (
-                  <motion.div
-                    key={i}
-                    variants={scaleIn}
-                    custom={i}
-                    className={`group relative overflow-hidden rounded-2xl cursor-pointer ${spans[i]}`}
-                    whileHover={{ y: -5 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    <img
-                      src={img.src}
-                      alt={img.alt}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 via-foreground/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl" />
-                    <motion.p
-                      className="absolute bottom-4 left-4 font-sans text-sm text-white opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-2 group-hover:translate-y-0 tracking-wide"
-                    >
-                      {img.title}
-                    </motion.p>
-                  </motion.div>
-                );
-              })}
-            </motion.div>
+            <FlowerGrid />
 
-            <motion.div
-              variants={fadeUp}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              className="text-center mt-12"
-            >
+            <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="text-center mt-12">
               <Link
                 to="/gallery"
                 className="group inline-flex items-center gap-2 font-sans text-sm text-primary border border-primary px-8 py-3 rounded-full hover:bg-primary hover:text-primary-foreground transition-all duration-300"
               >
-                View Full Gallery
+                View All Products
                 <ArrowRight size={16} className="transition-transform duration-300 group-hover:translate-x-1" />
               </Link>
             </motion.div>
           </div>
         </section>
 
-        {/* Smooth gradient into values */}
         <div className="h-20 bg-gradient-to-b from-card to-background" aria-hidden="true" />
 
         {/* Values */}
@@ -347,7 +244,6 @@ const Index = () => {
           </div>
         </section>
 
-        {/* Curved top into CTA */}
         <div className="relative" aria-hidden="true">
           <svg viewBox="0 0 1440 80" preserveAspectRatio="none" className="w-full h-16 md:h-20 bg-background">
             <path d="M0,0 Q720,80 1440,0 L1440,80 L0,80 Z" fill="hsl(145 20% 36%)" />
@@ -367,8 +263,7 @@ const Index = () => {
               Let's Bloom Together
             </motion.h2>
             <motion.p variants={fadeUp} custom={1} className="font-sans text-base font-light mb-10 opacity-85">
-              Ready to bring HADAD's handcrafted gypsophila to your business?
-              We'd love to hear from you.
+              Ready to bring HADAD's handcrafted gypsophila to your business? We'd love to hear from you.
             </motion.p>
             <motion.a
               variants={fadeUp}
