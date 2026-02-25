@@ -43,7 +43,7 @@ const Navbar = () => {
       role="navigation"
       aria-label="Main navigation"
     >
-      <div className="max-w-6xl lg:max-w-7xl mx-auto px-6 lg:px-10 flex items-center justify-between h-20 md:h-24">
+      <div className="max-w-6xl lg:max-w-none mx-auto px-6 lg:px-16 xl:px-24 flex items-center justify-between h-20 md:h-24">
         <Link to="/" className="flex items-center gap-3 shrink-0" aria-label="HADAD Home">
           <img
             src={logoImg}
