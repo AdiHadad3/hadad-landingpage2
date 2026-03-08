@@ -31,12 +31,30 @@ const Gallery = () => {
                 <Sparkles size={16} className="text-primary" />
                 <span className="h-px w-8 bg-primary/40" />
               </div>
-              <p className="font-sans text-base text-muted-foreground font-light">
-                Click on a flower to see the full bouquet
+              <p className="font-sans text-lg text-muted-foreground font-light max-w-xl mx-auto">
+                Available in any color of your choice
               </p>
             </motion.div>
 
-            {/* <FlowerGrid /> */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+              {[
+                { name: 'Mirabella', description: 'A premium gypsophila variety known for its dense, full flower heads and exceptional vase life.' },
+                { name: 'Excellence', description: 'A top-tier gypsophila variety featuring large, elegant blooms with superior stem strength.' },
+              ].map((product, i) => (
+                <motion.div
+                  key={product.name}
+                  variants={fadeUp}
+                  custom={i + 1}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
+                  className="bg-card border border-border rounded-2xl p-8 md:p-10 text-center shadow-sm hover:shadow-md transition-shadow"
+                >
+                  <h2 className="font-serif text-2xl md:text-3xl text-foreground mb-3">{product.name}</h2>
+                  <p className="font-sans text-sm text-muted-foreground leading-relaxed">{product.description}</p>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </section>
       </main>
