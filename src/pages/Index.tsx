@@ -182,43 +182,6 @@ const Index = () => {
           viewport={{ once: true }}
         />
 
-        {/* Collection — Flower Grid */}
-        <section className="pb-24 px-6 bg-card" aria-labelledby="blooms-heading">
-          <div className="max-w-5xl mx-auto">
-            <motion.div
-              variants={staggerContainer}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              className="text-center mb-16"
-            >
-              <motion.h2 variants={fadeUp} id="blooms-heading" className="font-serif text-3xl md:text-5xl text-foreground mb-4">
-                Our Collection
-              </motion.h2>
-              <motion.div variants={fadeUp} custom={1} className="flex items-center justify-center gap-3">
-                <span className="h-px w-8 bg-primary/40" />
-                <Sparkles size={16} className="text-primary" />
-                <span className="h-px w-8 bg-primary/40" />
-              </motion.div>
-              <motion.p variants={fadeUp} custom={2} className="font-sans text-sm text-muted-foreground mt-4">
-                Click on a flower to see the full bouquet
-              </motion.p>
-            </motion.div>
-
-            <FlowerGrid />
-
-            <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="text-center mt-12">
-              <Link
-                to="/gallery"
-                className="group inline-flex items-center gap-2 font-sans text-sm text-primary border border-primary px-8 py-3 rounded-full hover:bg-primary hover:text-primary-foreground transition-all duration-300"
-              >
-                View All Products
-                <ArrowRight size={16} className="transition-transform duration-300 group-hover:translate-x-1" />
-              </Link>
-            </motion.div>
-          </div>
-        </section>
-
         {/* Innovation */}
         <section className="py-24 md:py-32 px-6 bg-background" aria-labelledby="innovation-heading">
           <div className="max-w-5xl mx-auto">
