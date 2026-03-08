@@ -164,8 +164,8 @@ const Index = () => {
                   Delivered with Care
                 </motion.span>
               </motion.h2>
-              <motion.p variants={fadeUp} custom={1} className="font-sans text-base md:text-lg text-muted-foreground leading-relaxed font-light">For over three decades, we have grown gypsophila at HADAD with care and precision.
-From our village farm, each bloom begins pure and delicate — ready to transform into vibrant colors crafted for floral markets around the world.
+              <motion.p variants={fadeUp} custom={1} className="font-sans text-base md:text-lg text-muted-foreground leading-relaxed font-light">For over three decades, we have grown gypsophila at HADAD with care and precision. From our village farm, each bloom begins pure and delicate - ready to transform into vibrant colors crafted for floral markets around the world.
+
 
 
               </motion.p>
