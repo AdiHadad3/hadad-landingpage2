@@ -36,7 +36,7 @@ const Gallery = () => {
               </p>
             </motion.div>
 
-            <FlowerGrid />
+            {/* <FlowerGrid /> */}
           </div>
         </section>
       </main>
