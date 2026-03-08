@@ -319,7 +319,7 @@ const Index = () => {
             >
               {[
                 { value: '160', label: 'Dunams of Land' },
-                { value: '60,000', label: 'Stems per Dunam' },
+                { value: '115,000', label: 'Stems per Dunam' },
                 { value: '9M', label: 'Stems Export Capacity / Year' },
               ].map((stat, i) => (
                 <motion.div
