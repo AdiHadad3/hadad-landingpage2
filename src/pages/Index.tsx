@@ -89,7 +89,7 @@ const Index = () => {
               transition={{ duration: 1.2 }}
               className="font-sans text-xs md:text-sm uppercase text-white/70 mb-6"
             >
-              Since 1992
+              Three Decades of Gypsophila
             </motion.p>
             <motion.h1
               initial={{ opacity: 0, y: 40, filter: 'blur(10px)' }}
@@ -97,15 +97,15 @@ const Index = () => {
               transition={{ duration: 1, delay: 0.2 }}
               className="font-serif text-5xl md:text-7xl lg:text-8xl text-white font-medium tracking-tight mb-6"
             >
-              HADAD
+              Born White.<br />Made Vivid.
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.5 }}
-              className="font-serif text-lg md:text-xl text-white/85 italic font-light"
+              className="font-sans text-sm md:text-base text-white/80 font-light leading-relaxed max-w-md mx-auto"
             >
-              Petals in Perfect Bloom
+              Our gypsophila grows naturally white. Through water, each stem absorbs color — transforming into any shade the market demands.
             </motion.p>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
