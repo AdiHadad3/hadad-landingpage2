@@ -1,8 +1,8 @@
 import { motion } from 'framer-motion';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import FlowerGrid from '@/components/FlowerGrid';
 import { Sparkles } from 'lucide-react';
+import eventShowcase from '@/assets/event-showcase.jpeg';
 
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
@@ -55,6 +55,28 @@ const Gallery = () => {
                 </motion.div>
               ))}
             </div>
+
+            {/* Event Showcase */}
+            <motion.div
+              variants={fadeUp}
+              custom={3}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              className="mt-20"
+            >
+              <h2 className="font-serif text-3xl md:text-4xl text-foreground text-center mb-3">Our Flowers in Action</h2>
+              <p className="font-sans text-muted-foreground text-center mb-8 max-w-lg mx-auto">
+                A stunning event decorated with our premium gypsophila
+              </p>
+              <div className="rounded-2xl overflow-hidden shadow-lg">
+                <img
+                  src={eventShowcase}
+                  alt="Luxury event decorated with Hadad gypsophila flowers"
+                  className="w-full h-auto object-cover"
+                />
+              </div>
+            </motion.div>
           </div>
         </section>
       </main>
