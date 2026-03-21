@@ -159,7 +159,7 @@ const Index = () => {
                   className="italic text-primary inline-block"
                   whileInView={{ rotate: [0, -2, 2, 0], scale: [1, 1.05, 1] }}
                   transition={{ duration: 0.8, delay: 0.8 }}
-                  viewport={{ once: true }}>Delivered with Car
+                  viewport={{ once: true }}>Delivered with Care
 
 
                 </motion.span>
