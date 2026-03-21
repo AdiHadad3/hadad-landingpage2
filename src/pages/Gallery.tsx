@@ -32,8 +32,32 @@ const Gallery = () => {
                 <span className="h-px w-8 bg-primary/40" />
               </div>
               <p className="font-sans text-lg text-muted-foreground font-light max-w-xl mx-auto">
-                Available in any color of your choice
+                Available in any color of your choice — here are some of our popular options
               </p>
+              <div className="flex flex-wrap justify-center gap-3 md:gap-4 max-w-2xl mx-auto mt-6">
+                {[
+                  { name: 'White', color: '#F5F5F0' },
+                  { name: 'Yellow', color: '#F5D547' },
+                  { name: 'Orange', color: '#E8863A' },
+                  { name: 'Light Pink Vintage', color: '#E8B4B8' },
+                  { name: 'Dark Pink', color: '#C4467E' },
+                  { name: 'Light Blue', color: '#7EC8E3' },
+                  { name: 'Dark Blue', color: '#2B4C7E' },
+                  { name: 'Light Purple', color: '#B39DDB' },
+                ].map((c) => (
+                  <div
+                    key={c.name}
+                    className="flex items-center gap-2 bg-card border border-border rounded-full px-4 py-2"
+                  >
+                    <span
+                      className="w-4 h-4 rounded-full border border-border shrink-0"
+                      style={{ backgroundColor: c.color }}
+                    />
+                    <span className="font-sans text-sm text-muted-foreground">{c.name}</span>
+                  </div>
+                ))}
+              </div>
+              <p className="font-sans text-xs text-muted-foreground/60 mt-3">Custom colors available upon request</p>
             </motion.div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
@@ -56,46 +80,6 @@ const Gallery = () => {
               ))}
             </div>
 
-            {/* Available Colors */}
-            <motion.div
-              variants={fadeUp}
-              custom={3}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              className="mt-16 text-center"
-            >
-              <h3 className="font-serif text-2xl md:text-3xl text-foreground mb-6">Available Colors</h3>
-              <div className="flex flex-wrap justify-center gap-3 md:gap-4 max-w-2xl mx-auto">
-                {[
-                  { name: 'White', color: '#F5F5F0' },
-                  { name: 'Yellow', color: '#F5D547' },
-                  { name: 'Orange', color: '#E8863A' },
-                  { name: 'Light Pink Vintage', color: '#E8B4B8' },
-                  { name: 'Dark Pink', color: '#C4467E' },
-                  { name: 'Light Blue', color: '#7EC8E3' },
-                  { name: 'Dark Blue', color: '#2B4C7E' },
-                  { name: 'Light Purple', color: '#B39DDB' },
-                ].map((c, i) => (
-                  <motion.div
-                    key={c.name}
-                    variants={fadeUp}
-                    custom={i * 0.5}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true }}
-                    className="flex items-center gap-2 bg-card border border-border rounded-full px-4 py-2"
-                  >
-                    <span
-                      className="w-4 h-4 rounded-full border border-border shrink-0"
-                      style={{ backgroundColor: c.color }}
-                    />
-                    <span className="font-sans text-sm text-muted-foreground">{c.name}</span>
-                  </motion.div>
-                ))}
-              </div>
-              <p className="font-sans text-xs text-muted-foreground/60 mt-4">Custom colors available upon request</p>
-            </motion.div>
 
             {/* Event Showcase */}
             <motion.div
