@@ -23,7 +23,6 @@ const petals = [
   { name: 'Dark Pink', petal: petalDarkPink, bouquet: bouquetPink },
   { name: 'Orange', petal: petalOrange, bouquet: bouquetYellow },
   { name: 'Purple', petal: petalPurple, bouquet: bouquetPurple },
-  { name: 'Light Blue', petal: petalWhite, bouquet: bouquetBlue },
 ];
 
 const fadeUp = {
