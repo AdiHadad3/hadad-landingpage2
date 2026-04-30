@@ -1,8 +1,30 @@
-import { motion } from 'framer-motion';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { X, Sparkles } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import { Sparkles } from 'lucide-react';
 import eventShowcase from '@/assets/event-showcase.jpeg';
+
+import petalLightPink from '@/assets/petal-light-pink.png';
+import petalDarkPink from '@/assets/petal-dark-pink.png';
+import petalWhite from '@/assets/petal-white.png';
+import petalPurple from '@/assets/petal-purple.png';
+import petalOrange from '@/assets/petal-orange.png';
+
+import bouquetWhite from '@/assets/bouquet-white.png';
+import bouquetPink from '@/assets/bouquet-pink.png';
+import bouquetPurple from '@/assets/bouquet-purple.png';
+import bouquetYellow from '@/assets/bouquet-yellow.png';
+import bouquetBlue from '@/assets/bouquet-blue.png';
+
+const petals = [
+  { name: 'White', petal: petalWhite, bouquet: bouquetWhite },
+  { name: 'Light Pink Vintage', petal: petalLightPink, bouquet: bouquetPink },
+  { name: 'Dark Pink', petal: petalDarkPink, bouquet: bouquetPink },
+  { name: 'Orange', petal: petalOrange, bouquet: bouquetYellow },
+  { name: 'Purple', petal: petalPurple, bouquet: bouquetPurple },
+  { name: 'Light Blue', petal: petalWhite, bouquet: bouquetBlue },
+];
 
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
@@ -13,6 +35,7 @@ const fadeUp = {
 };
 
 const Gallery = () => {
+  const [selected, setSelected] = useState<number | null>(null);
   return (
     <>
       <Navbar />
@@ -34,30 +57,38 @@ const Gallery = () => {
               <p className="font-sans text-lg text-muted-foreground font-light max-w-xl mx-auto">
                 Available in any color of your choice — here are some of our popular options
               </p>
-              <div className="flex flex-wrap justify-center gap-3 md:gap-4 max-w-2xl mx-auto mt-6">
-                {[
-                  { name: 'White', color: '#F5F5F0' },
-                  { name: 'Yellow', color: '#F5D547' },
-                  { name: 'Orange', color: '#E8863A' },
-                  { name: 'Light Pink Vintage', color: '#E8B4B8' },
-                  { name: 'Dark Pink', color: '#C4467E' },
-                  { name: 'Light Blue', color: '#7EC8E3' },
-                  { name: 'Dark Blue', color: '#2B4C7E' },
-                  { name: 'Light Purple', color: '#B39DDB' },
-                ].map((c) => (
-                  <div
-                    key={c.name}
-                    className="flex items-center gap-2 bg-card border border-border rounded-full px-4 py-2"
+              <div className="grid grid-cols-2 md:grid-cols-5 gap-4 md:gap-6 mt-10 max-w-4xl mx-auto">
+                {petals.map((p, i) => (
+                  <motion.button
+                    key={p.name}
+                    variants={fadeUp}
+                    custom={i}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
+                    onClick={() => setSelected(i)}
+                    className="group flex flex-col items-center gap-2 cursor-pointer bg-transparent border-none outline-none"
+                    aria-label={`View ${p.name} bouquet`}
                   >
-                    <span
-                      className="w-4 h-4 rounded-full border border-border shrink-0"
-                      style={{ backgroundColor: c.color }}
-                    />
-                    <span className="font-sans text-sm text-muted-foreground">{c.name}</span>
-                  </div>
+                    <motion.div
+                      className="w-full aspect-square flex items-center justify-center"
+                      whileHover={{ scale: 1.08, rotate: 4 }}
+                      whileTap={{ scale: 0.95 }}
+                      transition={{ type: 'spring', stiffness: 300, damping: 15 }}
+                    >
+                      <img
+                        src={p.petal}
+                        alt={`${p.name} gypsophila petal`}
+                        className="w-full h-full object-contain drop-shadow-md"
+                      />
+                    </motion.div>
+                    <span className="font-sans text-sm text-muted-foreground group-hover:text-foreground transition-colors">
+                      {p.name}
+                    </span>
+                  </motion.button>
                 ))}
               </div>
-              <p className="font-sans text-xs text-muted-foreground/60 mt-3">Custom colors available upon request</p>
+              <p className="font-sans text-xs text-muted-foreground/60 mt-6">Custom colors available upon request</p>
             </motion.div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
@@ -106,6 +137,50 @@ const Gallery = () => {
         </section>
       </main>
       <Footer />
+
+      <AnimatePresence>
+        {selected !== null && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 bg-foreground/80 backdrop-blur-sm flex items-center justify-center p-4"
+            onClick={() => setSelected(null)}
+            role="dialog"
+            aria-modal="true"
+            aria-label={`${petals[selected].name} bouquet`}
+          >
+            <motion.div
+              key={selected}
+              initial={{ scale: 0.8, opacity: 0, y: 30 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.8, opacity: 0, y: 30 }}
+              transition={{ type: 'spring', stiffness: 300, damping: 25 }}
+              className="relative bg-background rounded-3xl p-6 md:p-8 max-w-lg w-full shadow-2xl"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button
+                onClick={() => setSelected(null)}
+                className="absolute top-4 right-4 text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
+                aria-label="Close"
+              >
+                <X size={24} />
+              </button>
+              <div className="flex flex-col items-center">
+                <img
+                  src={petals[selected].bouquet}
+                  alt={`${petals[selected].name} gypsophila bouquet`}
+                  className="w-full max-h-[50vh] object-contain mb-6"
+                />
+                <h3 className="font-serif text-2xl text-foreground mb-2">{petals[selected].name}</h3>
+                <p className="font-sans text-sm text-muted-foreground text-center">
+                  Premium gypsophila bouquet in {petals[selected].name.toLowerCase()}
+                </p>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 };
