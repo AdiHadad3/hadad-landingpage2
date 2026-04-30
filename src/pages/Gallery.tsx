@@ -20,7 +20,7 @@ import bouquetBlue from '@/assets/bouquet-blue.png';
 const petals = [
   { name: 'White', petal: petalWhite, bouquet: bouquetWhite },
   { name: 'Light Pink Vintage', petal: petalLightPink, bouquet: bouquetPink },
-  { name: 'Dark Pink', petal: petalDarkPink, bouquet: bouquetPink },
+  { name: 'Light Pink', petal: petalDarkPink, bouquet: bouquetPink },
   { name: 'Orange', petal: petalOrange, bouquet: bouquetYellow },
   { name: 'Purple', petal: petalPurple, bouquet: bouquetPurple },
 ];
