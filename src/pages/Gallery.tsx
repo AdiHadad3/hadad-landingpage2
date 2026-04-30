@@ -19,7 +19,8 @@ import bouquetBlue from '@/assets/bouquet-blue.png';
 
 const petals = [
   { name: 'White', petal: petalWhite, bouquet: bouquetWhite },
-  { name: 'Light Pink\u00A0Vintage', petal: petalLightPink, bouquet: bouquetPink },
+  { name: 'Light Pink Vintage', petal: petalLightPink, bouquet: bouquetPink },
+  { name: 'Light Pink', petal: petalDarkPink, bouquet: bouquetPink },
   { name: 'Orange', petal: petalOrange, bouquet: bouquetYellow },
   { name: 'Purple', petal: petalPurple, bouquet: bouquetPurple },
 ];
@@ -64,7 +65,7 @@ const Gallery = () => {
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true }}
-                    // onClick={() => setSelected(i)}
+                    onClick={() => setSelected(i)}
                     className="group flex flex-col items-center gap-2 cursor-pointer bg-transparent border-none outline-none"
                     aria-label={`View ${p.name} bouquet`}
                   >
