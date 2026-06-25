@@ -1,6 +1,6 @@
 export type Lang = 'en' | 'he';
 
-export const translations = {
+const en = {
   en: {
     nav: {
       home: 'Home',
@@ -98,8 +98,11 @@ export const translations = {
       emailAria: 'Email us',
       instaAria: 'Follow us on Instagram',
     },
-  },
-  he: {
+};
+
+export type Dict = typeof en;
+
+const he: Dict = {
     nav: {
       home: 'בית',
       about: 'אודות',
@@ -195,7 +198,6 @@ export const translations = {
       emailAria: 'שלחו לנו אימייל',
       instaAria: 'עקבו אחרינו באינסטגרם',
     },
-  },
-} as const;
+};
 
-export type Dict = typeof translations['en'];
+export const translations: Record<Lang, Dict> = { en, he };
