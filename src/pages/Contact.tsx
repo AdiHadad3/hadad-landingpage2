@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { Mail } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import { useLang } from '@/i18n/LanguageContext';
 
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
@@ -12,6 +13,7 @@ const fadeUp = {
 };
 
 const Contact = () => {
+  const { t } = useLang();
   return (
     <>
       <Navbar />
@@ -23,18 +25,15 @@ const Contact = () => {
               initial="hidden"
               animate="visible"
               className="font-serif text-4xl md:text-5xl text-foreground mb-6">
-              
-              Get in Touch
+              {t.contact.title}
             </motion.h1>
             <motion.p
               variants={fadeUp}
               custom={1}
               initial="hidden"
               animate="visible"
-              className="font-sans text-base text-muted-foreground font-light mb-12">We'd love to hear from you. Whether you have a question about our flowers, pricing, or anything else - our team is ready to help.
-
-
-
+              className="font-sans text-base text-muted-foreground font-light mb-12">
+              {t.contact.body}
             </motion.p>
 
             <motion.a
@@ -60,15 +59,14 @@ const Contact = () => {
               whileInView="visible"
               viewport={{ once: true }}
               className="font-serif text-3xl md:text-4xl text-foreground text-center mb-12">
-              
-              Frequently Asked Questions
+              {t.contact.faqTitle}
             </motion.h2>
 
             <div className="space-y-6">
               {[
-              { q: 'What types of gypsophila do you grow?', a: 'We specialize in various colors including white, pink, purple, blue, red, and yellow. We also offer custom color options.' },
-              { q: 'Do you ship internationally?', a: 'Yes, we export our flowers worldwide. Contact us for shipping details and availability.' },
-              { q: 'What is the minimum order quantity?', a: 'Minimum orders vary depending on the product. Please contact us for specific requirements.' }].
+              { q: t.contact.faq1Q, a: t.contact.faq1A },
+              { q: t.contact.faq2Q, a: t.contact.faq2A },
+              { q: t.contact.faq3Q, a: t.contact.faq3A }].
               map((item, i) =>
               <motion.div
                 key={i}
@@ -95,8 +93,7 @@ const Contact = () => {
               whileInView="visible"
               viewport={{ once: true }}
               className="font-serif text-xl md:text-2xl italic text-foreground">
-              
-              "Every inquiry is the beginning of a beautiful creation"
+              {t.contact.quote}
             </motion.blockquote>
           </div>
         </section>
