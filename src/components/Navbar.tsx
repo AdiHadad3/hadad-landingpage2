@@ -1,19 +1,21 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Mail, Instagram } from 'lucide-react';
+import { Menu, X, Mail, Instagram, Globe } from 'lucide-react';
 import logoImg from '@/assets/hadad-logo-new.png';
-
-const navItems = [
-  { label: 'Home', path: '/' },
-  { label: 'About', path: '/about' },
-  { label: 'Our Products', path: '/gallery' },
-  { label: 'Contact', path: '/contact' },
-];
+import { useLang } from '@/i18n/LanguageContext';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
   const isHome = location.pathname === '/';
+  const { t, toggle } = useLang();
+
+  const navItems = [
+    { label: t.nav.home, path: '/' },
+    { label: t.nav.about, path: '/about' },
+    { label: t.nav.products, path: '/gallery' },
+    { label: t.nav.contact, path: '/contact' },
+  ];
 
   const [pastHero, setPastHero] = useState(false);
   useEffect(() => {
@@ -68,34 +70,61 @@ const Navbar = () => {
             </Link>
           ))}
 
-          <div className="flex items-center gap-4 ml-6">
-            <a
-              href="mailto:hadadpetals@gmail.com"
-              aria-label="Email"
-              className={`transition-colors duration-200 ${transparent ? 'text-white/70 hover:text-white' : 'text-muted-foreground hover:text-foreground'}`}
-            >
-              <Mail size={16} />
-            </a>
+          <div className="flex items-center gap-4 ms-6">
             <a
               href="https://instagram.com/hadadpetals"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Instagram"
+              aria-label={t.nav.instagram}
               className={`transition-colors duration-200 ${transparent ? 'text-white/70 hover:text-white' : 'text-muted-foreground hover:text-foreground'}`}
             >
               <Instagram size={16} />
             </a>
+            <a
+              href="mailto:hadadpetals@gmail.com"
+              aria-label={t.nav.email}
+              className={`transition-colors duration-200 ${transparent ? 'text-white/70 hover:text-white' : 'text-muted-foreground hover:text-foreground'}`}
+            >
+              <Mail size={16} />
+            </a>
+            <button
+              type="button"
+              onClick={toggle}
+              aria-label={t.nav.langToggleAria}
+              className={`inline-flex items-center gap-1.5 text-xs font-sans uppercase tracking-wider border rounded-full px-3 py-1.5 transition-colors duration-200 ${
+                transparent
+                  ? 'border-white/40 text-white/80 hover:text-white hover:border-white'
+                  : 'border-border text-muted-foreground hover:text-foreground hover:border-foreground'
+              }`}
+            >
+              <Globe size={13} />
+              {t.nav.langToggle}
+            </button>
           </div>
         </div>
 
-        <button
-          className={`md:hidden p-2 cursor-pointer ${transparent ? 'text-white' : 'text-foreground'}`}
-          onClick={() => setIsOpen(!isOpen)}
-          aria-expanded={isOpen}
-          aria-label={isOpen ? 'Close menu' : 'Open menu'}
-        >
-          {isOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
+        <div className="md:hidden flex items-center gap-2">
+          <button
+            type="button"
+            onClick={toggle}
+            aria-label={t.nav.langToggleAria}
+            className={`text-xs font-sans uppercase tracking-wider border rounded-full px-2.5 py-1 transition-colors duration-200 ${
+              transparent
+                ? 'border-white/40 text-white/90'
+                : 'border-border text-muted-foreground'
+            }`}
+          >
+            {t.nav.langToggle}
+          </button>
+          <button
+            className={`p-2 cursor-pointer ${transparent ? 'text-white' : 'text-foreground'}`}
+            onClick={() => setIsOpen(!isOpen)}
+            aria-expanded={isOpen}
+            aria-label={isOpen ? t.nav.menuClose : t.nav.menuOpen}
+          >
+            {isOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
       </div>
 
       {isOpen && (
@@ -116,6 +145,24 @@ const Navbar = () => {
                 {item.label}
               </Link>
             ))}
+            <div className="flex items-center gap-5 pt-3 mt-2 border-t border-border">
+              <a
+                href="https://instagram.com/hadadpetals"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={t.nav.instagram}
+                className="text-muted-foreground hover:text-foreground transition-colors"
+              >
+                <Instagram size={18} />
+              </a>
+              <a
+                href="mailto:hadadpetals@gmail.com"
+                aria-label={t.nav.email}
+                className="text-muted-foreground hover:text-foreground transition-colors"
+              >
+                <Mail size={18} />
+              </a>
+            </div>
           </div>
         </div>
       )}
