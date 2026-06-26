@@ -3,7 +3,6 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import HeroSection from '@/components/HeroSection';
 import aboutBg from '@/assets/about-bg.jpg';
-import { useLang } from '@/i18n/LanguageContext';
 
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
@@ -14,14 +13,13 @@ const fadeUp = {
 };
 
 const About = () => {
-  const { t } = useLang();
   return (
     <>
       <Navbar />
       <main id="main-content" className="pt-16 md:pt-20">
         <HeroSection
-          title={t.about.heroTitle}
-          subtitle={t.about.heroSubtitle}
+          title="Our Story"
+          subtitle="A family legacy rooted in passion, blooming for over thirty years."
           image={aboutBg}
         />
 
@@ -35,11 +33,15 @@ const About = () => {
               viewport={{ once: true }}
               className="font-serif text-3xl md:text-4xl text-foreground mb-8 text-center"
             >
-              {t.about.sectionTitleA}{' '}
-              <span className="italic text-primary">{t.about.sectionTitleB}</span>
+              From a Small Farm to{' '}
+              <span className="italic text-primary">World-Class Blooms</span>
             </motion.h2>
             <div className="space-y-6">
-              {[t.about.p1, t.about.p2, t.about.p3].map((text, i) => (
+              {[
+                'Founded in 1992, HADAD began as a small family farm with a simple dream: to grow the most beautiful gypsophila flowers in the region.',
+                'What started as a passion project has blossomed into a legacy spanning over three decades. Our family has dedicated generations to perfecting the art of gypsophila cultivation.',
+                'Nestled in a lush village with ideal growing conditions, our farm combines traditional wisdom with modern sustainable practices — producing vibrant, long-lasting flowers that bring joy worldwide.',
+              ].map((text, i) => (
                 <motion.p
                   key={i}
                   variants={fadeUp}
@@ -66,13 +68,13 @@ const About = () => {
               viewport={{ once: true }}
               className="font-serif text-3xl md:text-4xl text-foreground text-center mb-16"
             >
-              {t.about.valuesTitle}
+              Our Values
             </motion.h2>
             <div className="grid md:grid-cols-3 gap-12">
               {[
-                { emoji: '🌸', title: t.about.qualityT, desc: t.about.qualityD },
-                { emoji: '👨‍👩‍👧‍👦', title: t.about.heritageT, desc: t.about.heritageD },
-                { emoji: '🌱', title: t.about.sustainT, desc: t.about.sustainD },
+                { emoji: '🌸', title: 'Quality First', desc: 'Every flower is inspected and nurtured with care to ensure only the finest blooms reach our customers.' },
+                { emoji: '👨‍👩‍👧‍👦', title: 'Family Heritage', desc: 'Three generations of expertise and passion are woven into every aspect of our farming practices.' },
+                { emoji: '🌱', title: 'Sustainability', desc: 'We embrace eco-friendly practices to protect our land and ensure beauty for generations to come.' },
               ].map((item, i) => (
                 <motion.div
                   key={i}
@@ -102,7 +104,7 @@ const About = () => {
               viewport={{ once: true }}
               className="font-serif text-2xl md:text-3xl italic text-foreground leading-relaxed"
             >
-              {t.about.quote}
+              "We don't just grow flowers; we grow moments of beauty that touch hearts."
             </motion.blockquote>
             <motion.p
               variants={fadeUp}
@@ -112,7 +114,7 @@ const About = () => {
               viewport={{ once: true }}
               className="mt-6 font-sans text-sm text-muted-foreground"
             >
-              {t.about.quoteSig}
+              — The HADAD Family
             </motion.p>
           </div>
         </section>
