@@ -4,7 +4,6 @@ import { X, Sparkles } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import eventShowcase from '@/assets/event-showcase.jpeg';
-import { useLang } from '@/i18n/LanguageContext';
 
 import petalLightPink from '@/assets/petal-light-pink.png';
 import petalDarkPink from '@/assets/petal-dark-pink.png';
@@ -35,7 +34,6 @@ const fadeUp = {
 };
 
 const Gallery = () => {
-  const { t } = useLang();
   const [selected, setSelected] = useState<number | null>(null);
   return (
     <>
@@ -49,14 +47,14 @@ const Gallery = () => {
               animate="visible"
               className="text-center mb-16"
             >
-              <h1 className="font-serif text-4xl md:text-5xl text-foreground mb-4">{t.gallery.title}</h1>
+              <h1 className="font-serif text-4xl md:text-5xl text-foreground mb-4">Our Products</h1>
               <div className="flex items-center justify-center gap-3 mb-4">
                 <span className="h-px w-8 bg-primary/40" />
                 <Sparkles size={16} className="text-primary" />
                 <span className="h-px w-8 bg-primary/40" />
               </div>
               <p className="font-sans text-lg text-muted-foreground font-light max-w-xl mx-auto">
-                {t.gallery.subtitle}
+                Available in any color of your choice — here are some of our popular options
               </p>
               <div className="grid grid-cols-2 md:grid-cols-5 gap-4 md:gap-6 mt-10 max-w-4xl mx-auto">
                 {petals.map((p, i) => (
@@ -84,18 +82,18 @@ const Gallery = () => {
                       />
                     </motion.div>
                     <span className="font-sans text-sm text-muted-foreground group-hover:text-foreground transition-colors">
-                      {t.gallery.colors[p.name] ?? p.name}
+                      {p.name}
                     </span>
                   </motion.button>
                 ))}
               </div>
-              <p className="font-sans text-xs text-muted-foreground/60 mt-6">{t.gallery.custom}</p>
+              <p className="font-sans text-xs text-muted-foreground/60 mt-6">Custom colors available upon request</p>
             </motion.div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
               {[
-                { name: t.gallery.mirabellaT, description: t.gallery.mirabellaD },
-                { name: t.gallery.excellenceT, description: t.gallery.excellenceD },
+                { name: 'Mirabella', description: 'A premium gypsophila variety known for its dense, full flower heads and exceptional vase life.' },
+                { name: 'Excellence', description: 'A top-tier gypsophila variety featuring large, elegant blooms with superior stem strength.' },
               ].map((product, i) => (
                 <motion.div
                   key={product.name}
@@ -122,9 +120,9 @@ const Gallery = () => {
               viewport={{ once: true }}
               className="mt-20"
             >
-              <h2 className="font-serif text-3xl md:text-4xl text-foreground text-center mb-3">{t.gallery.eventTitle}</h2>
+              <h2 className="font-serif text-3xl md:text-4xl text-foreground text-center mb-3">Our Flowers in Action</h2>
               <p className="font-sans text-muted-foreground text-center mb-8 max-w-lg mx-auto">
-                {t.gallery.eventSubtitle}
+                A stunning event decorated with our premium gypsophila
               </p>
               <div className="rounded-2xl overflow-hidden shadow-lg">
                 <img
