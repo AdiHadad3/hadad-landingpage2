@@ -360,7 +360,7 @@ const Index = () => {
                 <span className="italic text-primary">Grower</span>
               </motion.h2>
               <motion.p variants={fadeUp} custom={1} className="font-sans text-base md:text-lg text-muted-foreground leading-relaxed font-light max-w-2xl mx-auto">
-                At HADAD, we combine proprietary growing methods with advanced post-harvest technology to produce the highest-quality gypsophila with vibrant color and extended shelf life.
+                At HADAD, we combine proprietary growing methods with advanced post-harvest technology to produce the highest-quality gypsophila with vibrant color and extended shelf life, tailored to your preferred colors and bouquet styles.
               </motion.p>
             </motion.div>
 
@@ -395,31 +395,6 @@ const Index = () => {
               )}
             </motion.div>
 
-            <motion.div
-              variants={staggerContainer}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              className="grid sm:grid-cols-3 gap-6">
-              
-              {[
-              { icon: '🧬', title: 'Proprietary Methods', desc: 'Unique cultivation techniques developed over decades of research.' },
-              { icon: '⏳', title: 'Extended Shelf Life', desc: 'Our blooms last significantly longer than industry standard.' },
-              { icon: '🎨', title: 'Custom Colors', desc: 'Any shade you envision — including fully bespoke color matching.' }].
-              map((item, i) =>
-              <motion.div
-                key={i}
-                variants={fadeScale}
-                custom={i}
-                whileHover={{ y: -6 }}
-                className="text-center p-6 rounded-2xl">
-                
-                  <span className="text-3xl block mb-3">{item.icon}</span>
-                  <h4 className="font-serif text-lg text-foreground mb-2">{item.title}</h4>
-                  <p className="font-sans text-xs text-muted-foreground font-light leading-relaxed">{item.desc}</p>
-                </motion.div>
-              )}
-            </motion.div>
           </div>
         </section>
 
