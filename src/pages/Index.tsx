@@ -228,6 +228,7 @@ const Index = () => {
               animate={{ height: 'auto', opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
               transition={{ duration: 0.6, ease: 'easeInOut' }}
+              onAnimationComplete={scrollToVideo}
               className="overflow-hidden bg-background"
               aria-label="Video section">
               <div className="max-w-4xl mx-auto px-6 py-10 relative">
@@ -238,7 +239,7 @@ const Index = () => {
                   className="absolute top-2 right-6 z-10 inline-flex items-center justify-center w-10 h-10 rounded-full border border-border/50 text-muted-foreground hover:text-foreground hover:border-border transition-colors bg-background/60 backdrop-blur">
                   <X size={18} />
                 </button>
-                <div className="relative w-full aspect-video rounded-xl overflow-hidden shadow-lg">
+                <div ref={videoWrapperRef} className="relative w-full aspect-video rounded-xl overflow-hidden shadow-lg">
                   <iframe
                     ref={iframeRef}
                     className="absolute inset-0 w-full h-full"
