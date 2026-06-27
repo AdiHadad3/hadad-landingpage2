@@ -114,7 +114,7 @@ const About = () => {
               viewport={{ once: true }}
               className="mt-6 font-sans text-sm text-muted-foreground"
             >
-              — The HADAD Family
+              {"\n"}
             </motion.p>
           </div>
         </section>
