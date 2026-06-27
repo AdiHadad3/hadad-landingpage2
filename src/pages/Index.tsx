@@ -220,17 +220,17 @@ const Index = () => {
               animate={{ height: 'auto', opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
               transition={{ duration: 0.6, ease: 'easeInOut' }}
-              className="overflow-hidden bg-foreground"
+              className="overflow-hidden bg-background"
               aria-label="Video section">
-              <div className="max-w-4xl mx-auto px-6 py-16 relative">
+              <div className="max-w-4xl mx-auto px-6 py-10 relative">
                 <button
                   type="button"
                   onClick={closeVideo}
                   aria-label="Close video"
-                  className="absolute top-4 right-6 z-10 inline-flex items-center justify-center w-10 h-10 rounded-full border border-white/40 text-white/90 hover:text-white hover:border-white transition-colors bg-foreground/40 backdrop-blur">
+                  className="absolute top-2 right-6 z-10 inline-flex items-center justify-center w-10 h-10 rounded-full border border-border/50 text-muted-foreground hover:text-foreground hover:border-border transition-colors bg-background/60 backdrop-blur">
                   <X size={18} />
                 </button>
-                <div className="relative w-full aspect-video rounded-2xl overflow-hidden shadow-2xl">
+                <div className="relative w-full aspect-video rounded-xl overflow-hidden shadow-lg">
                   <iframe
                     ref={iframeRef}
                     className="absolute inset-0 w-full h-full"
@@ -250,7 +250,7 @@ const Index = () => {
 
 
         <motion.div
-          className="h-8 bg-gradient-to-b from-background to-card"
+          className="h-2 bg-gradient-to-b from-background to-card"
           aria-hidden="true"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
