@@ -399,7 +399,7 @@ const Index = () => {
         </section>
 
         {/* KPI Stats */}
-        <section className="py-20 px-6 bg-card" aria-labelledby="kpi-heading">
+        <section className="pt-6 pb-20 px-6 bg-card" aria-labelledby="kpi-heading">
           <div className="max-w-5xl mx-auto">
             <motion.div
               variants={staggerContainer}
