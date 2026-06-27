@@ -44,6 +44,7 @@ const Index = () => {
   const videoSectionRef = useRef<HTMLDivElement>(null);
   const videoWrapperRef = useRef<HTMLDivElement>(null);
   const iframeRef = useRef<HTMLIFrameElement>(null);
+  const prevScrollY = useRef(0);
   const [videoOpen, setVideoOpen] = useState(false);
 
   const pauseVideo = () => {
@@ -54,22 +55,27 @@ const Index = () => {
   };
 
   const openVideo = () => {
+    prevScrollY.current = window.scrollY;
     setVideoOpen(true);
   };
 
   const closeVideo = () => {
     pauseVideo();
     setVideoOpen(false);
+    setTimeout(() => {
+      window.scrollTo({ top: prevScrollY.current, behavior: 'smooth' });
+    }, 650);
   };
 
   const scrollToVideo = () => {
     const navbar = document.querySelector('nav');
     const navbarHeight = navbar ? navbar.getBoundingClientRect().height : 80;
     const el = videoWrapperRef.current;
-    if (el) {
-      const y = el.getBoundingClientRect().top + window.scrollY - navbarHeight - 12;
-      window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' });
-    }
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    const videoCenterY = rect.top + window.scrollY + rect.height / 2;
+    const target = videoCenterY - (window.innerHeight / 2) - (navbarHeight / 2);
+    window.scrollTo({ top: Math.max(0, target), behavior: 'smooth' });
   };
 
   useEffect(() => {
