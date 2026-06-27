@@ -231,6 +231,15 @@ const Index = () => {
               <motion.p variants={fadeUp} custom={1} className="font-sans text-base md:text-lg text-muted-foreground leading-relaxed font-light">
                 For over three decades, we have grown gypsophila at HADAD with care and precision. From our village farm, each bloom begins pure and delicate - ready to transform into vibrant colors crafted for floral markets around the world.
               </motion.p>
+              <motion.div variants={fadeUp} custom={2} className="mt-8">
+                <button
+                  type="button"
+                  onClick={openVideo}
+                  className="group inline-flex items-center gap-2 font-sans text-sm text-foreground border border-foreground/30 px-8 py-3 rounded-full hover:bg-foreground hover:text-background transition-all duration-300">
+                  Watch Video
+                  <Play size={14} className="transition-transform duration-300 group-hover:translate-x-1" />
+                </button>
+              </motion.div>
             </motion.div>
           </div>
         </section>
