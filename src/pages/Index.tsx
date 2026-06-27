@@ -395,31 +395,6 @@ const Index = () => {
               )}
             </motion.div>
 
-            <motion.div
-              variants={staggerContainer}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              className="grid sm:grid-cols-3 gap-6">
-              
-              {[
-              { icon: '🧬', title: 'Proprietary Methods', desc: 'Unique cultivation techniques developed over decades of research.' },
-              { icon: '⏳', title: 'Extended Shelf Life', desc: 'Our blooms last significantly longer than industry standard.' },
-              { icon: '🎨', title: 'Custom Colors', desc: 'Any shade you envision — including fully bespoke color matching.' }].
-              map((item, i) =>
-              <motion.div
-                key={i}
-                variants={fadeScale}
-                custom={i}
-                whileHover={{ y: -6 }}
-                className="text-center p-6 rounded-2xl">
-                
-                  <span className="text-3xl block mb-3">{item.icon}</span>
-                  <h4 className="font-serif text-lg text-foreground mb-2">{item.title}</h4>
-                  <p className="font-sans text-xs text-muted-foreground font-light leading-relaxed">{item.desc}</p>
-                </motion.div>
-              )}
-            </motion.div>
           </div>
         </section>
 
