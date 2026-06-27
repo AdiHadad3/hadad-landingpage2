@@ -40,7 +40,7 @@ const About = () => {
               {[
                 'Founded in 1992, HADAD began as a small family farm with a simple dream: to grow the most beautiful gypsophila flowers in the region.',
                 'What started as a passion project has blossomed into a legacy spanning over three decades. Our family has dedicated generations to perfecting the art of gypsophila cultivation.',
-                'Nestled in a lush village with ideal growing conditions, our farm combines traditional wisdom with modern sustainable practices — producing vibrant, long-lasting flowers that bring joy worldwide.',
+                'Nestled in a lush village with ideal growing conditions, our farm combines traditional wisdom with modern sustainable practices - producing vibrant, long-lasting flowers that bring joy worldwide.',
               ].map((text, i) => (
                 <motion.p
                   key={i}
