@@ -250,7 +250,7 @@ const Index = () => {
 
 
         <motion.div
-          className="h-20 bg-gradient-to-b from-background to-card"
+          className="h-8 bg-gradient-to-b from-background to-card"
           aria-hidden="true"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
