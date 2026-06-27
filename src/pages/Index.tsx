@@ -177,6 +177,39 @@ const Index = () => {
           </div>
         </section>
 
+
+
+
+        {/* Intro */}
+        <section className="pt-8 pb-20 md:pb-28 px-6 bg-background" aria-labelledby="intro-heading">
+          <div className="max-w-3xl mx-auto text-center">
+            <motion.div variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-50px' }}>
+              <motion.h2 id="intro-heading" variants={fadeUp} className="font-serif text-3xl md:text-5xl text-foreground mb-8">
+                Grown with Love,<br />
+                <motion.span
+                  className="italic text-primary inline-block"
+                  whileInView={{ rotate: [0, -2, 2, 0], scale: [1, 1.05, 1] }}
+                  transition={{ duration: 0.8, delay: 0.8 }}
+                  viewport={{ once: true }}>
+                  Delivered with Care
+                </motion.span>
+              </motion.h2>
+              <motion.p variants={fadeUp} custom={1} className="font-sans text-base md:text-lg text-muted-foreground leading-relaxed font-light">
+                For over three decades, we have grown gypsophila at HADAD with care and precision. From our village farm, each bloom begins pure and delicate - ready to transform into vibrant colors crafted for floral markets around the world.
+              </motion.p>
+              <motion.div variants={fadeUp} custom={2} className="mt-8">
+                <button
+                  type="button"
+                  onClick={openVideo}
+                  className="group inline-flex items-center gap-2 font-sans text-sm text-foreground border border-foreground/30 px-8 py-3 rounded-full hover:bg-foreground hover:text-background transition-all duration-300">
+                  Watch Video
+                  <Play size={14} className="transition-transform duration-300 group-hover:translate-x-1" />
+                </button>
+              </motion.div>
+            </motion.div>
+          </div>
+        </section>
+
         {/* Video reveal */}
         <AnimatePresence>
           {videoOpen && (
@@ -214,35 +247,7 @@ const Index = () => {
           )}
         </AnimatePresence>
 
-        {/* Intro */}
-        <section className="pt-8 pb-20 md:pb-28 px-6 bg-background" aria-labelledby="intro-heading">
-          <div className="max-w-3xl mx-auto text-center">
-            <motion.div variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-50px' }}>
-              <motion.h2 id="intro-heading" variants={fadeUp} className="font-serif text-3xl md:text-5xl text-foreground mb-8">
-                Grown with Love,<br />
-                <motion.span
-                  className="italic text-primary inline-block"
-                  whileInView={{ rotate: [0, -2, 2, 0], scale: [1, 1.05, 1] }}
-                  transition={{ duration: 0.8, delay: 0.8 }}
-                  viewport={{ once: true }}>
-                  Delivered with Care
-                </motion.span>
-              </motion.h2>
-              <motion.p variants={fadeUp} custom={1} className="font-sans text-base md:text-lg text-muted-foreground leading-relaxed font-light">
-                For over three decades, we have grown gypsophila at HADAD with care and precision. From our village farm, each bloom begins pure and delicate - ready to transform into vibrant colors crafted for floral markets around the world.
-              </motion.p>
-              <motion.div variants={fadeUp} custom={2} className="mt-8">
-                <button
-                  type="button"
-                  onClick={openVideo}
-                  className="group inline-flex items-center gap-2 font-sans text-sm text-foreground border border-foreground/30 px-8 py-3 rounded-full hover:bg-foreground hover:text-background transition-all duration-300">
-                  Watch Video
-                  <Play size={14} className="transition-transform duration-300 group-hover:translate-x-1" />
-                </button>
-              </motion.div>
-            </motion.div>
-          </div>
-        </section>
+
 
         <motion.div
           className="h-20 bg-gradient-to-b from-background to-card"
