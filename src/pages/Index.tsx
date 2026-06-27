@@ -1,7 +1,7 @@
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { ArrowRight, Instagram } from 'lucide-react';
+import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
+import { ArrowRight, Instagram, Play, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { useRef } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import heroBg from '@/assets/hero-bg.jpg';
@@ -41,6 +41,41 @@ const staggerContainer = {
 
 const Index = () => {
   const heroRef = useRef<HTMLDivElement>(null);
+  const videoSectionRef = useRef<HTMLDivElement>(null);
+  const iframeRef = useRef<HTMLIFrameElement>(null);
+  const [videoOpen, setVideoOpen] = useState(false);
+
+  const pauseVideo = () => {
+    iframeRef.current?.contentWindow?.postMessage(
+      '{"event":"command","func":"pauseVideo","args":""}',
+      '*'
+    );
+  };
+
+  const openVideo = () => {
+    setVideoOpen(true);
+    setTimeout(() => {
+      videoSectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 100);
+  };
+
+  const closeVideo = () => {
+    pauseVideo();
+    setVideoOpen(false);
+  };
+
+  useEffect(() => {
+    if (!videoOpen) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) pauseVideo();
+      },
+      { threshold: 0.4 }
+    );
+    if (videoSectionRef.current) observer.observe(videoSectionRef.current);
+    return () => observer.disconnect();
+  }, [videoOpen]);
+
   const { scrollYProgress } = useScroll({
     target: heroRef,
     offset: ['start start', 'end start']
@@ -113,6 +148,13 @@ const Index = () => {
                 Explore Our Blooms
                 <ArrowRight size={16} className="transition-transform duration-300 group-hover:translate-x-1" />
               </Link>
+              <button
+                type="button"
+                onClick={openVideo}
+                className="group inline-flex items-center gap-2 font-sans text-sm text-white border border-white/40 px-8 py-3 rounded-full hover:bg-white hover:text-foreground transition-all duration-300 ml-3">
+                Watch Video
+                <Play size={14} className="transition-transform duration-300 group-hover:translate-x-1" />
+              </button>
             </motion.div>
           </motion.div>
 
@@ -141,6 +183,43 @@ const Index = () => {
             </svg>
           </div>
         </section>
+
+        {/* Video reveal */}
+        <AnimatePresence>
+          {videoOpen && (
+            <motion.section
+              ref={videoSectionRef}
+              key="video-section"
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: 'auto', opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.6, ease: 'easeInOut' }}
+              className="overflow-hidden bg-foreground"
+              aria-label="Video section">
+              <div className="max-w-4xl mx-auto px-6 py-16 relative">
+                <button
+                  type="button"
+                  onClick={closeVideo}
+                  aria-label="Close video"
+                  className="absolute top-4 right-6 z-10 inline-flex items-center justify-center w-10 h-10 rounded-full border border-white/40 text-white/90 hover:text-white hover:border-white transition-colors bg-foreground/40 backdrop-blur">
+                  <X size={18} />
+                </button>
+                <div className="relative w-full aspect-video rounded-2xl overflow-hidden shadow-2xl">
+                  <iframe
+                    ref={iframeRef}
+                    className="absolute inset-0 w-full h-full"
+                    src="https://www.youtube.com/embed/A-rNncZ5sSk?enablejsapi=1&rel=0"
+                    title="HADAD video"
+                    frameBorder={0}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerPolicy="strict-origin-when-cross-origin"
+                    allowFullScreen
+                  />
+                </div>
+              </div>
+            </motion.section>
+          )}
+        </AnimatePresence>
 
         {/* Intro */}
         <section className="pt-8 pb-20 md:pb-28 px-6 bg-background" aria-labelledby="intro-heading">
