@@ -101,6 +101,20 @@ const Index = () => {
               className="font-sans text-xs md:text-sm uppercase text-white/70 mb-6">
               Since 1992
             </motion.p>
+            <motion.h1
+              initial={{ opacity: 0, y: 40, filter: 'blur(10px)' }}
+              animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+              transition={{ duration: 1, delay: 0.2 }}
+              className="font-serif text-5xl md:text-7xl lg:text-8xl text-white font-medium tracking-tight mb-6">
+              HADAD
+            </motion.h1>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.5 }}
+              className="font-serif text-lg md:text-xl text-white/85 italic font-light">
+              Petals in Perfect Bloom
+            </motion.p>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
