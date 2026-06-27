@@ -249,7 +249,7 @@ const Index = () => {
                   <iframe
                     ref={iframeRef}
                     className="absolute inset-0 w-full h-full"
-                    src="https://www.youtube.com/embed/A-rNncZ5sSk?enablejsapi=1&rel=0&vq=hd1080"
+                    src="https://www.youtube.com/embed/A-rNncZ5sSk?enablejsapi=1&rel=0&vq=hd1440"
                     title="HADAD video"
                     frameBorder={0}
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
