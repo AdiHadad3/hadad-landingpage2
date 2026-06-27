@@ -90,7 +90,7 @@ const Index = () => {
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              className="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-full border border-white/40 text-white/90 hover:text-white hover:border-white transition-colors mb-6"
+              className="inline-flex items-center justify-center w-10 h-10 rounded-full border border-white/40 text-white/90 hover:text-white hover:border-white transition-colors mb-6"
             >
               <Instagram size={18} />
             </motion.a>
@@ -100,20 +100,6 @@ const Index = () => {
               transition={{ duration: 1.2 }}
               className="font-sans text-xs md:text-sm uppercase text-white/70 mb-6">
               Since 1992
-            </motion.p>
-            <motion.h1
-              initial={{ opacity: 0, y: 40, filter: 'blur(10px)' }}
-              animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-              transition={{ duration: 1, delay: 0.2 }}
-              className="font-serif text-5xl md:text-7xl lg:text-8xl text-white font-medium tracking-tight mb-6">
-              HADAD
-            </motion.h1>
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.5 }}
-              className="font-serif text-lg md:text-xl text-white/85 italic font-light">
-              Petals in Perfect Bloom
             </motion.p>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -161,17 +147,17 @@ const Index = () => {
           <div className="max-w-3xl mx-auto text-center">
             <motion.div variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-50px' }}>
               <motion.h2 id="intro-heading" variants={fadeUp} className="font-serif text-3xl md:text-5xl text-foreground mb-8">
-                Born White,{' '}
+                Grown with Love,<br />
                 <motion.span
                   className="italic text-primary inline-block"
                   whileInView={{ rotate: [0, -2, 2, 0], scale: [1, 1.05, 1] }}
                   transition={{ duration: 0.8, delay: 0.8 }}
                   viewport={{ once: true }}>
-                  Made Vivid
+                  Delivered with Care
                 </motion.span>
               </motion.h2>
               <motion.p variants={fadeUp} custom={1} className="font-sans text-base md:text-lg text-muted-foreground leading-relaxed font-light">
-                For over three decades, we have grown gypsophila at HADAD with care and precision. From our village farm, each bloom begins pure and delicate — ready to transform into vibrant colors crafted for floral markets around the world.
+                For over three decades, we have grown gypsophila at HADAD with care and precision. From our village farm, each bloom begins pure and delicate - ready to transform into vibrant colors crafted for floral markets around the world.
               </motion.p>
             </motion.div>
           </div>
@@ -207,7 +193,7 @@ const Index = () => {
                 <span className="italic text-primary">Grower</span>
               </motion.h2>
               <motion.p variants={fadeUp} custom={1} className="font-sans text-base md:text-lg text-muted-foreground leading-relaxed font-light max-w-2xl mx-auto">
-                At HADAD, we've reimagined gypsophila cultivation from the ground up. Proprietary growing methods, advanced post-harvest technology, and a relentless pursuit of perfection — resulting in blooms with significantly longer shelf life and unmatched vibrancy.
+                At HADAD, we've reimagined gypsophila cultivation from the ground up. Proprietary growing methods, advanced post-harvest technology, and a relentless pursuit of perfection - resulting in blooms with significantly longer shelf life and unmatched vibrancy.
               </motion.p>
             </motion.div>
 
