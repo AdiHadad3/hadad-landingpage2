@@ -148,13 +148,6 @@ const Index = () => {
                 Explore Our Blooms
                 <ArrowRight size={16} className="transition-transform duration-300 group-hover:translate-x-1" />
               </Link>
-              <button
-                type="button"
-                onClick={openVideo}
-                className="group inline-flex items-center gap-2 font-sans text-sm text-white border border-white/40 px-8 py-3 rounded-full hover:bg-white hover:text-foreground transition-all duration-300 ml-3">
-                Watch Video
-                <Play size={14} className="transition-transform duration-300 group-hover:translate-x-1" />
-              </button>
             </motion.div>
           </motion.div>
 
