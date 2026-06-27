@@ -6,6 +6,26 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import heroBg from '@/assets/hero-bg.jpg';
 
+/* ─── YouTube IFrame API types ─── */
+interface YTPlayer {
+  playVideo: () => void;
+  pauseVideo: () => void;
+  setPlaybackQuality: (quality: string) => void;
+  destroy: () => void;
+}
+interface WindowWithYT extends Window {
+  YT?: {
+    Player: new (el: string | HTMLElement, opts?: {
+      events?: {
+        onReady?: (e: { target: YTPlayer }) => void;
+        onStateChange?: (e: { data: number; target: YTPlayer }) => void;
+      };
+    }) => YTPlayer;
+    PlayerState?: { PLAYING: number };
+  };
+  onYouTubeIframeAPIReady?: () => void;
+}
+
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
   visible: (i: number = 0) => ({
