@@ -177,42 +177,8 @@ const Index = () => {
           </div>
         </section>
 
-        {/* Video reveal */}
-        <AnimatePresence>
-          {videoOpen && (
-            <motion.section
-              ref={videoSectionRef}
-              key="video-section"
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: 'auto', opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
-              transition={{ duration: 0.6, ease: 'easeInOut' }}
-              className="overflow-hidden bg-foreground"
-              aria-label="Video section">
-              <div className="max-w-4xl mx-auto px-6 py-16 relative">
-                <button
-                  type="button"
-                  onClick={closeVideo}
-                  aria-label="Close video"
-                  className="absolute top-4 right-6 z-10 inline-flex items-center justify-center w-10 h-10 rounded-full border border-white/40 text-white/90 hover:text-white hover:border-white transition-colors bg-foreground/40 backdrop-blur">
-                  <X size={18} />
-                </button>
-                <div className="relative w-full aspect-video rounded-2xl overflow-hidden shadow-2xl">
-                  <iframe
-                    ref={iframeRef}
-                    className="absolute inset-0 w-full h-full"
-                    src="https://www.youtube.com/embed/A-rNncZ5sSk?enablejsapi=1&rel=0"
-                    title="HADAD video"
-                    frameBorder={0}
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    referrerPolicy="strict-origin-when-cross-origin"
-                    allowFullScreen
-                  />
-                </div>
-              </div>
-            </motion.section>
-          )}
-        </AnimatePresence>
+
+
 
         {/* Intro */}
         <section className="pt-8 pb-20 md:pb-28 px-6 bg-background" aria-labelledby="intro-heading">
