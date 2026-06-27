@@ -42,6 +42,7 @@ const staggerContainer = {
 const Index = () => {
   const heroRef = useRef<HTMLDivElement>(null);
   const videoSectionRef = useRef<HTMLDivElement>(null);
+  const videoWrapperRef = useRef<HTMLDivElement>(null);
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const [videoOpen, setVideoOpen] = useState(false);
 
@@ -54,14 +55,21 @@ const Index = () => {
 
   const openVideo = () => {
     setVideoOpen(true);
-    setTimeout(() => {
-      videoSectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }, 100);
   };
 
   const closeVideo = () => {
     pauseVideo();
     setVideoOpen(false);
+  };
+
+  const scrollToVideo = () => {
+    const navbar = document.querySelector('nav');
+    const navbarHeight = navbar ? navbar.getBoundingClientRect().height : 80;
+    const el = videoWrapperRef.current;
+    if (el) {
+      const y = el.getBoundingClientRect().top + window.scrollY - navbarHeight - 12;
+      window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' });
+    }
   };
 
   useEffect(() => {
