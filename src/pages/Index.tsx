@@ -369,7 +369,7 @@ const Index = () => {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: '-60px' }}
-              className="grid md:grid-cols-2 gap-6 mb-16">
+              className="grid md:grid-cols-2 gap-6 mb-8">
               
               {[
               {
