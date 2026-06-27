@@ -6,6 +6,26 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import heroBg from '@/assets/hero-bg.jpg';
 
+/* ─── YouTube IFrame API types ─── */
+interface YTPlayer {
+  playVideo: () => void;
+  pauseVideo: () => void;
+  setPlaybackQuality: (quality: string) => void;
+  destroy: () => void;
+}
+interface WindowWithYT extends Window {
+  YT?: {
+    Player: new (el: string | HTMLElement, opts?: {
+      events?: {
+        onReady?: (e: { target: YTPlayer }) => void;
+        onStateChange?: (e: { data: number; target: YTPlayer }) => void;
+      };
+    }) => YTPlayer;
+    PlayerState?: { PLAYING: number };
+  };
+  onYouTubeIframeAPIReady?: () => void;
+}
+
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
   visible: (i: number = 0) => ({
@@ -45,13 +65,18 @@ const Index = () => {
   const videoWrapperRef = useRef<HTMLDivElement>(null);
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const prevScrollY = useRef(0);
+  const playerRef = useRef<YTPlayer | null>(null);
   const [videoOpen, setVideoOpen] = useState(false);
 
   const pauseVideo = () => {
-    iframeRef.current?.contentWindow?.postMessage(
-      '{"event":"command","func":"pauseVideo","args":""}',
-      '*'
-    );
+    if (playerRef.current?.pauseVideo) {
+      playerRef.current.pauseVideo();
+    } else {
+      iframeRef.current?.contentWindow?.postMessage(
+        '{"event":"command","func":"pauseVideo","args":""}',
+        '*'
+      );
+    }
   };
 
   const openVideo = () => {
@@ -80,6 +105,42 @@ const Index = () => {
 
   useEffect(() => {
     if (!videoOpen) return;
+
+    const win = window as unknown as WindowWithYT;
+
+    const createPlayer = () => {
+      const iframe = iframeRef.current;
+      if (!iframe || !win.YT?.Player) return;
+      playerRef.current = new win.YT.Player(iframe, {
+        events: {
+          onReady: (e) => {
+            e.target.setPlaybackQuality('hd1440');
+          },
+          onStateChange: (e) => {
+            if (e.data === win.YT?.PlayerState?.PLAYING) {
+              e.target.setPlaybackQuality('hd1440');
+            }
+          },
+        },
+      });
+    };
+
+    if (win.YT?.Player) {
+      createPlayer();
+    } else {
+      if (!document.querySelector('script[src="https://www.youtube.com/iframe_api"]')) {
+        const tag = document.createElement('script');
+        tag.src = 'https://www.youtube.com/iframe_api';
+        const firstScript = document.getElementsByTagName('script')[0];
+        firstScript.parentNode?.insertBefore(tag, firstScript);
+      }
+      const original = win.onYouTubeIframeAPIReady;
+      win.onYouTubeIframeAPIReady = () => {
+        createPlayer();
+        if (original) original();
+      };
+    }
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (!entry.isIntersecting) pauseVideo();
@@ -87,7 +148,12 @@ const Index = () => {
       { threshold: 0.4 }
     );
     if (videoSectionRef.current) observer.observe(videoSectionRef.current);
-    return () => observer.disconnect();
+
+    return () => {
+      observer.disconnect();
+      playerRef.current?.destroy?.();
+      playerRef.current = null;
+    };
   }, [videoOpen]);
 
   const { scrollYProgress } = useScroll({
