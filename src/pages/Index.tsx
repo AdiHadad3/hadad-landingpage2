@@ -340,7 +340,7 @@ const Index = () => {
         
 
         {/* Innovation */}
-        <section className="py-24 md:py-32 px-6 bg-background" aria-labelledby="innovation-heading">
+        <section className="pt-24 md:pt-32 pb-8 md:pb-12 px-6 bg-background" aria-labelledby="innovation-heading">
           <div className="max-w-5xl mx-auto">
             <motion.div
               variants={staggerContainer}
@@ -399,7 +399,7 @@ const Index = () => {
         </section>
 
         {/* KPI Stats */}
-        <section className="py-20 px-6 bg-card" aria-labelledby="kpi-heading">
+        <section className="pt-6 pb-20 px-6 bg-card" aria-labelledby="kpi-heading">
           <div className="max-w-5xl mx-auto">
             <motion.div
               variants={staggerContainer}
