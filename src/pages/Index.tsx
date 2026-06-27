@@ -360,7 +360,7 @@ const Index = () => {
                 <span className="italic text-primary">Grower</span>
               </motion.h2>
               <motion.p variants={fadeUp} custom={1} className="font-sans text-base md:text-lg text-muted-foreground leading-relaxed font-light max-w-2xl mx-auto">
-                At HADAD, we've reimagined gypsophila cultivation from the ground up. Proprietary growing methods, advanced post-harvest technology, and a relentless pursuit of perfection - resulting in blooms with significantly longer shelf life and unmatched vibrancy.
+                At HADAD, we combine proprietary growing methods with advanced post-harvest technology to produce the highest-quality gypsophila with vibrant color and extended shelf life.
               </motion.p>
             </motion.div>
 
