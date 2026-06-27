@@ -31,7 +31,7 @@ const Contact = () => {
               initial="hidden"
               animate="visible"
               className="font-sans text-base text-muted-foreground font-light mb-12">
-              We'd love to hear from you. Whether you have a question about our flowers, pricing, or anything else — our team is ready to help.
+              We'd love to hear from you. Whether you have a question about our flowers, pricing, or anything else - our team is ready to help.
             </motion.p>
 
             <motion.a
