@@ -237,7 +237,7 @@ const Index = () => {
               onAnimationComplete={scrollToVideo}
               className="overflow-hidden bg-background"
               aria-label="Video section">
-              <div className="max-w-4xl mx-auto px-6 py-10 relative">
+              <div className="max-w-6xl mx-auto px-6 py-10 relative">
                 <button
                   type="button"
                   onClick={closeVideo}
@@ -249,7 +249,7 @@ const Index = () => {
                   <iframe
                     ref={iframeRef}
                     className="absolute inset-0 w-full h-full"
-                    src="https://www.youtube.com/embed/A-rNncZ5sSk?enablejsapi=1&rel=0"
+                    src="https://www.youtube.com/embed/A-rNncZ5sSk?enablejsapi=1&rel=0&vq=hd1080"
                     title="HADAD video"
                     frameBorder={0}
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
