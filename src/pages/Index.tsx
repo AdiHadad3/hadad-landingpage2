@@ -147,17 +147,17 @@ const Index = () => {
           <div className="max-w-3xl mx-auto text-center">
             <motion.div variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-50px' }}>
               <motion.h2 id="intro-heading" variants={fadeUp} className="font-serif text-3xl md:text-5xl text-foreground mb-8">
-                Born White,{' '}
+                Grown with Love,<br />
                 <motion.span
                   className="italic text-primary inline-block"
                   whileInView={{ rotate: [0, -2, 2, 0], scale: [1, 1.05, 1] }}
                   transition={{ duration: 0.8, delay: 0.8 }}
                   viewport={{ once: true }}>
-                  Made Vivid
+                  Delivered with Care
                 </motion.span>
               </motion.h2>
               <motion.p variants={fadeUp} custom={1} className="font-sans text-base md:text-lg text-muted-foreground leading-relaxed font-light">
-                For over three decades, we have grown gypsophila at HADAD with care and precision. From our village farm, each bloom begins pure and delicate — ready to transform into vibrant colors crafted for floral markets around the world.
+                For over three decades, we have grown gypsophila at HADAD with care and precision. From our village farm, each bloom begins pure and delicate - ready to transform into vibrant colors crafted for floral markets around the world.
               </motion.p>
             </motion.div>
           </div>
