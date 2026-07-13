@@ -175,12 +175,12 @@ const Gallery = () => {
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.8, opacity: 0, y: 30 }}
               transition={{ type: 'spring', stiffness: 300, damping: 25 }}
-              className="relative bg-background rounded-3xl p-4 md:p-6 max-w-lg w-full shadow-2xl"
+              className="relative bg-background rounded-3xl pt-2 px-4 pb-4 md:pt-3 md:px-6 md:pb-6 max-w-lg w-full shadow-2xl"
               onClick={(e) => e.stopPropagation()}
             >
               <button
                 onClick={() => setSelected(null)}
-                className="absolute top-4 right-4 text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
+                className="absolute top-2 right-4 md:top-3 md:right-6 text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
                 aria-label="Close"
               >
                 <X size={24} />
