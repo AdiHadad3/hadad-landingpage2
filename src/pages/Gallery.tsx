@@ -193,7 +193,9 @@ const Gallery = () => {
                     alt={`${petals[selected].name} gypsophila bouquet`}
                     className={`max-w-full object-contain pointer-events-none ${
                       petals[selected].name === 'White'
-                        ? 'max-h-[115%] -translate-y-6'
+                        ? 'max-h-[115%] -translate-y-10'
+                        : petals[selected].name === 'Pink'
+                        ? 'max-h-[110%] translate-y-5'
                         : petals[selected].name === 'Orange' || petals[selected].name === 'Light Blue'
                         ? 'max-h-full p-6'
                         : 'max-h-[110%]'
