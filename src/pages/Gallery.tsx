@@ -191,7 +191,7 @@ const Gallery = () => {
                   <img
                     src={petals[selected].bouquet}
                     alt={`${petals[selected].name} gypsophila bouquet`}
-                    className={`max-w-full object-contain ${
+                    className={`max-w-full object-contain pointer-events-none ${
                       petals[selected].name === 'White'
                         ? 'max-h-[115%] -translate-y-6'
                         : petals[selected].name === 'Orange' || petals[selected].name === 'Light Blue'
