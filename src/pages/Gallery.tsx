@@ -90,7 +90,7 @@ const Gallery = () => {
                     aria-label={`View ${p.name} bouquet`}
                   >
                     <motion.div
-                      className="w-full aspect-square flex items-center justify-center"
+                      className="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 flex items-center justify-center"
                       whileHover={{ scale: 1.08, rotate: 4 }}
                       whileTap={{ scale: 0.95 }}
                       transition={{ type: 'spring', stiffness: 300, damping: 15 }}
