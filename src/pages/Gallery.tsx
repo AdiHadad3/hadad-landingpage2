@@ -77,7 +77,7 @@ const Gallery = () => {
               <p className="font-sans text-lg text-muted-foreground font-light max-w-xl mx-auto">
                 Available in any color of your choice — here are some of our popular options
               </p>
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6 mt-10 max-w-4xl mx-auto">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mt-10 max-w-4xl mx-auto">
                 {petals.map((p, i) => (
                   <motion.button
                     key={p.name}
@@ -191,7 +191,7 @@ const Gallery = () => {
                   <img
                     src={petals[selected].bouquet}
                     alt={`${petals[selected].name} gypsophila bouquet`}
-                    className={`max-w-full object-contain ${
+                    className={`max-w-full object-contain pointer-events-none ${
                       petals[selected].name === 'White'
                         ? 'max-h-[115%] -translate-y-6'
                         : petals[selected].name === 'Orange' || petals[selected].name === 'Light Blue'
