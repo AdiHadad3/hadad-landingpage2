@@ -16,7 +16,7 @@ import redPetal from '@/assets/red.png.asset.json';
 import pinkPetal from '@/assets/pink.png.asset.json';
 import lightPinkPetal from '@/assets/light_pink.png.asset.json';
 import orangePetal from '@/assets/orange.png.asset.json';
-import turquoisePetal from '@/assets/turquoise.jpeg.asset.json';
+import turquoisePetal from '@/assets/turquoise-clean.png';
 import greenPetal from '@/assets/green.png.asset.json';
 
 import yellowBouquet from '@/assets/yellow_2.png.asset.json';
@@ -41,7 +41,7 @@ const petals = [
   { name: 'Light Purple', petal: lightPurplePetal.url, bouquet: lightPurpleBouquet.url },
   { name: 'Blue', petal: bluePetal.url, bouquet: blueBouquet.url },
   { name: 'Light Blue', petal: lightBluePetal.url, bouquet: lightPurpleBouquet.url },
-  { name: 'Turquoise', petal: turquoisePetal.url, bouquet: turquoiseBouquet.url },
+  { name: 'Turquoise', petal: turquoisePetal, bouquet: turquoiseBouquet.url },
   { name: 'Green', petal: greenPetal.url, bouquet: greenBouquet.url },
 ];
 
@@ -175,7 +175,7 @@ const Gallery = () => {
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.8, opacity: 0, y: 30 }}
               transition={{ type: 'spring', stiffness: 300, damping: 25 }}
-              className="relative bg-background rounded-3xl p-6 md:p-8 max-w-lg w-full shadow-2xl"
+              className="relative bg-background rounded-3xl p-6 md:p-8 max-w-3xl w-full shadow-2xl"
               onClick={(e) => e.stopPropagation()}
             >
               <button
@@ -189,7 +189,7 @@ const Gallery = () => {
                 <img
                   src={petals[selected].bouquet}
                   alt={`${petals[selected].name} gypsophila bouquet`}
-                  className="w-full max-h-[50vh] object-contain mb-6"
+                  className="w-full max-h-[80vh] object-contain mb-6"
                 />
                 <h3 className="font-serif text-2xl text-foreground mb-2">{petals[selected].name}</h3>
                 <p className="font-sans text-sm text-muted-foreground text-center">
