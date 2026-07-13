@@ -90,7 +90,7 @@ const Gallery = () => {
                     aria-label={`View ${p.name} bouquet`}
                   >
                     <motion.div
-                      className="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 flex items-center justify-center"
+                      className="w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 flex items-center justify-center"
                       whileHover={{ scale: 1.08, rotate: 4 }}
                       whileTap={{ scale: 0.95 }}
                       transition={{ type: 'spring', stiffness: 300, damping: 15 }}
@@ -98,7 +98,7 @@ const Gallery = () => {
                       <img
                         src={p.petal}
                         alt={`${p.name} gypsophila petal`}
-                        className="w-full h-full object-contain drop-shadow-md"
+                        className="w-full h-full object-cover drop-shadow-md"
                       />
                     </motion.div>
                     <span className="font-sans text-sm text-muted-foreground group-hover:text-foreground transition-colors">
