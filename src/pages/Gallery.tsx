@@ -32,14 +32,14 @@ import lightPinkBouquet from '@/assets/light_pink_2.png.asset.json';
 const petals = [
   { name: 'White', petal: petalWhite, bouquet: whiteBouquet.url },
   { name: 'Yellow', petal: petalYellow, bouquet: yellowBouquet.url },
-  { name: 'Orange', petal: petalOrange, bouquet: yellowBouquet.url },
+  { name: 'Orange', petal: petalOrange, disabled: true },
   { name: 'Pink', petal: petalPink, bouquet: pinkBouquet.url },
   { name: 'Light Pink', petal: petalLightPink, bouquet: lightPinkBouquet.url },
   { name: 'Red', petal: petalRed, bouquet: redBouquet.url },
   { name: 'Purple', petal: petalPurple, bouquet: purpleBouquet.url },
   { name: 'Light Purple', petal: petalLightPurple, bouquet: lightPurpleBouquet.url },
   { name: 'Blue', petal: petalBlue, bouquet: blueBouquet.url },
-  { name: 'Light Blue', petal: petalLightBlue, bouquet: lightPurpleBouquet.url },
+  { name: 'Light Blue', petal: petalLightBlue, disabled: true },
   { name: 'Turquoise', petal: petalTurquoise, bouquet: turquoiseBouquet.url },
   { name: 'Green', petal: petalGreen, bouquet: greenBouquet.url },
 ];
