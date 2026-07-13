@@ -45,6 +45,12 @@ const petals = [
   { name: 'Green', petal: greenPetal.url, bouquet: greenBouquet.url },
 ];
 
+const petalScale: Record<string, string> = {
+  White: 'scale-[0.56]',
+  Purple: 'scale-[0.56]',
+  Turquoise: 'scale-[0.46]',
+};
+
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
   visible: (i: number = 0) => ({
@@ -98,9 +104,7 @@ const Gallery = () => {
                       <img
                         src={p.petal}
                         alt={`${p.name} gypsophila petal`}
-                        className={`w-full h-full object-cover drop-shadow-md ${
-                          ['White', 'Purple', 'Turquoise'].includes(p.name) ? 'scale-[0.93]' : ''
-                        }`}
+                        className={`w-full h-full object-cover drop-shadow-md ${petalScale[p.name] ?? ''}`}
                       />
                     </motion.div>
                     <span className="font-sans text-sm text-muted-foreground group-hover:text-foreground transition-colors">
