@@ -192,8 +192,12 @@ const Gallery = () => {
                     src={petals[selected].bouquet}
                     alt={`${petals[selected].name} gypsophila bouquet`}
                     className={`max-w-full object-contain ${
-                      petals[selected].name === 'White' ? 'max-h-[110%]' : 'max-h-full'
-                    } ${petals[selected].name === 'Orange' || petals[selected].name === 'Light Blue' ? 'p-6' : ''}`}
+                      petals[selected].name === 'White'
+                        ? 'max-h-[115%] -translate-y-6'
+                        : petals[selected].name === 'Orange' || petals[selected].name === 'Light Blue'
+                        ? 'max-h-full p-6'
+                        : 'max-h-[110%]'
+                    }`}
                   />
                 </div>
                 <h3 className="font-serif text-2xl text-foreground mb-2">{petals[selected].name}</h3>
