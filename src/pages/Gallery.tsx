@@ -28,18 +28,20 @@ import whiteBouquet from '@/assets/white_2.png.asset.json';
 import blueBouquet from '@/assets/blue_2.png.asset.json';
 import greenBouquet from '@/assets/green_2.png.asset.json';
 import lightPinkBouquet from '@/assets/light_pink_2.png.asset.json';
+import orangeBouquet from '@/assets/orange_2.png.asset.json';
+import lightBlueBouquet from '@/assets/light_blue_2.png.asset.json';
 
 const petals = [
   { name: 'White', petal: petalWhite, bouquet: whiteBouquet.url },
   { name: 'Yellow', petal: petalYellow, bouquet: yellowBouquet.url },
-  { name: 'Orange', petal: petalOrange, disabled: true },
+  { name: 'Orange', petal: petalOrange, bouquet: orangeBouquet.url },
   { name: 'Pink', petal: petalPink, bouquet: pinkBouquet.url },
   { name: 'Light Pink', petal: petalLightPink, bouquet: lightPinkBouquet.url },
   { name: 'Red', petal: petalRed, bouquet: redBouquet.url },
   { name: 'Purple', petal: petalPurple, bouquet: purpleBouquet.url },
   { name: 'Light Purple', petal: petalLightPurple, bouquet: lightPurpleBouquet.url },
   { name: 'Blue', petal: petalBlue, bouquet: blueBouquet.url },
-  { name: 'Light Blue', petal: petalLightBlue, disabled: true },
+  { name: 'Light Blue', petal: petalLightBlue, bouquet: lightBlueBouquet.url },
   { name: 'Turquoise', petal: petalTurquoise, bouquet: turquoiseBouquet.url },
   { name: 'Green', petal: petalGreen, bouquet: greenBouquet.url },
 ];
@@ -84,15 +86,14 @@ const Gallery = () => {
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true }}
-                    onClick={p.disabled ? undefined : () => setSelected(i)}
-                    className={`group flex flex-col items-center gap-2 bg-transparent border-none outline-none ${p.disabled ? 'cursor-default' : 'cursor-pointer'}`}
-                    aria-label={p.disabled ? p.name : `View ${p.name} bouquet`}
-                    aria-disabled={p.disabled}
+                    onClick={() => setSelected(i)}
+                    className="group flex flex-col items-center gap-2 bg-transparent border-none outline-none cursor-pointer"
+                    aria-label={`View ${p.name} bouquet`}
                   >
                     <motion.div
                       className="w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 flex items-center justify-center"
-                      whileHover={p.disabled ? undefined : { scale: 1.08, rotate: 4 }}
-                      whileTap={p.disabled ? undefined : { scale: 0.95 }}
+                      whileHover={{ scale: 1.08, rotate: 4 }}
+                      whileTap={{ scale: 0.95 }}
                       transition={{ type: 'spring', stiffness: 300, damping: 15 }}
                     >
                       <img
@@ -101,7 +102,7 @@ const Gallery = () => {
                         className="w-full h-full object-contain drop-shadow-md"
                       />
                     </motion.div>
-                    <span className={`font-sans text-sm transition-colors ${p.disabled ? 'text-muted-foreground/60' : 'text-muted-foreground group-hover:text-foreground'}`}>
+                    <span className="font-sans text-sm transition-colors text-muted-foreground group-hover:text-foreground">
                       {p.name}
                     </span>
                   </motion.button>
