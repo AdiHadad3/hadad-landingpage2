@@ -28,18 +28,20 @@ import whiteBouquet from '@/assets/white_2.png.asset.json';
 import blueBouquet from '@/assets/blue_2.png.asset.json';
 import greenBouquet from '@/assets/green_2.png.asset.json';
 import lightPinkBouquet from '@/assets/light_pink_2.png.asset.json';
+import orangeBouquet from '@/assets/orange_2.png.asset.json';
+import lightBlueBouquet from '@/assets/light_blue_2.png.asset.json';
 
 const petals = [
   { name: 'White', petal: petalWhite, bouquet: whiteBouquet.url },
   { name: 'Yellow', petal: petalYellow, bouquet: yellowBouquet.url },
-  { name: 'Orange', petal: petalOrange, disabled: true },
+  { name: 'Orange', petal: petalOrange, bouquet: orangeBouquet.url },
   { name: 'Pink', petal: petalPink, bouquet: pinkBouquet.url },
   { name: 'Light Pink', petal: petalLightPink, bouquet: lightPinkBouquet.url },
   { name: 'Red', petal: petalRed, bouquet: redBouquet.url },
   { name: 'Purple', petal: petalPurple, bouquet: purpleBouquet.url },
   { name: 'Light Purple', petal: petalLightPurple, bouquet: lightPurpleBouquet.url },
   { name: 'Blue', petal: petalBlue, bouquet: blueBouquet.url },
-  { name: 'Light Blue', petal: petalLightBlue, disabled: true },
+  { name: 'Light Blue', petal: petalLightBlue, bouquet: lightBlueBouquet.url },
   { name: 'Turquoise', petal: petalTurquoise, bouquet: turquoiseBouquet.url },
   { name: 'Green', petal: petalGreen, bouquet: greenBouquet.url },
 ];
