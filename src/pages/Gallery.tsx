@@ -5,19 +5,18 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import eventShowcase from '@/assets/event-showcase.jpeg';
 
-import petalWhite from '@/assets/petal-white.png';
-import petalPurple from '@/assets/petal-purple.png';
-
-import yellowPetal from '@/assets/yellow.png.asset.json';
-import bluePetal from '@/assets/blue.png.asset.json';
-import lightBluePetal from '@/assets/light_blue.png.asset.json';
-import lightPurplePetal from '@/assets/light_purple.png.asset.json';
-import redPetal from '@/assets/red.png.asset.json';
-import pinkPetal from '@/assets/pink.png.asset.json';
-import lightPinkPetal from '@/assets/light_pink.png.asset.json';
-import orangePetal from '@/assets/orange.png.asset.json';
-import turquoisePetal from '@/assets/turquoise-clean.png';
-import greenPetal from '@/assets/green.png.asset.json';
+import petalWhite from '@/assets/petals-normalized/white.png';
+import petalYellow from '@/assets/petals-normalized/yellow.png';
+import petalOrange from '@/assets/petals-normalized/orange.png';
+import petalPink from '@/assets/petals-normalized/pink.png';
+import petalLightPink from '@/assets/petals-normalized/light-pink.png';
+import petalRed from '@/assets/petals-normalized/red.png';
+import petalPurple from '@/assets/petals-normalized/purple.png';
+import petalLightPurple from '@/assets/petals-normalized/light-purple.png';
+import petalBlue from '@/assets/petals-normalized/blue.png';
+import petalLightBlue from '@/assets/petals-normalized/light-blue.png';
+import petalTurquoise from '@/assets/petals-normalized/turquoise.png';
+import petalGreen from '@/assets/petals-normalized/green.png';
 
 import yellowBouquet from '@/assets/yellow_2.png.asset.json';
 import purpleBouquet from '@/assets/purple_2.png.asset.json';
@@ -32,24 +31,18 @@ import lightPinkBouquet from '@/assets/light_pink_2.png.asset.json';
 
 const petals = [
   { name: 'White', petal: petalWhite, bouquet: whiteBouquet.url },
-  { name: 'Yellow', petal: yellowPetal.url, bouquet: yellowBouquet.url },
-  { name: 'Orange', petal: orangePetal.url, bouquet: yellowBouquet.url },
-  { name: 'Pink', petal: pinkPetal.url, bouquet: pinkBouquet.url },
-  { name: 'Light Pink', petal: lightPinkPetal.url, bouquet: lightPinkBouquet.url },
-  { name: 'Red', petal: redPetal.url, bouquet: redBouquet.url },
+  { name: 'Yellow', petal: petalYellow, bouquet: yellowBouquet.url },
+  { name: 'Orange', petal: petalOrange, bouquet: yellowBouquet.url },
+  { name: 'Pink', petal: petalPink, bouquet: pinkBouquet.url },
+  { name: 'Light Pink', petal: petalLightPink, bouquet: lightPinkBouquet.url },
+  { name: 'Red', petal: petalRed, bouquet: redBouquet.url },
   { name: 'Purple', petal: petalPurple, bouquet: purpleBouquet.url },
-  { name: 'Light Purple', petal: lightPurplePetal.url, bouquet: lightPurpleBouquet.url },
-  { name: 'Blue', petal: bluePetal.url, bouquet: blueBouquet.url },
-  { name: 'Light Blue', petal: lightBluePetal.url, bouquet: lightPurpleBouquet.url },
-  { name: 'Turquoise', petal: turquoisePetal, bouquet: turquoiseBouquet.url },
-  { name: 'Green', petal: greenPetal.url, bouquet: greenBouquet.url },
+  { name: 'Light Purple', petal: petalLightPurple, bouquet: lightPurpleBouquet.url },
+  { name: 'Blue', petal: petalBlue, bouquet: blueBouquet.url },
+  { name: 'Light Blue', petal: petalLightBlue, bouquet: lightPurpleBouquet.url },
+  { name: 'Turquoise', petal: petalTurquoise, bouquet: turquoiseBouquet.url },
+  { name: 'Green', petal: petalGreen, bouquet: greenBouquet.url },
 ];
-
-const petalScale: Record<string, string> = {
-  White: 'scale-[0.56]',
-  Purple: 'scale-[0.56]',
-  Turquoise: 'scale-[0.46]',
-};
 
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
@@ -104,7 +97,7 @@ const Gallery = () => {
                       <img
                         src={p.petal}
                         alt={`${p.name} gypsophila petal`}
-                        className={`w-full h-full object-cover drop-shadow-md ${petalScale[p.name] ?? ''}`}
+                        className="w-full h-full object-contain drop-shadow-md"
                       />
                     </motion.div>
                     <span className="font-sans text-sm text-muted-foreground group-hover:text-foreground transition-colors">
