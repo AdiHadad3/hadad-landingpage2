@@ -5,24 +5,39 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import eventShowcase from '@/assets/event-showcase.jpeg';
 
-import petalLightPink from '@/assets/petal-light-pink.png';
-import petalDarkPink from '@/assets/petal-dark-pink.png';
 import petalWhite from '@/assets/petal-white.png';
 import petalPurple from '@/assets/petal-purple.png';
-import petalOrange from '@/assets/petal-orange.png';
 
-import bouquetWhite from '@/assets/bouquet-white.png';
-import bouquetPink from '@/assets/bouquet-pink.png';
-import bouquetPurple from '@/assets/bouquet-purple.png';
-import bouquetYellow from '@/assets/bouquet-yellow.png';
-import bouquetBlue from '@/assets/bouquet-blue.png';
+import yellowPetal from '@/assets/yellow.png.asset.json';
+import bluePetal from '@/assets/blue.png.asset.json';
+import lightBluePetal from '@/assets/light_blue.png.asset.json';
+import lightPurplePetal from '@/assets/light_purple.png.asset.json';
+import redPetal from '@/assets/red.png.asset.json';
+import pinkPetal from '@/assets/pink.png.asset.json';
+import lightPinkPetal from '@/assets/light_pink.png.asset.json';
+import orangePetal from '@/assets/orange.png.asset.json';
+import turquoisePetal from '@/assets/turquoise.jpeg.asset.json';
+
+import yellowBouquet from '@/assets/yellow_2.png.asset.json';
+import purpleBouquet from '@/assets/purple_2.png.asset.json';
+import lightPurpleBouquet from '@/assets/light_purple_2.png.asset.json';
+import redBouquet from '@/assets/red_2.png.asset.json';
+import pinkBouquet from '@/assets/pink_2.png.asset.json';
+import turquoiseBouquet from '@/assets/turquoise_2.png.asset.json';
+import whiteBouquet from '@/assets/white_2.png.asset.json';
 
 const petals = [
-  { name: 'White', petal: petalWhite, bouquet: bouquetWhite },
-  { name: 'Pink', petal: petalLightPink, bouquet: bouquetPink },
-  { name: 'Light Pink', petal: petalDarkPink, bouquet: bouquetPink },
-  { name: 'Orange', petal: petalOrange, bouquet: bouquetYellow },
-  { name: 'Purple', petal: petalPurple, bouquet: bouquetPurple },
+  { name: 'White', petal: petalWhite, bouquet: whiteBouquet.url },
+  { name: 'Yellow', petal: yellowPetal.url, bouquet: yellowBouquet.url },
+  { name: 'Orange', petal: orangePetal.url, bouquet: yellowBouquet.url },
+  { name: 'Pink', petal: pinkPetal.url, bouquet: pinkBouquet.url },
+  { name: 'Light Pink', petal: lightPinkPetal.url, bouquet: pinkBouquet.url },
+  { name: 'Red', petal: redPetal.url, bouquet: redBouquet.url },
+  { name: 'Purple', petal: petalPurple, bouquet: purpleBouquet.url },
+  { name: 'Light Purple', petal: lightPurplePetal.url, bouquet: lightPurpleBouquet.url },
+  { name: 'Blue', petal: bluePetal.url, bouquet: purpleBouquet.url },
+  { name: 'Light Blue', petal: lightBluePetal.url, bouquet: lightPurpleBouquet.url },
+  { name: 'Turquoise', petal: turquoisePetal.url, bouquet: turquoiseBouquet.url },
 ];
 
 const fadeUp = {
@@ -56,7 +71,7 @@ const Gallery = () => {
               <p className="font-sans text-lg text-muted-foreground font-light max-w-xl mx-auto">
                 Available in any color of your choice — here are some of our popular options
               </p>
-              <div className="grid grid-cols-2 md:grid-cols-5 gap-4 md:gap-6 mt-10 max-w-4xl mx-auto">
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6 mt-10 max-w-4xl mx-auto">
                 {petals.map((p, i) => (
                   <motion.button
                     key={p.name}
@@ -65,7 +80,7 @@ const Gallery = () => {
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true }}
-                    // onClick={() => setSelected(i)}
+                    onClick={() => setSelected(i)}
                     className="group flex flex-col items-center gap-2 cursor-pointer bg-transparent border-none outline-none"
                     aria-label={`View ${p.name} bouquet`}
                   >
