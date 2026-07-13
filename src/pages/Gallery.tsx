@@ -98,7 +98,9 @@ const Gallery = () => {
                       <img
                         src={p.petal}
                         alt={`${p.name} gypsophila petal`}
-                        className="w-full h-full object-cover drop-shadow-md"
+                        className={`w-full h-full object-cover drop-shadow-md ${
+                          ['White', 'Purple', 'Turquoise'].includes(p.name) ? 'scale-[0.93]' : ''
+                        }`}
                       />
                     </motion.div>
                     <span className="font-sans text-sm text-muted-foreground group-hover:text-foreground transition-colors">
