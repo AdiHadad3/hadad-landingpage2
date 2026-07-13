@@ -90,7 +90,7 @@ const Gallery = () => {
                     aria-label={`View ${p.name} bouquet`}
                   >
                     <motion.div
-                      className="w-full aspect-square flex items-center justify-center"
+                      className="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 flex items-center justify-center"
                       whileHover={{ scale: 1.08, rotate: 4 }}
                       whileTap={{ scale: 0.95 }}
                       transition={{ type: 'spring', stiffness: 300, damping: 15 }}
@@ -175,7 +175,7 @@ const Gallery = () => {
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.8, opacity: 0, y: 30 }}
               transition={{ type: 'spring', stiffness: 300, damping: 25 }}
-              className="relative bg-background rounded-3xl p-6 md:p-8 max-w-3xl w-full shadow-2xl"
+              className="relative bg-background rounded-3xl p-4 md:p-6 max-w-lg w-full shadow-2xl"
               onClick={(e) => e.stopPropagation()}
             >
               <button
@@ -189,7 +189,7 @@ const Gallery = () => {
                 <img
                   src={petals[selected].bouquet}
                   alt={`${petals[selected].name} gypsophila bouquet`}
-                  className="w-full max-h-[80vh] object-contain mb-6"
+                  className="w-full max-h-[70vh] object-contain mb-4"
                 />
                 <h3 className="font-serif text-2xl text-foreground mb-2">{petals[selected].name}</h3>
                 <p className="font-sans text-sm text-muted-foreground text-center">
