@@ -245,6 +245,10 @@ const he: Dict = {
     instaAria: 'עקבו אחרינו באינסטגרם',
     company: 'חדד בע"מ.',
   },
+  notFound: {
+    message: 'אופס! העמוד לא נמצא',
+    returnHome: 'חזרה לדף הבית',
+  },
   a11y: {
     openMenu: 'פתח תפריט נגישות',
     closeMenu: 'סגור תפריט נגישות',
