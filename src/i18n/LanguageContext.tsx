@@ -49,7 +49,6 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
     const detectCountry = async () => {
       try {
         const { data, error } = await supabase.functions.invoke('detect-country');
-        console.log('[detect-country] response:', { data, error });
         if (cancelled) return;
         if (error || !data || typeof data.country !== 'string') return;
 
@@ -59,8 +58,8 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
 
         window.localStorage.setItem(DETECTED_KEY, 'true');
         setDetected(true);
-      } catch (err) {
-        console.error('[detect-country] error:', err);
+      } catch {
+        // Silent fallback to English
       }
     };
 
