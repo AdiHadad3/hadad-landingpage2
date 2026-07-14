@@ -2,6 +2,7 @@ import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion'
 import { ArrowRight, Instagram, Play, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useRef, useState, useEffect } from 'react';
+import { useLang } from '@/i18n/LanguageContext';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import heroBg from '@/assets/hero-bg.jpg';
@@ -60,6 +61,7 @@ const staggerContainer = {
 };
 
 const Index = () => {
+  const { t } = useLang();
   const heroRef = useRef<HTMLDivElement>(null);
   const videoSectionRef = useRef<HTMLDivElement>(null);
   const videoWrapperRef = useRef<HTMLDivElement>(null);
@@ -214,7 +216,7 @@ const Index = () => {
               animate={{ opacity: 1, letterSpacing: '0.3em' }}
               transition={{ duration: 1.2 }}
               className="font-sans text-xs md:text-sm uppercase text-white/70 mb-6">
-              Since 1992
+              {t.home.since}
             </motion.p>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -225,8 +227,8 @@ const Index = () => {
               <Link
                 to="/gallery"
                 className="group inline-flex items-center gap-2 font-sans text-sm text-white border border-white/40 px-8 py-3 rounded-full hover:bg-white hover:text-foreground transition-all duration-300">
-                Explore Our Blooms
-                <ArrowRight size={16} className="transition-transform duration-300 group-hover:translate-x-1" />
+                {t.home.cta}
+                <ArrowRight size={16} className="transition-transform duration-300 group-hover:translate-x-1 rtl:rotate-180" />
               </Link>
             </motion.div>
           </motion.div>
@@ -265,25 +267,25 @@ const Index = () => {
           <div className="max-w-3xl mx-auto text-center">
             <motion.div variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-50px' }}>
               <motion.h2 id="intro-heading" variants={fadeUp} className="font-serif text-3xl md:text-5xl text-foreground mb-8">
-                Grown with Love,<br />
+                {t.home.grownWithLove}<br />
                 <motion.span
                   className="italic text-primary inline-block"
                   whileInView={{ rotate: [0, -2, 2, 0], scale: [1, 1.05, 1] }}
                   transition={{ duration: 0.8, delay: 0.8 }}
                   viewport={{ once: true }}>
-                  Delivered with Care
+                  {t.home.deliveredWithCare}
                 </motion.span>
               </motion.h2>
               <motion.p variants={fadeUp} custom={1} className="font-sans text-base md:text-lg text-muted-foreground leading-relaxed font-light">
-                For over 30 years, we have grown premium gypsophila with passion and precision, delivering exceptional quality to floral markets worldwide
+                {t.home.introBody}
               </motion.p>
               <motion.div variants={fadeUp} custom={2} className="mt-8">
                 <button
                   type="button"
                   onClick={openVideo}
                   className="group inline-flex items-center gap-2 font-sans text-sm text-foreground border border-foreground/30 px-8 py-3 rounded-full hover:bg-foreground hover:text-background transition-all duration-300">
-                  Watch Video
-                  <Play size={14} className="transition-transform duration-300 group-hover:translate-x-1" />
+                  {t.home.watchVideo}
+                  <Play size={14} className="transition-transform duration-300 group-hover:translate-x-1 rtl:rotate-180" />
                 </button>
               </motion.div>
             </motion.div>
@@ -350,17 +352,17 @@ const Index = () => {
               className="text-center mb-16">
               
               <motion.p variants={fadeUp} className="font-sans text-xs uppercase tracking-[0.3em] text-primary mb-4">
-                Innovation-Driven
+                {t.home.innovationKicker}
               </motion.p>
               <motion.h2
                 id="innovation-heading"
                 variants={fadeScale}
                 className="font-serif text-3xl md:text-5xl text-foreground mb-6">
-                Not Your Traditional{' '}
-                <span className="italic text-primary">Grower</span>
+                {t.home.innovationTitleA}{' '}
+                <span className="italic text-primary">{t.home.innovationTitleB}</span>
               </motion.h2>
               <motion.p variants={fadeUp} custom={1} className="font-sans text-base md:text-lg text-muted-foreground leading-relaxed font-light max-w-2xl mx-auto">
-                At HADAD, we combine proprietary growing methods with advanced post-harvest technology to produce the highest-quality gypsophila with vibrant color and extended shelf life, tailored to your preferred colors and bouquet styles.
+                {t.home.innovationBody}
               </motion.p>
             </motion.div>
 
@@ -373,12 +375,12 @@ const Index = () => {
               
               {[
               {
-                title: 'Excellence',
-                subtitle: 'Full, lush clusters with exceptional volume and presence.'
+                title: t.home.excellenceTitle,
+                subtitle: t.home.excellenceDesc
               },
               {
-                title: 'Mirabella',
-                subtitle: 'Delicate, airy blooms with an elegant, refined silhouette.'
+                title: t.home.mirabellaTitle,
+                subtitle: t.home.mirabellaDesc
               }].
               map((variety, i) =>
               <motion.div
@@ -409,9 +411,9 @@ const Index = () => {
               className="grid md:grid-cols-3 gap-8 text-center">
               
               {[
-              { value: '160', label: 'Dunams of Land' },
-              { value: '115,000', label: 'Stems per Dunam' },
-              { value: '18M', label: 'Stems Export Capacity / Year' }].
+              { value: '160', label: t.home.kpiLand },
+              { value: '115,000', label: t.home.kpiStems },
+              { value: '18M', label: t.home.kpiExport }].
               map((stat, i) =>
               <motion.div
                 key={i}

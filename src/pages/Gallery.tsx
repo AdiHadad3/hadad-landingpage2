@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Sparkles } from 'lucide-react';
+import { useLang } from '@/i18n/LanguageContext';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import eventShowcase from '@/assets/event-showcase.jpeg';
@@ -55,7 +56,11 @@ const fadeUp = {
 };
 
 const Gallery = () => {
+  const { t } = useLang();
   const [selected, setSelected] = useState<number | null>(null);
+
+  const colorLabel = (name: string) => t.gallery.colors[name] || name;
+
   return (
     <>
       <Navbar />
@@ -68,14 +73,14 @@ const Gallery = () => {
               animate="visible"
               className="text-center mb-16"
             >
-              <h1 className="font-serif text-4xl md:text-5xl text-foreground mb-4">Our Products</h1>
+              <h1 className="font-serif text-4xl md:text-5xl text-foreground mb-4">{t.gallery.title}</h1>
               <div className="flex items-center justify-center gap-3 mb-4">
                 <span className="h-px w-8 bg-primary/40" />
                 <Sparkles size={16} className="text-primary" />
                 <span className="h-px w-8 bg-primary/40" />
               </div>
               <p className="font-sans text-lg text-muted-foreground font-light max-w-xl mx-auto">
-                Available in any color of your choice — here are some of our popular options
+                {t.gallery.subtitle}
               </p>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mt-10 max-w-4xl mx-auto">
                 {petals.map((p, i) => (
@@ -88,7 +93,7 @@ const Gallery = () => {
                     viewport={{ once: true }}
                     onClick={() => setSelected(i)}
                     className="group flex flex-col items-center gap-2 bg-transparent border-none outline-none cursor-pointer"
-                    aria-label={`View ${p.name} bouquet`}
+                    aria-label={`${colorLabel(p.name)} ${t.gallery.title}`}
                   >
                     <motion.div
                       className="flex items-center justify-center w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36"
@@ -98,25 +103,25 @@ const Gallery = () => {
                     >
                       <img
                         src={p.petal}
-                        alt={`${p.name} gypsophila petal`}
+                        alt={`${colorLabel(p.name)} gypsophila petal`}
                         className={`w-full h-full object-contain drop-shadow-md ${
                           p.name === 'Green' ? 'scale-110' : ''
                         }`}
                       />
                     </motion.div>
                     <span className="font-sans text-sm transition-colors text-muted-foreground group-hover:text-foreground">
-                      {p.name}
+                      {colorLabel(p.name)}
                     </span>
                   </motion.button>
                 ))}
               </div>
-              <p className="font-sans text-xs text-muted-foreground/60 mt-6">Custom colors available upon request</p>
+              <p className="font-sans text-xs text-muted-foreground/60 mt-6">{t.gallery.custom}</p>
             </motion.div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
               {[
-                { name: 'Mirabella', description: 'A premium gypsophila variety known for its dense, full flower heads and exceptional vase life.' },
-                { name: 'Excellence', description: 'A top-tier gypsophila variety featuring large, elegant blooms with superior stem strength.' },
+                { name: t.gallery.mirabellaT, description: t.gallery.mirabellaD },
+                { name: t.gallery.excellenceT, description: t.gallery.excellenceD },
               ].map((product, i) => (
                 <motion.div
                   key={product.name}
@@ -143,14 +148,14 @@ const Gallery = () => {
               viewport={{ once: true }}
               className="mt-20"
             >
-              <h2 className="font-serif text-3xl md:text-4xl text-foreground text-center mb-3">Our Flowers in Action</h2>
+              <h2 className="font-serif text-3xl md:text-4xl text-foreground text-center mb-3">{t.gallery.eventTitle}</h2>
               <p className="font-sans text-muted-foreground text-center mb-8 max-w-lg mx-auto">
-                A stunning event decorated with our premium gypsophila
+                {t.gallery.eventSubtitle}
               </p>
               <div className="rounded-2xl overflow-hidden shadow-lg">
                 <img
                   src={eventShowcase}
-                  alt="Luxury event decorated with Hadad gypsophila flowers"
+                  alt={t.gallery.eventSubtitle}
                   className="w-full h-auto object-cover"
                 />
               </div>
@@ -170,7 +175,7 @@ const Gallery = () => {
             onClick={() => setSelected(null)}
             role="dialog"
             aria-modal="true"
-            aria-label={`${petals[selected].name} bouquet`}
+            aria-label={`${colorLabel(petals[selected].name)} ${t.gallery.title}`}
           >
             <motion.div
               key={selected}
@@ -183,8 +188,8 @@ const Gallery = () => {
             >
               <button
                 onClick={() => setSelected(null)}
-                className="absolute top-2 right-4 md:top-3 md:right-6 text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
-                aria-label="Close"
+                className="absolute top-2 end-4 md:top-3 md:end-6 text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
+                aria-label={t.gallery.close}
               >
                 <X size={24} />
               </button>
@@ -192,7 +197,7 @@ const Gallery = () => {
                 <div className="w-full h-[55vh] flex items-center justify-center mb-4">
                   <img
                     src={petals[selected].bouquet}
-                    alt={`${petals[selected].name} gypsophila bouquet`}
+                    alt={`${colorLabel(petals[selected].name)} gypsophila bouquet`}
                     className={`max-w-full object-contain pointer-events-none ${
                       petals[selected].name === 'White'
                         ? 'max-h-[115%] -translate-y-10'
@@ -204,9 +209,9 @@ const Gallery = () => {
                     }`}
                   />
                 </div>
-                <h3 className="font-serif text-2xl text-foreground mb-2">{petals[selected].name}</h3>
+                <h3 className="font-serif text-2xl text-foreground mb-2">{colorLabel(petals[selected].name)}</h3>
                 <p className="font-sans text-sm text-muted-foreground text-center">
-                  Premium gypsophila bouquet in {petals[selected].name.toLowerCase()}
+                  {t.gallery.bouquetDesc.replace('{{color}}', colorLabel(petals[selected].name).toLowerCase())}
                 </p>
               </div>
             </motion.div>

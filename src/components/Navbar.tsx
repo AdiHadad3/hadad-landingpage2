@@ -1,18 +1,20 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Mail, Instagram } from 'lucide-react';
+import { useLang } from '@/i18n/LanguageContext';
 import logoImg from '@/assets/hadad-logo-new.png';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
   const isHome = location.pathname === '/';
+  const { t, toggle, lang } = useLang();
 
   const navItems = [
-    { label: 'Home', path: '/' },
-    { label: 'About', path: '/about' },
-    { label: 'Our Products', path: '/gallery' },
-    { label: 'Contact', path: '/contact' },
+    { label: t.nav.home, path: '/' },
+    { label: t.nav.about, path: '/about' },
+    { label: t.nav.products, path: '/gallery' },
+    { label: t.nav.contact, path: '/contact' },
   ];
 
   const [pastHero, setPastHero] = useState(false);
@@ -71,7 +73,7 @@ const Navbar = () => {
           <div className="flex items-center gap-4 ms-6">
             <a
               href="mailto:hadadpetals@gmail.com"
-              aria-label="Email"
+              aria-label={t.nav.email}
               className={`transition-colors duration-200 ${transparent ? 'text-white/70 hover:text-white' : 'text-muted-foreground hover:text-foreground'}`}
             >
               <Mail size={16} />
@@ -80,20 +82,38 @@ const Navbar = () => {
               href="https://instagram.com/hadadpetals"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Instagram"
+              aria-label={t.nav.instagram}
               className={`transition-colors duration-200 ${transparent ? 'text-white/70 hover:text-white' : 'text-muted-foreground hover:text-foreground'}`}
             >
               <Instagram size={16} />
             </a>
+            <button
+              onClick={toggle}
+              aria-label={t.nav.langToggleAria}
+              className={`font-sans text-sm font-medium transition-colors duration-200 ${
+                transparent ? 'text-white/90 hover:text-white' : 'text-foreground hover:text-primary'
+              }`}
+            >
+              {t.nav.langToggle}
+            </button>
           </div>
         </div>
 
-        <div className="md:hidden flex items-center">
+        <div className="md:hidden flex items-center gap-3">
+          <button
+            onClick={toggle}
+            aria-label={t.nav.langToggleAria}
+            className={`font-sans text-sm font-medium transition-colors duration-200 ${
+              transparent ? 'text-white/90 hover:text-white' : 'text-foreground hover:text-primary'
+            }`}
+          >
+            {t.nav.langToggle}
+          </button>
           <button
             className={`p-2 cursor-pointer ${transparent ? 'text-white' : 'text-foreground'}`}
             onClick={() => setIsOpen(!isOpen)}
             aria-expanded={isOpen}
-            aria-label={isOpen ? 'Close menu' : 'Open menu'}
+            aria-label={isOpen ? t.nav.menuClose : t.nav.menuOpen}
           >
             {isOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -121,7 +141,7 @@ const Navbar = () => {
             <div className="flex items-center gap-5 pt-3 mt-2 border-t border-border">
               <a
                 href="mailto:hadadpetals@gmail.com"
-                aria-label="Email"
+                aria-label={t.nav.email}
                 className="text-muted-foreground hover:text-foreground transition-colors"
               >
                 <Mail size={18} />
@@ -130,7 +150,7 @@ const Navbar = () => {
                 href="https://instagram.com/hadadpetals"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Instagram"
+                aria-label={t.nav.instagram}
                 className="text-muted-foreground hover:text-foreground transition-colors"
               >
                 <Instagram size={18} />
