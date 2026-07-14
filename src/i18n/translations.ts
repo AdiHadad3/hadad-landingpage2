@@ -108,6 +108,10 @@ const en = {
     instaAria: 'Follow us on Instagram',
     company: 'HADAD LTD.',
   },
+  notFound: {
+    message: 'Oops! Page not found',
+    returnHome: 'Return to Home',
+  },
   a11y: {
     openMenu: 'Open accessibility menu',
     closeMenu: 'Close accessibility menu',
