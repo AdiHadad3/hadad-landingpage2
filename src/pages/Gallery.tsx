@@ -91,7 +91,7 @@ const Gallery = () => {
                     aria-label={`View ${p.name} bouquet`}
                   >
                     <motion.div
-                      className="w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 flex items-center justify-center"
+                      className="flex items-center justify-center w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36"
                       whileHover={{ scale: 1.08, rotate: 4 }}
                       whileTap={{ scale: 0.95 }}
                       transition={{ type: 'spring', stiffness: 300, damping: 15 }}
@@ -99,7 +99,9 @@ const Gallery = () => {
                       <img
                         src={p.petal}
                         alt={`${p.name} gypsophila petal`}
-                        className="w-full h-full object-contain drop-shadow-md"
+                        className={`w-full h-full object-contain drop-shadow-md ${
+                          p.name === 'Green' ? 'scale-110' : ''
+                        }`}
                       />
                     </motion.div>
                     <span className="font-sans text-sm transition-colors text-muted-foreground group-hover:text-foreground">
@@ -193,7 +195,9 @@ const Gallery = () => {
                     alt={`${petals[selected].name} gypsophila bouquet`}
                     className={`max-w-full object-contain pointer-events-none ${
                       petals[selected].name === 'White'
-                        ? 'max-h-[115%] -translate-y-6'
+                        ? 'max-h-[115%] -translate-y-10'
+                        : petals[selected].name === 'Pink'
+                        ? 'max-h-[110%] translate-y-5'
                         : petals[selected].name === 'Orange' || petals[selected].name === 'Light Blue'
                         ? 'max-h-full p-6'
                         : 'max-h-[110%]'

@@ -70,7 +70,7 @@ const AccessibilityWidget = () => {
     <>
       <button
         onClick={() => setOpen(!open)}
-        className="fixed bottom-6 left-6 z-[9999] w-14 h-14 rounded-full bg-primary text-primary-foreground shadow-lg flex items-center justify-center hover:opacity-90 transition-opacity cursor-pointer"
+        className="fixed bottom-6 left-6 z-[9999] w-14 h-14 rounded-full bg-[hsl(var(--logo-blue))] text-[hsl(var(--logo-blue-foreground))] shadow-lg flex items-center justify-center hover:opacity-90 transition-opacity cursor-pointer"
         aria-label={open ? 'Close accessibility menu' : 'Open accessibility menu'}
         aria-expanded={open}
       >
