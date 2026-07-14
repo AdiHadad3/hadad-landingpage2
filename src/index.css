@@ -16,7 +16,7 @@
     --primary: 145 20% 36%;
     --primary-foreground: 40 33% 97%;
 
-    --logo-blue: 240 96% 53%;
+    --logo-blue: 220 35% 55%;
     --logo-blue-foreground: 0 0% 100%;
 
     --secondary: 30 15% 88%;
@@ -124,6 +124,15 @@
     font-size: 100%;
     line-height: 1.6;
     scroll-behavior: smooth;
+  }
+
+  /* Hebrew font overrides */
+  html[lang="he"] body {
+    font-family: 'Heebo', 'Inter', system-ui, sans-serif;
+  }
+
+  html[lang="he"] .font-serif {
+    font-family: 'Heebo', 'Playfair Display', Georgia, serif;
   }
 
   @media (prefers-reduced-motion: reduce) {
